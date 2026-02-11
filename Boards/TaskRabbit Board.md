@@ -6,29 +6,9 @@ kanban-plugin: board
 
 ## Backlog
 
-- [ ] [[Init]]
-- [ ] [[mui-v-tailwind]]
-- [ ] [[About]]
-- [ ] [[branch-analysis]]
-- [ ] [[fb-cleaning]]
-- [ ] [[current-state]]
-- [ ] [[features]]
-- [ ] [[feature-summarised]]
-- [ ] [[open-prs]]
-- [ ] [[radix-migration]]
-- [ ] [[migration-pr]]
-- [ ] [[connecting-stripe]]
-- [ ] [[taskers-data]]
-- [ ] [[tasker-profiles]]
-- [ ] [[Gen-D]]
-- [ ] [[service-category]]
-- [ ] [[terminusdb]]
-- [ ] [[wajid/confirm-page-flow]]
-- [ ] [[templating]]
-- [ ] [[hire-page]]
 - [ ] [[update]]
-- [ ] [[availability]]
 - [ ] [[dashboard-active]]
+- [ ] [[review-ui-locations]]
 
 
 ## To Do
@@ -41,10 +21,31 @@ kanban-plugin: board
 
 ## In Review
 
+- [ ] [[hire-page]]
+- [ ] [[terminusdb]]
 
 
 ## Completed
 
+- [ ] [[availability]]
+- [ ] [[templating]]
+- [ ] [[wajid/confirm-page-flow]]
+- [ ] [[Gen-D]]
+- [ ] [[service-category]]
+- [ ] [[connecting-stripe]]
+- [ ] [[migration-pr]]
+- [ ] [[radix-migration]]
+- [ ] [[open-prs]]
+- [ ] [[feature-summarised]]
+- [ ] [[branch-analysis]]
+- [ ] [[Init]]
+- [ ] [[About]]
+- [ ] [[tasker-profiles]]
+- [ ] [[current-state]]
+- [ ] [[fb-cleaning]]
+- [ ] [[mui-v-tailwind]]
+- [ ] [[taskers-data]]
+- [ ] [[features]]
 
 
 

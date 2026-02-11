@@ -32,189 +32,21 @@
             }
           },
           {
-            "id": "64e137e454b0a5ec",
+            "id": "7abc027093ef7049",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "mui-v-tailwind.md",
+                "file": "review-ui-locations.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "mui-v-tailwind"
-            }
-          },
-          {
-            "id": "bd64c965749a53ca",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "About.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "About"
-            }
-          },
-          {
-            "id": "e93ce842e205b2eb",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "taskers-data.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "taskers-data"
-            }
-          },
-          {
-            "id": "279b763e469b8b38",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "tasker-profiles.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "tasker-profiles"
-            }
-          },
-          {
-            "id": "626f82e828f33d26",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Gen-D.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Gen-D"
-            }
-          },
-          {
-            "id": "4479dd44cf020d97",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "service-category.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "service-category"
-            }
-          },
-          {
-            "id": "61bee96a96e93609",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "terminusdb.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "terminusdb"
-            }
-          },
-          {
-            "id": "0aacfaf738ae6224",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "wajid/confirm-page-flow.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "confirm-page-flow"
-            }
-          },
-          {
-            "id": "ec789cbb761b2f5a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "templating.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "templating"
-            }
-          },
-          {
-            "id": "f20dc9749516eda4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "hire-page.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "hire-page"
-            }
-          },
-          {
-            "id": "541934c3fe277bae",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "update.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "update"
-            }
-          },
-          {
-            "id": "f704819f32778cc7",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "availability.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "availability"
-            }
-          },
-          {
-            "id": "515cb93db302a666",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dashboard-active.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "dashboard-active"
+              "title": "review-ui-locations"
             }
           }
         ],
-        "currentTab": 13
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -377,29 +209,31 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "515cb93db302a666",
+  "active": "7abc027093ef7049",
   "lastOpenFiles": [
-    "dashboard-active.md",
+    "About.md",
+    "review-ui-locations.md",
     "Boards/TaskRabbit Board.md",
-    "update.md",
-    "availability.md",
-    "pg/changes.patch",
+    "taskers-data.md",
+    "tasker-profiles.md",
+    "Gen-D.md",
+    "service-category.md",
+    "terminusdb.md",
+    "wajid/confirm-page-flow.md",
     "templating.md",
     "hire-page.md",
+    "update.md",
+    "availability.md",
+    "dashboard-active.md",
+    "pg/changes.patch",
     "Pasted image 20260206150421.png",
     "Pasted image 20260206150349.png",
     "Pasted image 20260206150339.png",
     "Pasted image 20260206150324.png",
-    "wajid/confirm-page-flow.md",
     "wajid",
-    "terminusdb.md",
     "pg/index.json",
     "pg/terminus.json",
-    "service-category.md",
     "pg/debug.md",
-    "Gen-D.md",
-    "tasker-profiles.md",
-    "taskers-data.md",
     "features.md",
     "migration-pr.md",
     "radix-migration.md",
@@ -407,7 +241,6 @@
     "Untitled",
     "feature-summarised.md",
     "how-to-claude-code.pdf",
-    "About.md",
     "open-prs.md",
     "pg/3.patch",
     "pg/4.patch",
@@ -417,7 +250,6 @@
     "fb-cleaning.md",
     "branch-analysis.md",
     "mui-v-tailwind.md",
-    "Init.md",
-    "Boards/Untitled.md"
+    "Init.md"
   ]
 }
