@@ -9,6 +9,8 @@ kanban-plugin: board
 - [ ] [[update]]
 - [ ] [[dashboard-active]]
 - [ ] [[review-ui-locations]]
+- [ ] [[cua-gym-utils]]
+- [ ] [[orphan-service-ids]]
 
 
 ## To Do
