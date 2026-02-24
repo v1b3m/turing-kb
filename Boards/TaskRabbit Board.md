@@ -11,6 +11,13 @@ kanban-plugin: board
 - [ ] [[review-ui-locations]]
 - [ ] [[cua-gym-utils]]
 - [ ] [[orphan-service-ids]]
+- [ ] [[up-next]]
+- [ ] [[servicenow]]
+- [ ] [[about-servicenow]]
+- [ ] [[servicenow-feasibility]]
+- [ ] [[review-pages]]
+- [ ] [[missing-taskers]]
+- [ ] [[001-missing-taskers]]
 
 
 ## To Do

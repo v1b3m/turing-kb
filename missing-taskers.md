@@ -1,0 +1,5 @@
+- Booking id 2270 has no taskers,
+- Check `service-list.json` and update it with any missing taskers for new service(booking) Ids
+- Check task description in Task Splits sheet
+- Don't touch existing taskers data at all, just add new taskers, preferrably in a new JSON.
+- 
