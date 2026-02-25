@@ -18,6 +18,8 @@ kanban-plugin: board
 - [ ] [[review-pages]]
 - [ ] [[missing-taskers]]
 - [ ] [[001-missing-taskers]]
+- [ ] [[002-service-now]]
+- [ ] [[data-schema]]
 
 
 ## To Do
