@@ -20,6 +20,8 @@ kanban-plugin: board
 - [ ] [[2026-02-24-missing-taskers]]
 - [ ] [[2026-02-24-service-now]]
 - [ ] [[2026-02-25-data-schema]]
+- [ ] [[2026-02-26_knowledge-articles-table]]
+- [ ] [[2026-02-26_service-now-overview]]
 
 
 ## To Do

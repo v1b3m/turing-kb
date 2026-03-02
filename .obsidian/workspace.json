@@ -14,7 +14,7 @@
             "state": {
               "type": "kanban",
               "state": {
-                "file": "Boards/TaskRabbit Board.md",
+                "file": "Boards/ServiceNow Tasks.md",
                 "kanbanViewState": {
                   "kanban-plugin": "board",
                   "list-collapse": [
@@ -28,121 +28,58 @@
               },
               "pinned": true,
               "icon": "lucide-trello",
-              "title": "TaskRabbit Board"
-            }
-          },
-          {
-            "id": "7abc027093ef7049",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "review-ui-locations.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "review-ui-locations"
-            }
-          },
-          {
-            "id": "4cd436a7bc211bb7",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "CLAUDE.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "CLAUDE"
-            }
-          },
-          {
-            "id": "0b62f34928281fb6",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "CLAUDE.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "CLAUDE"
-            }
-          },
-          {
-            "id": "9ea9d9922fbbe67e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "missing-taskers.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "missing-taskers"
-            }
-          },
-          {
-            "id": "9321010975b2ed1c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "001-missing-taskers.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "001-missing-taskers"
-            }
-          },
-          {
-            "id": "10317786c4d29f39",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "002-service-now.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "002-service-now"
-            }
-          },
-          {
-            "id": "fdd8237985c1a833",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "data-schema.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "data-schema"
-            }
-          },
-          {
-            "id": "69c616f0651205c6",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "assets/Pasted image 20260206150324.png"
-              },
-              "icon": "lucide-image",
-              "title": "Pasted image 20260206150324"
+              "title": "ServiceNow Tasks"
             }
           }
-        ],
-        "currentTab": 8
+        ]
+      },
+      {
+        "id": "db1361f187321ed8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a95d67e10e1c4622",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2026-03-01_001_more-ui-updates.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-03-01_001_more-ui-updates"
+            }
+          },
+          {
+            "id": "4f56589e28561123",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2026-03-01_001_more-ui-updates.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-03-01_001_more-ui-updates"
+            }
+          },
+          {
+            "id": "fdd0e6449f29c839",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2026-03-02_007_filters-ui-cleanup.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-03-02_007_filters-ui-cleanup"
+            }
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -161,7 +98,7 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical",
+                "sortOrder": "alphabeticalReverse",
                 "autoReveal": false
               },
               "icon": "lucide-folder-closed",
@@ -174,7 +111,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "overview",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -195,11 +132,13 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "19feaaeade2062a9",
@@ -305,52 +244,53 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "d35780045ebf011e",
+  "active": "012da082b78e618f",
   "lastOpenFiles": [
-    "Boards/TaskRabbit Board.md",
-    "assets",
-    "CLAUDE.md",
-    "data-schema.md",
-    "002-service-now.md",
-    "002-service-now.md.tmp.764909.1771926310727",
-    "001-missing-taskers.md",
-    "001-missing-taskers.md.tmp.253107.1771907438281",
-    "missing-taskers.md",
-    "review-ui-locations.md",
-    "review-pages.md",
-    "cua-gym-utils.md",
-    "servicenow-feasibility.md",
-    "about-servicenow.md",
-    "About.md",
-    "servicenow.md",
-    "up-next.md",
-    "assets/Pasted image 20260215213020.png",
-    "assets/Pasted image 20260215212847.png",
-    "assets/Pasted image 20260215212521.png",
-    "assets/Pasted image 20260215212109.png",
-    "assets/Pasted image 20260215211853.png",
-    "assets/Pasted image 20260215180945.png",
-    "connecting-stripe.md",
-    "orphan-service-ids.md",
-    "assets/Pasted image 20260211151855.png",
-    "taskers-data.md",
-    "tasker-profiles.md",
-    "Gen-D.md",
-    "service-category.md",
-    "terminusdb.md",
-    "wajid/confirm-page-flow.md",
-    "templating.md",
-    "hire-page.md",
-    "update.md",
-    "pg/changes.patch",
-    "assets/Pasted image 20260206150421.png",
-    "assets/Pasted image 20260206150349.png",
-    "assets/Pasted image 20260206150339.png",
-    "wajid",
-    "pg/index.json",
-    "pg/terminus.json",
-    "how-to-claude-code.pdf",
-    "pg/3.patch",
-    "pg/4.patch"
+    "2026-03-01_001_more-ui-updates.md",
+    "Boards/ServiceNow Tasks.md",
+    "2026-02-28_001_codebase-overview.md",
+    "2026-02-27_hover-actions.md",
+    "2026-02-27_actions-on-selected-rows.md",
+    "2026-02-27_assign-tags.md",
+    "2026-02-28_002_Edit-personal-filters.md",
+    "2026-02-28_005-refresh-menu-option.md",
+    "2026-02-28_006-create-favorite.md",
+    "2026-02-28_004_show-menu.md",
+    "Boards/ServiceNow Tasks.md.tmp.504811.1772426141699",
+    "2026-03-02_008_corrected-panel.md.tmp.504811.1772426113458",
+    "2026-03-02_008_corrected-panel.md",
+    "2026-03-02_007_filters-ui-cleanup.md",
+    "2026-03-02_002_panel-entry.md",
+    "2026-03-02_001_activity-stream.md",
+    "2026-03-02_007_filters-ui-cleanup.md.tmp.469486.1772403569022",
+    "2026-03-02_006_save-filter.md.tmp.468245.1772403373581",
+    "2026-03-02_005_add-sort.md.tmp.466897.1772403156588",
+    "2026-03-02_004_or-filters.md.tmp.465158.1772402877112",
+    "assets/Pasted image 20260302010541.png",
+    "2026-03-02_003_and-filters.md.tmp.463319.1772402404697",
+    "2026-03-02_004_or-filters.md",
+    "2026-03-02_005_add-sort.md",
+    "2026-03-02_006_save-filter.md",
+    "assets/Pasted image 20260302005725.png",
+    "2026-02-25-task-rabbit-overview.md",
+    "2026-02-26_filter-button.md",
+    "assets/Pasted image 20260302005509.png",
+    "assets/Pasted image 20260302005353.png",
+    "2026-03-02_003_and-filters.md",
+    "2026-03-02_002_panel-entry.md.tmp.461502.1772401919966",
+    "assets/Pasted image 20260302005044.png",
+    "2026-03-02_001_activity-stream.md.tmp.460324.1772401591696",
+    "assets/Pasted image 20260302004127.png",
+    "assets/Pasted image 20260302004009.png",
+    "assets/Pasted image 20260302003842.png",
+    "assets/Pasted image 20260302003628.png",
+    "assets/Pasted image 20260302002958.png",
+    "2026-03-01_003_remove-favorites.md",
+    "2026-03-01_002_favorites-button.md.tmp.453541.1772399977180",
+    "2026-03-01_002_favorites-button.md",
+    "2026-02-24-service-now.md",
+    "2026-02-28_003_group-by.md",
+    "Autonomous-coding-agent.md",
+    "2026-02-28_001_hamburger-menu-popover.md"
   ]
 }
