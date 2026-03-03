@@ -2,7 +2,7 @@
 **Depends:** 2026-03-01_001_more-ui-updates
 
 ### Context
-We did [[2026-03-02_002_panel-entry]] in the wrong branch without the prerequisites i.e the panel implementation. This branch is to correct that. We need to move that logic into this worktree. 
+We did [[2026-03-02_013_panel-entry]] in the wrong branch without the prerequisites i.e the panel implementation. This branch is to correct that. We need to move that logic into this worktree. 
 
 ### Acceptance Criteria
 - [ ] Panel entry logic is replicated into this worktree
@@ -11,7 +11,7 @@ We did [[2026-03-02_002_panel-entry]] in the wrong branch without the prerequisi
 - None
 
 ### Resources
-- [[2026-03-02_002_panel-entry]]
+- [[2026-03-02_013_panel-entry]]
 
 ---
 

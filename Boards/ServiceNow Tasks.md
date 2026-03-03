@@ -16,6 +16,9 @@ kanban-plugin: board
 - [ ] [[2026-02-27_knowledge-article-settings]]
 - [ ] [[2026-02-28_table-views]]
 - [ ] [[Autonomous-coding-agent]]
+- [ ] [[2026-03-02_013_open-entry]]
+- [ ] [[2026-03-02_015_cleanup]]
+- [ ] [[2026-02-03_003_read-article-footer]]
 
 
 ## To Do
@@ -24,27 +27,37 @@ kanban-plugin: board
 
 ## In Progress
 
+- [ ] [[2026-02-27_actions-on-selected-rows]]
 
 
 ## In Review
 
-- [ ] [[2026-03-02_008_corrected-panel]]
-- [ ] [[2026-03-02_007_filters-ui-cleanup]]
-- [ ] [[2026-03-02_006_save-filter]]
-- [ ] [[2026-03-02_005_add-sort]]
-- [ ] [[2026-03-02_004_or-filters]]
-- [ ] [[2026-03-02_003_and-filters]]
-- [ ] [[2026-03-02_002_panel-entry]]
-- [ ] [[2026-03-02_001_activity-stream]]
-- [ ] [[2026-03-01_003_remove-favorites]]
-- [ ] [[2026-03-01_002_favorites-button]]
-- [ ] [[2026-03-01_001_more-ui-updates]]
-- [ ] [[2026-02-27_actions-on-selected-rows]]
-- [ ] [[2026-02-27_assign-tags]]
+- [ ] [[2026-03-03_000_article_versioning]]
+- [ ] [[2026-03-02_009_knowledge-articles]]
+- [ ] [[2026-03-02_012_favorites-button]]
+
+
+## Stand Up
+
+- [ ] [[2026-02-03_002_read-article]]
 
 
 ## Completed
 
+- [ ] [[2026-03-02_014_favorites]]
+- [ ] [[2026-03-02_013_panel-entry]]
+- [ ] [[2026-03-02_010_workflow-column]]
+- [ ] [[2026-03-02_003_and-filters]]
+- [ ] [[2026-03-02_008_corrected-panel]]
+- [ ] [[2026-02-27_001_assign-tags]]
+- [ ] [[2026-03-02_007_filters-ui-cleanup]]
+- [ ] [[2026-03-02_006_save-filter]]
+- [ ] [[2026-03-02_005_add-sort]]
+- [ ] [[2026-03-02_004_or-filters]]
+- [ ] [[2026-03-02_001_activity-stream]]
+- [ ] [[2026-03-01_002_favorites-button]]
+- [ ] [[2026-03-01_003_remove-favorites]]
+- [ ] [[2026-03-01_001_more-ui-updates]]
 
 
 ***
@@ -73,10 +86,9 @@ kanban-plugin: board
 - [ ] [[2026-02-28_number-dropdown]]
 - [ ] [[2026-02-27_performing-search]]
 - [ ] [[2026-02-27_time-discrepancies]]
-	%% kanban:settings
 
 %% kanban:settings
 ```
-{"kanban-plugin":"board","list-collapse":[false,false,false,false,false]}
+{"kanban-plugin":"board","list-collapse":[false,false,false,false,false,false,false]}
 ```
 %%
