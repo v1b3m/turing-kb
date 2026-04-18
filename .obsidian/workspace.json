@@ -14,12 +14,10 @@
             "state": {
               "type": "kanban",
               "state": {
-                "file": "Boards/ServiceNow Tasks.md",
+                "file": "Boards/TaskRabbit Board.md",
                 "kanbanViewState": {
                   "kanban-plugin": "board",
                   "list-collapse": [
-                    false,
-                    false,
                     false,
                     false,
                     false,
@@ -30,77 +28,221 @@
               },
               "pinned": true,
               "icon": "lucide-trello",
-              "title": "ServiceNow Tasks"
+              "title": "TaskRabbit Board"
             }
           },
           {
-            "id": "a95d67e10e1c4622",
+            "id": "7abc027093ef7049",
             "type": "leaf",
-            "pinned": true,
             "state": {
               "type": "markdown",
               "state": {
-                "file": "pinned/TASK LIST.md",
+                "file": "review-ui-locations.md",
                 "mode": "source",
                 "source": false
               },
-              "pinned": true,
               "icon": "lucide-file",
-              "title": "TASK LIST"
+              "title": "review-ui-locations"
             }
           },
           {
-            "id": "3de5fac93cdc9ef2",
+            "id": "5a1432a86e002783",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2026-03-03_001_article-versioning-001.md",
+                "file": "2026-04-01_1139_more-integrations.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-03-03_001_article-versioning-001"
-            }
-          }
-        ]
-      },
-      {
-        "id": "db1361f187321ed8",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "fdd0e6449f29c839",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2026-03-03_000_article_versioning.md",
-                "mode": "source",
-                "source": false
-              },
-              "pinned": true,
-              "icon": "lucide-file",
-              "title": "2026-03-03_000_article_versioning"
+              "title": "2026-04-01_1139_more-integrations"
             }
           },
           {
-            "id": "c9dcc5131a279550",
+            "id": "c092520bef205c08",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2026-02-03_003_read-article-footer.md",
+                "file": "2026-04-01_1145_search-x-filters.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-02-03_003_read-article-footer"
+              "title": "2026-04-01_1145_search-x-filters"
+            }
+          },
+          {
+            "id": "d3b8916e3870d9e0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2026-04-01_1702_customer-service-portal.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-04-01_1702_customer-service-portal"
+            }
+          },
+          {
+            "id": "fe402de31ea98a3f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2026-04-02_1320_local-storage-usage.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-04-02_1320_local-storage-usage"
+            }
+          },
+          {
+            "id": "83e0fc59db3c1ebb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2026-04-02_1542_notifications-sla.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-04-02_1542_notifications-sla"
+            }
+          },
+          {
+            "id": "e6ed0ec8cec92672",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2026-04-02_1542_notifications-sla.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-04-02_1542_notifications-sla"
+            }
+          },
+          {
+            "id": "8d410d751a039fad",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Enhanced SMC EA.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Enhanced SMC EA"
+            }
+          },
+          {
+            "id": "87be8035013aaa16",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Untitled.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Untitled"
+            }
+          },
+          {
+            "id": "37a0d28129189752",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2026-04-26_2019_advanced-search.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-04-26_2019_advanced-search"
+            }
+          },
+          {
+            "id": "b7ed713fd3fef284",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2026-04-27_0800_create-new-project.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-04-27_0800_create-new-project"
+            }
+          },
+          {
+            "id": "a0d67c939123fdc7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2026-04-27_0800_create-new-project.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-04-27_0800_create-new-project"
+            }
+          },
+          {
+            "id": "9aeb178462420de5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2026-04-27_1816_prod-github.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-04-27_1816_prod-github"
+            }
+          },
+          {
+            "id": "aa0378a103a69363",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2026-04-27_1849_hige-agent-configs.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-04-27_1849_hige-agent-configs"
+            }
+          },
+          {
+            "id": "a31663f1693d43a1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "standup/youtube/2026-04-29.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-04-29"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 15
       }
     ],
     "direction": "vertical"
@@ -132,7 +274,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "overview",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -263,52 +405,53 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "012da082b78e618f",
+  "active": "a31663f1693d43a1",
   "lastOpenFiles": [
-    "2026-02-03_003_read-article-footer.md",
-    "Boards/ServiceNow Tasks.md",
-    "assets/Pasted image 20260303165149.png",
-    "assets/Pasted image 20260303163854.png",
-    "assets/Pasted image 20260303163817.png",
-    "pinned/TASK LIST.md",
-    "2026-02-03_002_read-article.md",
-    "assets/Pasted image 20260303161911.png",
-    "assets/Pasted image 20260303161508.png",
-    "assets/Screenshot from 2026-03-03 16-13-03.png",
-    "2026-03-03_000_article_versioning.md",
-    "assets/Pasted image 20260303160803.png",
-    "2026-03-03_001_article-versioning-001.md",
-    "assets/Pasted image 20260303155642.png",
-    "assets/Screenshot from 2026-03-03 15-52-03.png",
-    "2026-03-02_013_open-entry.md",
-    "pinned",
+    "2026-04-18_0439_shared-lib-ssh.md",
+    "2026-04-02_1614_db-diff-x-snapshot.md",
+    "2026-04-06_1842_csp.md",
+    "2026-04-14_1744_date-bug.md",
+    "standup/youtube/2026-04-29.md",
+    "standup/youtube",
+    "standup",
+    "2026-03-31_0732_multiple-redirects.md",
+    "2026-03-31_0610_unimplemented-changes-spothub.md",
+    "2026-03-30_1624_standup.md",
+    "2026-03-30_0735_search-filters-integration.md",
+    "2026-03-30_0734_communication-integration.md",
+    "2026-03-30_0731_knowledge-backend-integration.md",
+    "2026-03-26_1843_feature-routes.md",
+    "2026-03-26_1831_benjamin-features.md",
+    "2026-03-26_1603_api-contracts.md",
+    "2026-03-26.md",
+    "2026-03-23_000_special-attention.md",
     "templates/New Task.md",
     "templates",
-    "2026-03-02_012_favorites-button.md",
-    "2026-03-02_009_knowledge-articles.md",
-    "2026-03-02_014_favorites.md",
-    "2026-03-02_014_favorites.md.tmp.557852.1772444094507",
-    "Boards/ServiceNow Tasks.md.tmp.556149.1772443657515",
-    "2026-03-02_011_favorites.md.tmp.556149.1772443628421",
-    "2026-03-02_013_panel-entry.md",
-    "2026-03-02_010_workflow-column.md",
-    "2026-03-02_010_workflow-column.md.tmp.554563.1772443268068",
-    "2026-03-02_013_panel-entry.md.tmp.551249.1772443191408",
-    "2026-03-02_003_and-filters.md",
-    "2026-03-02_010_workflow-column.md.tmp.549801.1772442784088",
-    "2026-03-02_008_corrected-panel.md",
-    "2026-02-27_actions-on-selected-rows.md",
-    "2026-02-27_001_assign-tags.md",
-    "2026-03-02_009_knowledge-articles.md.tmp.547104.1772442606244",
-    "2026-03-02_012_favorites-button.md.tmp.542448.1772441539338",
-    "2026-03-02_007_filters-ui-cleanup.md",
-    "2026-03-02_001_activity-stream.md",
-    "2026-03-01_002_favorites-button.md",
-    "2026-03-01_003_remove-favorites.md",
+    "pinned/TASK LIST.md",
+    "pinned",
+    "assets/Screenshot from 2026-03-03 16-13-03.png",
+    "assets/Screenshot from 2026-03-03 15-52-03.png",
     "assets/Screenshot from 2026-03-02 11-29-02.png",
-    "2026-03-01_001_more-ui-updates.md",
-    "2026-02-28_001_codebase-overview.md",
-    "2026-02-27_hover-actions.md",
-    "2026-02-28_002_Edit-personal-filters.md"
+    "assets/Screenshot from 2026-03-02 07-52-40.png",
+    "assets/Screenshot from 2026-03-02 00-14-04.png",
+    "assets/Screenshot from 2026-03-02 00-01-43.png",
+    "assets/Screenshot from 2026-03-02 00-01-43 1.png",
+    "assets/Screenshot from 2026-03-01 23-47-55.png",
+    "assets/Screenshot from 2026-02-28 16-04-39.png",
+    "assets/Screenshot from 2026-02-28 15-04-20.png",
+    "2026-04-29_1603_updates.md",
+    "2026-04-28_1414_settings-panel.md",
+    "Boards/ServiceNow Tasks.md",
+    "Autonomous-coding-agent.md",
+    "2026-03-03_001_article-versioning-001.md",
+    "2026-03-03_000_article_versioning.md",
+    "2026-03-02_014_favorites.md",
+    "2026-03-02_013_panel-entry.md",
+    "claude",
+    "changes/2026-04-20",
+    "changes",
+    "tricia-q1.pdf",
+    "assets",
+    "pg/changes.patch"
   ]
 }
