@@ -1,0 +1,4 @@
+- Hide AGENTS.md and CLAUDE.md from the editor
+- Remove the slug totally from both UI and backend
+- Bring back multiple dev servers, we removed these for efficiency but we want them back. As the agent works, it should show the worktree's dev server preview, this way it can verify it's changes in real time instead of waiting for merges to main. After merging, the main preview should then be rendered.
+- 

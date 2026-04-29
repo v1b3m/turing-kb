@@ -233,16 +233,44 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "standup/youtube/2026-04-29.md",
+                "file": "2026-04-27_2021_port-3000-blocked.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-04-29"
+              "title": "2026-04-27_2021_port-3000-blocked"
+            }
+          },
+          {
+            "id": "28cfa76ab5ee65e1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2026-04-28_1414_settings-panel.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-04-28_1414_settings-panel"
+            }
+          },
+          {
+            "id": "8983591d30f866ff",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2026-04-29_1603_updates.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-04-29_1603_updates"
             }
           }
         ],
-        "currentTab": 15
+        "currentTab": 16
       }
     ],
     "direction": "vertical"
@@ -405,53 +433,53 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "a31663f1693d43a1",
+  "active": "28cfa76ab5ee65e1",
   "lastOpenFiles": [
-    "2026-04-18_0439_shared-lib-ssh.md",
-    "2026-04-02_1614_db-diff-x-snapshot.md",
-    "2026-04-06_1842_csp.md",
-    "2026-04-14_1744_date-bug.md",
-    "standup/youtube/2026-04-29.md",
-    "standup/youtube",
-    "standup",
-    "2026-03-31_0732_multiple-redirects.md",
-    "2026-03-31_0610_unimplemented-changes-spothub.md",
-    "2026-03-30_1624_standup.md",
-    "2026-03-30_0735_search-filters-integration.md",
-    "2026-03-30_0734_communication-integration.md",
-    "2026-03-30_0731_knowledge-backend-integration.md",
-    "2026-03-26_1843_feature-routes.md",
-    "2026-03-26_1831_benjamin-features.md",
-    "2026-03-26_1603_api-contracts.md",
-    "2026-03-26.md",
-    "2026-03-23_000_special-attention.md",
-    "templates/New Task.md",
+    "2026-04-29_1603_updates.md",
+    "2026-04-28_1414_settings-panel.md",
+    "claude",
+    "assets/Pasted image 20260428141606.png",
+    "assets/Pasted image 20260428141549.png",
+    "2026-04-27_2021_port-3000-blocked.md",
+    "assets/Pasted image 20260427202339.png",
+    "assets/Pasted image 20260427202159.png",
+    "2026-04-27_1849_hige-agent-configs.md",
+    "2026-04-27_1816_prod-github.md",
+    "2026-04-27_0800_create-new-project.md",
+    "2026-04-27_0813_personal-remote-persistence.md",
+    "assets/Pasted image 20260427080205.png",
+    "assets/Pasted image 20260427080135.png",
+    "2026-04-26_2019_advanced-search.md",
+    "Untitled.md",
+    "Enhanced SMC EA.md",
+    "changes/2026-04-20/2026-04-20_1241_servicenow-knowledge-center-clone.md",
+    "changes/2026-04-20",
+    "changes",
+    "update.md",
+    "terminusdb.md",
+    "templating.md",
+    "taskers-data.md",
+    "tasker-profiles.md",
+    "service-category.md",
+    "review-ui-locations.md",
+    "radix-migration.md",
+    "orphan-service-ids.md",
+    "open-prs.md",
+    "mui-v-tailwind.md",
+    "migration-pr.md",
+    "hire-page.md",
+    "features.md",
+    "feature-summarised.md",
     "templates",
-    "pinned/TASK LIST.md",
     "pinned",
     "assets/Screenshot from 2026-03-03 16-13-03.png",
     "assets/Screenshot from 2026-03-03 15-52-03.png",
     "assets/Screenshot from 2026-03-02 11-29-02.png",
     "assets/Screenshot from 2026-03-02 07-52-40.png",
-    "assets/Screenshot from 2026-03-02 00-14-04.png",
-    "assets/Screenshot from 2026-03-02 00-01-43.png",
-    "assets/Screenshot from 2026-03-02 00-01-43 1.png",
-    "assets/Screenshot from 2026-03-01 23-47-55.png",
-    "assets/Screenshot from 2026-02-28 16-04-39.png",
-    "assets/Screenshot from 2026-02-28 15-04-20.png",
-    "2026-04-29_1603_updates.md",
-    "2026-04-28_1414_settings-panel.md",
-    "Boards/ServiceNow Tasks.md",
-    "Autonomous-coding-agent.md",
-    "2026-03-03_001_article-versioning-001.md",
-    "2026-03-03_000_article_versioning.md",
-    "2026-03-02_014_favorites.md",
-    "2026-03-02_013_panel-entry.md",
-    "claude",
-    "changes/2026-04-20",
-    "changes",
     "tricia-q1.pdf",
     "assets",
-    "pg/changes.patch"
+    "pg/changes.patch",
+    "wajid",
+    "pg/index.json"
   ]
 }
