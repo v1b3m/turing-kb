@@ -247,12 +247,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2026-04-28_1414_settings-panel.md",
+                "file": "docs/flow-doc.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-04-28_1414_settings-panel"
+              "title": "flow-doc"
             }
           },
           {
@@ -435,8 +435,10 @@
   },
   "active": "28cfa76ab5ee65e1",
   "lastOpenFiles": [
-    "2026-04-29_1603_updates.md",
     "2026-04-28_1414_settings-panel.md",
+    "docs/flow-doc.md",
+    "docs",
+    "2026-04-29_1603_updates.md",
     "claude",
     "assets/Pasted image 20260428141606.png",
     "assets/Pasted image 20260428141549.png",
@@ -469,7 +471,6 @@
     "migration-pr.md",
     "hire-page.md",
     "features.md",
-    "feature-summarised.md",
     "templates",
     "pinned",
     "assets/Screenshot from 2026-03-03 16-13-03.png",
@@ -479,7 +480,6 @@
     "tricia-q1.pdf",
     "assets",
     "pg/changes.patch",
-    "wajid",
-    "pg/index.json"
+    "wajid"
   ]
 }
