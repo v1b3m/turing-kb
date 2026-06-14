@@ -14,10 +14,15 @@
             "state": {
               "type": "kanban",
               "state": {
-                "file": "Boards/TaskRabbit Board.md",
+                "file": "Boards/ServiceNow Tasks.md",
                 "kanbanViewState": {
                   "kanban-plugin": "board",
                   "list-collapse": [
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
                     false,
                     false,
                     false,
@@ -28,249 +33,153 @@
               },
               "pinned": true,
               "icon": "lucide-trello",
-              "title": "TaskRabbit Board"
+              "title": "ServiceNow Tasks"
             }
           },
           {
-            "id": "7abc027093ef7049",
+            "id": "a95d67e10e1c4622",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "pinned/TASK LIST.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true,
+              "icon": "lucide-file",
+              "title": "TASK LIST"
+            }
+          },
+          {
+            "id": "f33acfc2408f4840",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "review-ui-locations.md",
+                "file": "2026-06-14_1052.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "review-ui-locations"
+              "title": "2026-06-14_1052"
             }
           },
           {
-            "id": "5a1432a86e002783",
+            "id": "41e2a42e628e6da0",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2026-04-01_1139_more-integrations.md",
+                "file": "2026-06-14_1103_returnmax-medium-002.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-04-01_1139_more-integrations"
+              "title": "2026-06-14_1103_returnmax-medium-002"
             }
           },
           {
-            "id": "c092520bef205c08",
+            "id": "9d85153e7b023d0d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2026-04-01_1145_search-x-filters.md",
+                "file": "2026-06-14_1104_returnmax-medium-003.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-04-01_1145_search-x-filters"
+              "title": "2026-06-14_1104_returnmax-medium-003"
             }
           },
           {
-            "id": "d3b8916e3870d9e0",
+            "id": "d91ef0e952c854b5",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2026-04-01_1702_customer-service-portal.md",
+                "file": "2026-06-14_1105_returnmax-medium-008.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-04-01_1702_customer-service-portal"
+              "title": "2026-06-14_1105_returnmax-medium-008"
             }
           },
           {
-            "id": "fe402de31ea98a3f",
+            "id": "458842c440632cf4",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2026-04-02_1320_local-storage-usage.md",
+                "file": "2026-06-14_1105_returnmax-medium-010.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-04-02_1320_local-storage-usage"
+              "title": "2026-06-14_1105_returnmax-medium-010"
             }
           },
           {
-            "id": "83e0fc59db3c1ebb",
+            "id": "81e387adfdc64931",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2026-04-02_1542_notifications-sla.md",
+                "file": "2026-06-14_1106_returnmax-medium-011.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-04-02_1542_notifications-sla"
+              "title": "2026-06-14_1106_returnmax-medium-011"
             }
           },
           {
-            "id": "e6ed0ec8cec92672",
+            "id": "7aab481382fc789d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "2026-04-02_1542_notifications-sla.md",
+                "file": "2026-06-14_1106_returnmax-medium-017.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-04-02_1542_notifications-sla"
+              "title": "2026-06-14_1106_returnmax-medium-017"
             }
           },
           {
-            "id": "8d410d751a039fad",
+            "id": "3360710357547120",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Enhanced SMC EA.md",
+                "file": "2026-06-14_1103_returnmax-medium-002.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Enhanced SMC EA"
+              "title": "2026-06-14_1103_returnmax-medium-002"
             }
           },
           {
-            "id": "87be8035013aaa16",
+            "id": "01700afe9efd4a73",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Untitled.md",
+                "file": "2026-06-14_1104_returnmax-medium-003.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Untitled"
-            }
-          },
-          {
-            "id": "37a0d28129189752",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2026-04-26_2019_advanced-search.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2026-04-26_2019_advanced-search"
-            }
-          },
-          {
-            "id": "b7ed713fd3fef284",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2026-04-27_0800_create-new-project.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2026-04-27_0800_create-new-project"
-            }
-          },
-          {
-            "id": "a0d67c939123fdc7",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2026-04-27_0800_create-new-project.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2026-04-27_0800_create-new-project"
-            }
-          },
-          {
-            "id": "9aeb178462420de5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2026-04-27_1816_prod-github.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2026-04-27_1816_prod-github"
-            }
-          },
-          {
-            "id": "aa0378a103a69363",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2026-04-27_1849_hige-agent-configs.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2026-04-27_1849_hige-agent-configs"
-            }
-          },
-          {
-            "id": "a31663f1693d43a1",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2026-04-27_2021_port-3000-blocked.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2026-04-27_2021_port-3000-blocked"
-            }
-          },
-          {
-            "id": "28cfa76ab5ee65e1",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docs/flow-doc.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "flow-doc"
-            }
-          },
-          {
-            "id": "8983591d30f866ff",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2026-04-29_1603_updates.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2026-04-29_1603_updates"
+              "title": "2026-06-14_1104_returnmax-medium-003"
             }
           }
         ],
-        "currentTab": 16
+        "currentTab": 10
       }
     ],
     "direction": "vertical"
@@ -290,7 +199,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabeticalReverse",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -302,7 +213,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "overview",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -433,53 +344,53 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "28cfa76ab5ee65e1",
+  "active": "01700afe9efd4a73",
   "lastOpenFiles": [
-    "2026-04-28_1414_settings-panel.md",
-    "docs/flow-doc.md",
-    "docs",
-    "2026-04-29_1603_updates.md",
-    "claude",
-    "assets/Pasted image 20260428141606.png",
-    "assets/Pasted image 20260428141549.png",
-    "2026-04-27_2021_port-3000-blocked.md",
-    "assets/Pasted image 20260427202339.png",
-    "assets/Pasted image 20260427202159.png",
-    "2026-04-27_1849_hige-agent-configs.md",
-    "2026-04-27_1816_prod-github.md",
-    "2026-04-27_0800_create-new-project.md",
-    "2026-04-27_0813_personal-remote-persistence.md",
-    "assets/Pasted image 20260427080205.png",
-    "assets/Pasted image 20260427080135.png",
-    "2026-04-26_2019_advanced-search.md",
-    "Untitled.md",
-    "Enhanced SMC EA.md",
-    "changes/2026-04-20/2026-04-20_1241_servicenow-knowledge-center-clone.md",
-    "changes/2026-04-20",
-    "changes",
-    "update.md",
-    "terminusdb.md",
-    "templating.md",
-    "taskers-data.md",
-    "tasker-profiles.md",
-    "service-category.md",
-    "review-ui-locations.md",
-    "radix-migration.md",
-    "orphan-service-ids.md",
-    "open-prs.md",
-    "mui-v-tailwind.md",
-    "migration-pr.md",
-    "hire-page.md",
-    "features.md",
-    "templates",
-    "pinned",
-    "assets/Screenshot from 2026-03-03 16-13-03.png",
-    "assets/Screenshot from 2026-03-03 15-52-03.png",
-    "assets/Screenshot from 2026-03-02 11-29-02.png",
-    "assets/Screenshot from 2026-03-02 07-52-40.png",
-    "tricia-q1.pdf",
-    "assets",
-    "pg/changes.patch",
-    "wajid"
+    "2026-06-14_1103_returnmax-medium-002.md",
+    "2026-06-14_1104_returnmax-medium-003.md",
+    "assets/Pasted image 20260614111633.png",
+    "2026-06-14_1112.md",
+    "2026-06-14_1107_returnmax-medium-031.md",
+    "2026-06-14_1106_returnmax-medium-017.md",
+    "2026-06-14_1106_returnmax-medium-011.md",
+    "2026-06-14_1105_returnmax-medium-010.md",
+    "2026-06-14_1105_returnmax-medium-008.md",
+    "2026-06-14_1052.md",
+    "assets/Pasted image 20260614105701.png",
+    "assets/Pasted image 20260614105549.png",
+    "assets/Pasted image 20260614105529.png",
+    "assets/Pasted image 20260614105517.png",
+    "assets/Pasted image 20260614105505.png",
+    "assets/Pasted image 20260614105443.png",
+    "assets/Pasted image 20260614105425.png",
+    "assets/Pasted image 20260614105410.png",
+    "assets/Pasted image 20260614105352.png",
+    "pinned/TASK LIST.md",
+    "2026-04-30_1156_youtube-api.md",
+    "standup/youtube/2026-04-30.md",
+    "2026-05-27_1559_ledgerpilot-bug-report.md",
+    "2026-05-30_0938_transactions.md",
+    "standup/turbotax/2026-06-11_1600.md",
+    "2026-06-14_0801.md",
+    "2026-06-14_0951.md",
+    "standup/turbotax/2026-06-04_1734.md",
+    "2026-02-03_003_read-article-footer.md",
+    "Boards/ServiceNow Tasks.md",
+    "2026-06-14_105.md",
+    "standup/turbotax/2026-06-10.md",
+    "standup/turbotax/2026-06-08_2012.md",
+    "2026-05-29_0106_1099-filter-manual-testing.md",
+    "standup/turbotax/2026-06-05_1703.md",
+    "2026-06-04_expert-review.canvas",
+    "standup/turbotax",
+    "2026-05-29_1715_review-data-abhishek-qa-fixes.md.tmp.1105698.a4d80994e054",
+    "2026-05-29_1634_ledgerpilot-full-app-review.md.tmp.1105698.10176d520305",
+    "2026-05-29_0106_1099-filter-manual-testing.md.tmp.1105698.9f0f831a582b",
+    "2026-05-28_2313_fix-customer-creation-review.md.tmp.347300.508600f07f51",
+    "2026-05-28_2207_ledgerpilot-manual-review.md.tmp.347300.334d595f5c0c",
+    "2026-05-27_1654_ledgerpilot-verified-features.md.tmp.319808.5811f90ec887",
+    "2026-05-27_1559_ledgerpilot-bug-report.md.tmp.319808.0bedad145ef6",
+    "2026-05-27_1559_ledgerpilot-bug-report.md.tmp.319808.516e1c982161",
+    "2026-05-27_1559_ledgerpilot-bug-report.md.tmp.319808.08a47eda9a28"
   ]
 }

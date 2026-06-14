@@ -18,7 +18,19 @@ kanban-plugin: board
 - [ ] [[Autonomous-coding-agent]]
 - [ ] [[2026-03-02_013_open-entry]]
 - [ ] [[2026-03-02_015_cleanup]]
-- [ ] [[2026-02-03_003_read-article-footer]]
+
+
+## Discovery
+
+
+
+## Discovery In Progress
+
+
+
+## Discovery Review
+- [ ] [[2026-03-09_000_search]]
+
 
 
 ## To Do
@@ -30,8 +42,22 @@ kanban-plugin: board
 - [ ] [[2026-02-27_actions-on-selected-rows]]
 
 
-## In Review
+## Review
 
+- [ ] [[2026-03-09_001_global-search]]
+- [ ] [[2026-04-07_002_email-templates]]
+- [ ] [[2026-03-07_001_email-details-view]]
+- [ ] [[2026-03-07_000_email-preview]]
+- [ ] [[2026-03-06_001_message-view]]
+- [ ] [[2026-03-06_000_rich-editor]]
+- [ ] [[2026-03-05_001_mail-attachments]]
+- [ ] [[2026-03-05_000_outbound-mail]]
+- [ ] [[2026-03-04_004_activity-stream]]
+- [ ] [[2026-03-04_003_view-article-settings]]
+- [ ] [[2026-03-04_002_list-settings]]
+- [ ] [[2026-03-04_001_keep-hacking]]
+- [ ] [[2026-02-03_005_read-article-footer-followup]]
+- [ ] [[2026-02-03_003_read-article-footer]]
 - [ ] [[2026-03-03_000_article_versioning]]
 - [ ] [[2026-03-02_009_knowledge-articles]]
 - [ ] [[2026-03-02_012_favorites-button]]
@@ -89,6 +115,6 @@ kanban-plugin: board
 
 %% kanban:settings
 ```
-{"kanban-plugin":"board","list-collapse":[false,false,false,false,false,false,false]}
+{"kanban-plugin":"board","list-collapse":[false,false,false,false,false,false,false,false,false,false]}
 ```
 %%

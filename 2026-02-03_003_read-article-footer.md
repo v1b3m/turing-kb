@@ -39,10 +39,22 @@ The bottom section on the read articles view needs some revamping
 ![[Pasted image 20260303165149.png]]
 
 ### Acceptance Criteria
-- [ ] Output matches spec
+- [x] Output matches spec
 
 ### Constraints
 - None
 
 ### Resources
 - None
+
+---
+
+### Handoff
+| Field | Details |
+|---|---|
+| **What was done** | Replaced the read-article footer in `knowledge/[id]` with a ServiceNow-style related-lists card: top-indicator tabs, toolbar (menu, filter, dropdown + search, settings, collapse, New, Edit...), contextual row, table header, and empty-state panel. Added collapsed-state behavior matching the reference (gray strip with green outlined plus button to re-open). |
+| **Commit hash(es)** | Not committed in this task |
+| **Files touched** | `src/app/knowledge/[id]/page.tsx`, `src/components/knowledge/ReadArticleFooter.tsx` |
+| **Decisions made** | Implemented as a dedicated reusable component (`ReadArticleFooter`) instead of inline JSX to keep `knowledge/[id]` page maintainable. Tab order and default active tab were aligned to the reference (`Affected Products` active at the right end). |
+| **Known limitations** | Toolbar buttons are UI-only in this task (no behavior wired for menu/filter/settings/new/edit beyond collapse toggle). |
+| **How to verify** | 1. Open `/knowledge/{id}`. 2. Scroll to bottom and confirm elevated footer card with styled tabs and toolbar. 3. Click different tabs and confirm table header label updates per tab. 4. Click minus icon to collapse; confirm gray strip + outlined plus button. 5. Click plus button to restore the list panel. |

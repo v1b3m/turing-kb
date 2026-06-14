@@ -1,5 +1,10 @@
-**Ref:** main
-**Depends:** (none, or prior task ID e.g. 2026-02-28_003_incident-schema)
+---
+title: 2026-02-28_014-add-pagination
+ref: main
+depends_on: (none, or prior task ID e.g. 2026-02-28_003_incident-schema)
+ready: true
+tags: [api, backend]
+---
 
 ### Context
 What needs to be done and why. Include enough detail that any agent can start cold.
