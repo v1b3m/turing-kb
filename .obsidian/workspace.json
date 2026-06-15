@@ -57,14 +57,15 @@
             "type": "leaf",
             "pinned": true,
             "state": {
-              "type": "bases",
+              "type": "markdown",
               "state": {
-                "file": "returnmax-test-batch/returnmax-test-batch.base",
-                "viewName": "All prompts"
+                "file": "returnmax-test-batch/2026-06-14_1939_returnmax-medium-004.md",
+                "mode": "source",
+                "source": false
               },
               "pinned": true,
-              "icon": "lucide-table",
-              "title": "returnmax-test-batch"
+              "icon": "lucide-file",
+              "title": "2026-06-14_1939_returnmax-medium-004"
             }
           },
           {
@@ -94,9 +95,23 @@
               "icon": "lucide-file",
               "title": "2026-06-14_1939_returnmax-medium-017"
             }
+          },
+          {
+            "id": "6276bafa52a192e4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "returnmax-test-batch/2026-06-14_1939_returnmax-medium-026.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-06-14_1939_returnmax-medium-026"
+            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -261,18 +276,23 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "fab0651eb52d1b6a",
+  "active": "6276bafa52a192e4",
   "lastOpenFiles": [
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-025.md",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-026.md",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-004.md",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-017.md.tmp.3641725.f9121ef71f23",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-017.md.tmp.3641725.65f997a0badb",
+    "returnmax-test-batch/returnmax-test-batch.base",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-017.md",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-014.md.tmp.3739024.aefb2a52dca7",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-014.md.tmp.3739024.36953e02c0b1",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-017.md.tmp.3641725.587c6f175f5d",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-017.md.tmp.3641725.53af3658d797",
-    "returnmax-test-batch/returnmax-test-batch.base",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-014.md",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-013.md",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-013.md.tmp.3641725.91fa36e5e55f",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-011.md",
-    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-004.md",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-010.md",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-010.md.tmp.3469938.e9cbd5b18d0e",
     "2026-06-14_1103_returnmax-medium-002.md",
@@ -293,10 +313,7 @@
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-045.md",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-044.md",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-043.md",
-    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-042.md",
-    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-041.md",
     "returnmax-test-batch",
-    "assets/tricia-q1.pdf",
     "assets/medium-010-ctc.png",
     "assets/medium-009-tax-home.png",
     "assets/medium-008-results.png",
@@ -307,8 +324,6 @@
     "assets/Screenshot 2026-06-14 at 15.24.43.png",
     "assets/Screenshot 2026-06-14 at 15.23.57.png",
     "assets/Pasted image 20260614153415.png",
-    "2026-06-04_expert-review.canvas",
-    "standup/turbotax",
-    "2026-05-29_1715_review-data-abhishek-qa-fixes.md.tmp.1105698.a4d80994e054"
+    "2026-06-04_expert-review.canvas"
   ]
 }
