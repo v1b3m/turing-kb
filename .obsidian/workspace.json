@@ -82,7 +82,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -247,10 +247,10 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "99dcae1cde84c7d4",
+  "active": "01700afe9efd4a73",
   "lastOpenFiles": [
-    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-013.md",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-014.md",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-013.md",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-013.md.tmp.3641725.91fa36e5e55f",
     "returnmax-test-batch/returnmax-test-batch.base",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-011.md",
