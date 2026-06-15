@@ -77,76 +77,7 @@
             }
           },
           {
-            "id": "376fde089fcef76e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "returnmax-test-batch/2026-06-14_1939_returnmax-medium-010.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2026-06-14_1939_returnmax-medium-010"
-            }
-          },
-          {
-            "id": "cfd870995cf42d73",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "2026-05-05_0925_review-jeff.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2026-05-05_0925_review-jeff"
-            }
-          },
-          {
-            "id": "603265febc737c01",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "returnmax-test-batch/2026-06-14_1939_returnmax-medium-015.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2026-06-14_1939_returnmax-medium-015"
-            }
-          },
-          {
-            "id": "213c79bfcfa4b811",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "returnmax-test-batch/2026-06-14_1939_returnmax-medium-018.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2026-06-14_1939_returnmax-medium-018"
-            }
-          },
-          {
-            "id": "61fe906ff550dec7",
-            "type": "leaf",
-            "state": {
-              "type": "bases",
-              "state": {
-                "file": "Untitled.base",
-                "viewName": "Table"
-              },
-              "icon": "lucide-table",
-              "title": "Untitled"
-            }
-          },
-          {
-            "id": "ea1ea2fcd2e3fbd2",
+            "id": "1af75253406ddf73",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -158,9 +89,23 @@
               "icon": "lucide-file",
               "title": "2026-06-14_1939_returnmax-medium-023"
             }
+          },
+          {
+            "id": "190eb12a7728892b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "returnmax-test-batch/2026-06-14_1939_returnmax-medium-026.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-06-14_1939_returnmax-medium-026"
+            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -323,12 +268,15 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "445db54cdabed75b",
+  "active": "190eb12a7728892b",
   "lastOpenFiles": [
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-024.md",
+    "returnmax-test-batch/returnmax-test-batch.base",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-023.md",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-027.md.tmp.96197.22c54fd84628",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-017.md",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-025.md.tmp.96197.e277e2d0b859",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-018.md.tmp.96197.cdc9f1c7c83a",
-    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-023.md",
-    "returnmax-test-batch/returnmax-test-batch.base",
     "Untitled.base",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-018.md",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-015.md",
@@ -360,7 +308,6 @@
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-042.md",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-041.md",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-040.md",
-    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-039.md",
     "returnmax-test-batch",
     "assets/Pasted image 20260614153415.png",
     "assets/Pasted image 20260614152854.png",
@@ -369,8 +316,6 @@
     "2026-06-04_expert-review.canvas",
     "how-to-claude-code.pdf",
     "docs",
-    "claude",
-    "changes/2026-04-20",
-    "changes"
+    "claude"
   ]
 }
