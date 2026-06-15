@@ -1,0 +1,104 @@
+filters:
+  and:
+    - file.inFolder("returnmax-test-batch")
+    - file.hasTag("returnmax-test")
+
+formulas:
+  task: 'link(task_url, "open task")'
+  bugs: 'if(bug_count > 0, "🐞 " + bug_count, "")'
+
+properties:
+  task_id:
+    displayName: "Task ID"
+  status:
+    displayName: "Status"
+  owner:
+    displayName: "Owner"
+  claimed_at:
+    displayName: "Claimed"
+  updated_at:
+    displayName: "Updated"
+  complexity:
+    displayName: "Complexity"
+  l3:
+    displayName: "L3"
+  persona:
+    displayName: "Persona"
+  bug_count:
+    displayName: "Bugs"
+  fix_pr:
+    displayName: "Fix PR"
+  formula.bugs:
+    displayName: "🐞"
+  formula.task:
+    displayName: "Link"
+
+views:
+  - type: table
+    name: "All prompts"
+    order:
+      - task_id
+      - version
+      - status
+      - owner
+      - complexity
+      - l3
+      - formula.bugs
+      - updated_at
+      - formula.task
+    groupBy:
+      property: status
+      direction: ASC
+    summaries:
+      bug_count: Sum
+
+  - type: table
+    name: "Available to claim"
+    filters:
+      and:
+        - 'status == "untested"'
+        - '!owner'
+    order:
+      - task_id
+      - version
+      - complexity
+      - l3
+      - formula.task
+
+  - type: table
+    name: "In progress"
+    filters:
+      and:
+        - 'status == "in-progress"'
+    order:
+      - task_id
+      - owner
+      - claimed_at
+      - updated_at
+      - formula.task
+
+  - type: table
+    name: "Bugs found"
+    filters:
+      and:
+        - 'bug_count > 0'
+    order:
+      - task_id
+      - status
+      - owner
+      - bug_count
+      - fix_pr
+      - formula.task
+    summaries:
+      bug_count: Sum
+
+  - type: table
+    name: "Done"
+    filters:
+      and:
+        - 'status == "passed" || status == "verified"'
+    order:
+      - task_id
+      - status
+      - owner
+      - updated_at
