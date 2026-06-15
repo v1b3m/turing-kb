@@ -8,64 +8,18 @@
         "type": "tabs",
         "children": [
           {
-            "id": "012da082b78e618f",
+            "id": "0c052801c4f13d53",
             "type": "leaf",
             "pinned": true,
             "state": {
-              "type": "kanban",
+              "type": "bases",
               "state": {
-                "file": "Boards/ServiceNow Tasks.md",
-                "kanbanViewState": {
-                  "kanban-plugin": "board",
-                  "list-collapse": [
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false
-                  ]
-                }
+                "file": "returnmax-test-batch/returnmax-test-batch.base",
+                "viewName": "All prompts"
               },
               "pinned": true,
-              "icon": "lucide-trello",
-              "title": "ServiceNow Tasks"
-            }
-          },
-          {
-            "id": "a95d67e10e1c4622",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "pinned/TASK LIST.md",
-                "mode": "source",
-                "source": false
-              },
-              "pinned": true,
-              "icon": "lucide-file",
-              "title": "TASK LIST"
-            }
-          },
-          {
-            "id": "01700afe9efd4a73",
-            "type": "leaf",
-            "pinned": true,
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "returnmax-test-batch/2026-06-14_1939_returnmax-medium-004.md",
-                "mode": "source",
-                "source": false
-              },
-              "pinned": true,
-              "icon": "lucide-file",
-              "title": "2026-06-14_1939_returnmax-medium-004"
+              "icon": "lucide-table",
+              "title": "returnmax-test-batch"
             }
           },
           {
@@ -109,9 +63,149 @@
               "icon": "lucide-file",
               "title": "2026-06-14_1939_returnmax-medium-026"
             }
+          },
+          {
+            "id": "9a9bfb66553360f8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "returnmax-test-batch/2026-06-14_1939_returnmax-medium-024.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-06-14_1939_returnmax-medium-024"
+            }
+          },
+          {
+            "id": "c05711382750d6e2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "returnmax-test-batch/2026-06-14_1939_returnmax-medium-024.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-06-14_1939_returnmax-medium-024"
+            }
+          },
+          {
+            "id": "5f4447241645f43a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "returnmax-test-batch/2026-06-14_1939_returnmax-medium-025.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-06-14_1939_returnmax-medium-025"
+            }
+          },
+          {
+            "id": "3555fbdc6471a7e3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "returnmax-test-batch/2026-06-14_1939_returnmax-medium-023.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-06-14_1939_returnmax-medium-023"
+            }
+          },
+          {
+            "id": "d6442227af65d0e5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "returnmax-test-batch/2026-06-14_1939_returnmax-medium-004.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-06-14_1939_returnmax-medium-004"
+            }
+          },
+          {
+            "id": "0395cec2eb4c09cf",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2026-06-15_1629.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-06-15_1629"
+            }
+          },
+          {
+            "id": "12c6938f7c7523db",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2026-06-15_2248.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-06-15_2248"
+            }
+          },
+          {
+            "id": "71986b53b65482fb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2026-06-16_0008_deduction-totals.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-06-16_0008_deduction-totals"
+            }
+          },
+          {
+            "id": "f3ea38d35cccb5db",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2026-06-16_0038.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-06-16_0038"
+            }
+          },
+          {
+            "id": "0f0e99cdc3af2c0a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "2026-06-16_0008_deduction-totals.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2026-06-16_0008_deduction-totals"
+            }
           }
         ],
-        "currentTab": 5
+        "currentTab": 12
       }
     ],
     "direction": "vertical"
@@ -276,25 +370,44 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "6276bafa52a192e4",
+  "active": "d35780045ebf011e",
   "lastOpenFiles": [
-    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-025.md",
-    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-026.md",
+    "misc/schema-test-report-6-16-2026-12-38-11-AM.html",
+    "misc",
+    "schema-test-report-6-16-2026-12-38-11-AM 1.html",
+    "schema-test-report-6-16-2026-12-38-11-AM.html",
+    "2026-06-16_0008_deduction-totals.md",
+    "2026-06-16_0038.md",
+    "2026-06-16_0000_add-edit-behavior.md",
+    "assets/Pasted image 20260616001248.png",
+    "assets/Pasted image 20260616001204.png",
+    "assets/Pasted image 20260616001037.png",
+    "2026-06-15_2248.md",
+    "assets/Pasted image 20260615224902.png",
+    "assets/Pasted image 20260615224849.png",
+    "assets/Pasted image 20260615224835.png",
+    "2026-06-15_1629.md",
+    "assets/Pasted image 20260615162937.png",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-004.md",
-    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-017.md.tmp.3641725.f9121ef71f23",
-    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-017.md.tmp.3641725.65f997a0badb",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-029.md",
     "returnmax-test-batch/returnmax-test-batch.base",
-    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-017.md",
-    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-014.md.tmp.3739024.aefb2a52dca7",
-    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-014.md.tmp.3739024.36953e02c0b1",
-    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-017.md.tmp.3641725.587c6f175f5d",
-    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-017.md.tmp.3641725.53af3658d797",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-023.md",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-025.md",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-024.md",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-017.md.tmp.3872086.392feb613377",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-024.md.tmp.3469938.f0d0665bac6e",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-024.md.tmp.3469938.c9186e0fc2cc",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-024.md.tmp.3469938.8394efaf5871",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-024.md.tmp.3469938.76d02eed92a1",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-026.md.tmp.3641725.2c465e212707",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-014.md",
+    "Boards/ServiceNow Tasks.md",
+    "pinned/TASK LIST.md",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-026.md",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-017.md",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-013.md",
-    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-013.md.tmp.3641725.91fa36e5e55f",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-011.md",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-010.md",
-    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-010.md.tmp.3469938.e9cbd5b18d0e",
     "2026-06-14_1103_returnmax-medium-002.md",
     "2026-06-14_1106_returnmax-medium-017.md",
     "2026-06-14_1106_returnmax-medium-011.md",
@@ -302,28 +415,9 @@
     "2026-06-14_1105_returnmax-medium-008.md",
     "2026-06-14_1104_returnmax-medium-003.md",
     "standup/youtube/2026-05-13_1654.md",
-    "standup/youtube/2026-05-12.md",
-    "standup/youtube/2026-05-11.md",
-    "standup/youtube/2026-05-08.md",
-    "standup/youtube/2026-05-07.md",
-    "standup/youtube/2026-05-06_1033.md",
-    "standup/youtube/2026-05-05.md",
-    "standup/youtube/2026-05-04.md",
-    "returnmax-test-batch/_AGENT-PROTOCOL.md",
-    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-045.md",
-    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-044.md",
-    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-043.md",
-    "returnmax-test-batch",
     "assets/medium-010-ctc.png",
     "assets/medium-009-tax-home.png",
     "assets/medium-008-results.png",
-    "assets/medium-008-final-review.png",
-    "assets/medium-007-invest-hub.png",
-    "assets/medium-007-income-landing.png",
-    "assets/medium-006-dependents-landing.png",
-    "assets/Screenshot 2026-06-14 at 15.24.43.png",
-    "assets/Screenshot 2026-06-14 at 15.23.57.png",
-    "assets/Pasted image 20260614153415.png",
     "2026-06-04_expert-review.canvas"
   ]
 }

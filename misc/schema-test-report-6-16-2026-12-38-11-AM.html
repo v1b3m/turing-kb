@@ -1,0 +1,3939 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Schema Test Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 32px; color: #0f172a; background: #f8fafc; }
+    main { max-width: 1100px; margin: 0 auto; }
+    header, section { background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 20px; margin-bottom: 16px; }
+    h1 { margin: 0 0 8px; }
+    h2 { margin: 0 0 12px; font-size: 18px; }
+    .status { display: inline-block; padding: 4px 10px; border-radius: 999px; font-weight: 700; font-size: 12px; text-transform: uppercase; }
+    .pass { color: #166534; background: #dcfce7; border: 1px solid #bbf7d0; }
+    .fail { color: #991b1b; background: #fee2e2; border: 1px solid #fecaca; }
+    .issue { border-top: 1px solid #e2e8f0; padding-top: 12px; margin-top: 12px; }
+    code, pre { font-family: Consolas, Monaco, monospace; }
+    pre { overflow: auto; white-space: pre-wrap; background: #0f172a; color: #f8fafc; padding: 12px; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Schema Test Report</h1>
+      <p><span class="status fail">fail</span></p>
+      <p><strong>Generated At:</strong> 6/16/2026, 12:38:11 AM</p>
+      <p><strong>Issue Count:</strong> 1</p>
+    </header>
+    
+        <section class="group">
+          <h2>rm_tax_ui <span>1 issue</span></h2>
+          
+                <article class="issue">
+                  <p><strong>Issue:</strong> Value must match exactly one oneOf schema; matched 0</p>
+                  <p><strong>Data Path:</strong> <code>$.rm_tax_ui</code></p>
+                  <p><strong>Schema Path:</strong> <code>#/properties/rm_tax_ui/oneOf</code></p>
+                  <p><strong>Expected:</strong> schema rule</p>
+                  <p><strong>Actual:</strong> object</p>
+                  <pre>{
+  &quot;state&quot;: {
+    &quot;currentSection&quot;: &quot;review&quot;,
+    &quot;currentPage&quot;: &quot;/index/tto/review&quot;,
+    &quot;activeDependentId&quot;: &quot;b65b7cd2-42ae-5415-9da1-1f36d295a468&quot;,
+    &quot;sidebarState&quot;: &quot;full&quot;,
+    &quot;progressBySection&quot;: {
+      &quot;my_info&quot;: 100,
+      &quot;income&quot;: 100,
+      &quot;deductions&quot;: 100,
+      &quot;credits&quot;: 80,
+      &quot;other_tax&quot;: 60,
+      &quot;state&quot;: 100,
+      &quot;payment&quot;: 100,
+      &quot;review&quot;: 40,
+      &quot;file&quot;: 0,
+      &quot;tools&quot;: 0
+    },
+    &quot;bookmarkedPages&quot;: [
+      &quot;/index/tto/deductions/mortgage-interest&quot;,
+      &quot;/index/tto/review&quot;
+    ],
+    &quot;expertHelpOpen&quot;: false,
+    &quot;expertHelpQuestion&quot;: null,
+    &quot;documentUploadOpen&quot;: false,
+    &quot;helpPanelOpen&quot;: false,
+    &quot;helpPanelArticleId&quot;: null,
+    &quot;incomeQuestionsCompleted&quot;: true,
+    &quot;printCenterDownloadedDocs&quot;: [],
+    &quot;downloadedReturnYears&quot;: []
+  },
+  &quot;version&quot;: 2
+}</pre>
+                </article>
+              
+        </section>
+      
+    <section>
+      <h2>Schema Used</h2>
+      <pre>{
+  &quot;$schema&quot;: &quot;https://json-schema.org/draft/2020-12/schema&quot;,
+  &quot;title&quot;: &quot;ReturnMax localStorage State Schema&quot;,
+  &quot;description&quot;: &quot;JSON Schema describing the structure of all localStorage keys used by ReturnMax. Each key stores a JSON-stringified Zustand persist envelope ({ state, version }).&quot;,
+  &quot;type&quot;: &quot;object&quot;,
+  &quot;properties&quot;: {
+    &quot;auth&quot;: {
+      &quot;description&quot;: &quot;Auth store — current logged-in user identity.&quot;,
+      &quot;oneOf&quot;: [
+        {
+          &quot;$ref&quot;: &quot;#/$defs/AuthStorage&quot;
+        },
+        {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;contentMediaType&quot;: &quot;application/json&quot;,
+          &quot;contentSchema&quot;: {
+            &quot;$ref&quot;: &quot;#/$defs/AuthStorage&quot;
+          }
+        }
+      ]
+    },
+    &quot;users&quot;: {
+      &quot;description&quot;: &quot;Users store — all user accounts in the system.&quot;,
+      &quot;oneOf&quot;: [
+        {
+          &quot;$ref&quot;: &quot;#/$defs/UsersStorage&quot;
+        },
+        {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;contentMediaType&quot;: &quot;application/json&quot;,
+          &quot;contentSchema&quot;: {
+            &quot;$ref&quot;: &quot;#/$defs/UsersStorage&quot;
+          }
+        }
+      ]
+    },
+    &quot;uiModal&quot;: {
+      &quot;description&quot;: &quot;Modal store — global modal dialog state.&quot;,
+      &quot;oneOf&quot;: [
+        {
+          &quot;$ref&quot;: &quot;#/$defs/ModalStorage&quot;
+        },
+        {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;contentMediaType&quot;: &quot;application/json&quot;,
+          &quot;contentSchema&quot;: {
+            &quot;$ref&quot;: &quot;#/$defs/ModalStorage&quot;
+          }
+        }
+      ]
+    },
+    &quot;rm_tax_return&quot;: {
+      &quot;description&quot;: &quot;Tax return store — personal info, income, deductions, credits, filing progress, managed clients, and cross-gym e-sign envelope refs.&quot;,
+      &quot;oneOf&quot;: [
+        {
+          &quot;$ref&quot;: &quot;#/$defs/TaxReturnStorage&quot;
+        },
+        {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;contentMediaType&quot;: &quot;application/json&quot;,
+          &quot;contentSchema&quot;: {
+            &quot;$ref&quot;: &quot;#/$defs/TaxReturnStorage&quot;
+          }
+        }
+      ]
+    },
+    &quot;rm_tax_ui&quot;: {
+      &quot;description&quot;: &quot;Tax UI store — current section, page, sidebar, progress, bookmarks (toasts are session-only).&quot;,
+      &quot;oneOf&quot;: [
+        {
+          &quot;$ref&quot;: &quot;#/$defs/TaxUIStorage&quot;
+        },
+        {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;contentMediaType&quot;: &quot;application/json&quot;,
+          &quot;contentSchema&quot;: {
+            &quot;$ref&quot;: &quot;#/$defs/TaxUIStorage&quot;
+          }
+        }
+      ]
+    },
+    &quot;rm_settings&quot;: {
+      &quot;description&quot;: &quot;Settings store — auto-save and progress bar preferences.&quot;,
+      &quot;oneOf&quot;: [
+        {
+          &quot;$ref&quot;: &quot;#/$defs/SettingsStorage&quot;
+        },
+        {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;contentMediaType&quot;: &quot;application/json&quot;,
+          &quot;contentSchema&quot;: {
+            &quot;$ref&quot;: &quot;#/$defs/SettingsStorage&quot;
+          }
+        }
+      ]
+    },
+    &quot;rm_documents&quot;: {
+      &quot;description&quot;: &quot;Document vault store — uploaded/imported tax documents by tax year (thumbnails stripped on persist).&quot;,
+      &quot;oneOf&quot;: [
+        {
+          &quot;$ref&quot;: &quot;#/$defs/DocumentsStorage&quot;
+        },
+        {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;contentMediaType&quot;: &quot;application/json&quot;,
+          &quot;contentSchema&quot;: {
+            &quot;$ref&quot;: &quot;#/$defs/DocumentsStorage&quot;
+          }
+        }
+      ]
+    },
+    &quot;rm_linked_accounts&quot;: {
+      &quot;description&quot;: &quot;Linked accounts store — connected import providers and imported form counts.&quot;,
+      &quot;oneOf&quot;: [
+        {
+          &quot;$ref&quot;: &quot;#/$defs/LinkedAccountsStorage&quot;
+        },
+        {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;contentMediaType&quot;: &quot;application/json&quot;,
+          &quot;contentSchema&quot;: {
+            &quot;$ref&quot;: &quot;#/$defs/LinkedAccountsStorage&quot;
+          }
+        }
+      ]
+    },
+    &quot;rm_filed_returns&quot;: {
+      &quot;description&quot;: &quot;Filed returns store — previously filed return summaries and PDF links.&quot;,
+      &quot;oneOf&quot;: [
+        {
+          &quot;$ref&quot;: &quot;#/$defs/FiledReturnsStorage&quot;
+        },
+        {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;contentMediaType&quot;: &quot;application/json&quot;,
+          &quot;contentSchema&quot;: {
+            &quot;$ref&quot;: &quot;#/$defs/FiledReturnsStorage&quot;
+          }
+        }
+      ]
+    },
+    &quot;rm_notifications&quot;: {
+      &quot;description&quot;: &quot;Notification inbox store — notification rows (tray visibility is session-only).&quot;,
+      &quot;oneOf&quot;: [
+        {
+          &quot;$ref&quot;: &quot;#/$defs/NotificationsStorage&quot;
+        },
+        {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;contentMediaType&quot;: &quot;application/json&quot;,
+          &quot;contentSchema&quot;: {
+            &quot;$ref&quot;: &quot;#/$defs/NotificationsStorage&quot;
+          }
+        }
+      ]
+    },
+    &quot;rm_order_receipt&quot;: {
+      &quot;description&quot;: &quot;Order receipt store — paid/pending receipt line items by tax year.&quot;,
+      &quot;oneOf&quot;: [
+        {
+          &quot;$ref&quot;: &quot;#/$defs/OrderReceiptStorage&quot;
+        },
+        {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;contentMediaType&quot;: &quot;application/json&quot;,
+          &quot;contentSchema&quot;: {
+            &quot;$ref&quot;: &quot;#/$defs/OrderReceiptStorage&quot;
+          }
+        }
+      ]
+    },
+    &quot;rm_articles&quot;: {
+      &quot;description&quot;: &quot;Help articles store — helpfulness and translation toggles by article id.&quot;,
+      &quot;oneOf&quot;: [
+        {
+          &quot;$ref&quot;: &quot;#/$defs/ArticlesStorage&quot;
+        },
+        {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;contentMediaType&quot;: &quot;application/json&quot;,
+          &quot;contentSchema&quot;: {
+            &quot;$ref&quot;: &quot;#/$defs/ArticlesStorage&quot;
+          }
+        }
+      ]
+    },
+    &quot;rm_search&quot;: {
+      &quot;description&quot;: &quot;Search store — query, results, recent searches (overlay visibility is session-only).&quot;,
+      &quot;oneOf&quot;: [
+        {
+          &quot;$ref&quot;: &quot;#/$defs/SearchStorage&quot;
+        },
+        {
+          &quot;type&quot;: &quot;string&quot;,
+          &quot;contentMediaType&quot;: &quot;application/json&quot;,
+          &quot;contentSchema&quot;: {
+            &quot;$ref&quot;: &quot;#/$defs/SearchStorage&quot;
+          }
+        }
+      ]
+    },
+    &quot;__gymVersion&quot;: {
+      &quot;type&quot;: &quot;string&quot;,
+      &quot;description&quot;: &quot;Gym framework version identifier&quot;
+    }
+  },
+  &quot;additionalProperties&quot;: true,
+  &quot;$defs&quot;: {
+    &quot;User&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;id&quot;,
+        &quot;password&quot;,
+        &quot;firstName&quot;,
+        &quot;lastName&quot;,
+        &quot;email&quot;,
+        &quot;dateOfBirth&quot;,
+        &quot;hasOnboarded&quot;,
+        &quot;createdAt&quot;,
+        &quot;updatedAt&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;password&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;firstName&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;lastName&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;email&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;dateOfBirth&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;hasOnboarded&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;createdAt&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;updatedAt&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        }
+      },
+      &quot;additionalProperties&quot;: false
+    },
+    &quot;AuthStorage&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;state&quot;,
+        &quot;version&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;state&quot;: {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;required&quot;: [
+            &quot;currentUser&quot;
+          ],
+          &quot;properties&quot;: {
+            &quot;currentUser&quot;: {
+              &quot;oneOf&quot;: [
+                {
+                  &quot;$ref&quot;: &quot;#/$defs/User&quot;
+                },
+                {
+                  &quot;type&quot;: &quot;null&quot;
+                }
+              ]
+            }
+          },
+          &quot;additionalProperties&quot;: false
+        },
+        &quot;version&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        }
+      },
+      &quot;additionalProperties&quot;: false
+    },
+    &quot;UsersStorage&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;state&quot;,
+        &quot;version&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;state&quot;: {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;required&quot;: [
+            &quot;users&quot;
+          ],
+          &quot;properties&quot;: {
+            &quot;users&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/$defs/User&quot;
+              }
+            }
+          },
+          &quot;additionalProperties&quot;: false
+        },
+        &quot;version&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        }
+      },
+      &quot;additionalProperties&quot;: false
+    },
+    &quot;ModalStorage&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;state&quot;,
+        &quot;version&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;state&quot;: {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;required&quot;: [
+            &quot;title&quot;,
+            &quot;isOpen&quot;
+          ],
+          &quot;properties&quot;: {
+            &quot;title&quot;: {
+              &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;isOpen&quot;: {
+              &quot;type&quot;: &quot;boolean&quot;
+            },
+            &quot;body&quot;: {
+              &quot;type&quot;: &quot;string&quot;
+            }
+          },
+          &quot;additionalProperties&quot;: false
+        },
+        &quot;version&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        }
+      },
+      &quot;additionalProperties&quot;: false
+    },
+    &quot;TaxReturnStorage&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;state&quot;,
+        &quot;version&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;state&quot;: {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;required&quot;: [
+            &quot;taxYear&quot;,
+            &quot;filingStatus&quot;,
+            &quot;personalInfo&quot;,
+            &quot;dependents&quot;,
+            &quot;w2s&quot;,
+            &quot;interest1099s&quot;,
+            &quot;dividend1099s&quot;,
+            &quot;misc1099s&quot;,
+            &quot;nec1099s&quot;,
+            &quot;retirement1099Rs&quot;,
+            &quot;government1099Gs&quot;,
+            &quot;payment1099Ks&quot;,
+            &quot;brokerage1099Bs&quot;,
+            &quot;k1Forms&quot;,
+            &quot;cryptoTransactions&quot;,
+            &quot;selfEmploymentIncome&quot;,
+            &quot;rentalIncome&quot;,
+            &quot;ssaBenefits&quot;,
+            &quot;otherIncome&quot;,
+            &quot;deductions&quot;,
+            &quot;credits&quot;,
+            &quot;stateReturns&quot;,
+            &quot;otherTaxSituations&quot;,
+            &quot;paymentInfo&quot;,
+            &quot;filingProgress&quot;,
+            &quot;filingSummary&quot;,
+            &quot;errorCheck&quot;,
+            &quot;managedClients&quot;,
+            &quot;expertReview&quot;,
+            &quot;filing&quot;
+          ],
+          &quot;properties&quot;: {
+            &quot;taxYear&quot;: {
+              &quot;type&quot;: &quot;number&quot;
+            },
+            &quot;onboardingInfo&quot;: {
+              &quot;$ref&quot;: &quot;#/$defs/OnboardingInfo&quot;
+            },
+            &quot;filingStatus&quot;: {
+              &quot;enum&quot;: [
+                &quot;single&quot;,
+                &quot;married_jointly&quot;,
+                &quot;married_separately&quot;,
+                &quot;head_of_household&quot;,
+                &quot;qualifying_widow&quot;
+              ]
+            },
+            &quot;personalInfo&quot;: {
+              &quot;$ref&quot;: &quot;#/$defs/PersonalInfo&quot;
+            },
+            &quot;spouse&quot;: {
+              &quot;oneOf&quot;: [
+                {
+                  &quot;type&quot;: &quot;object&quot;
+                },
+                {
+                  &quot;type&quot;: &quot;null&quot;
+                }
+              ]
+            },
+            &quot;dependents&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/$defs/Dependent&quot;
+              }
+            },
+            &quot;w2s&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/$defs/W2Form&quot;
+              }
+            },
+            &quot;interest1099s&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/$defs/Form1099INT&quot;
+              }
+            },
+            &quot;dividend1099s&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;type&quot;: &quot;object&quot;
+              }
+            },
+            &quot;misc1099s&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;type&quot;: &quot;object&quot;
+              }
+            },
+            &quot;nec1099s&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;type&quot;: &quot;object&quot;
+              }
+            },
+            &quot;retirement1099Rs&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;type&quot;: &quot;object&quot;
+              }
+            },
+            &quot;government1099Gs&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;type&quot;: &quot;object&quot;
+              }
+            },
+            &quot;payment1099Ks&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;type&quot;: &quot;object&quot;
+              }
+            },
+            &quot;brokerage1099Bs&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/$defs/Form1099B&quot;
+              }
+            },
+            &quot;k1Forms&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;type&quot;: &quot;object&quot;
+              }
+            },
+            &quot;cryptoTransactions&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/$defs/CryptoTransaction&quot;
+              }
+            },
+            &quot;selfEmploymentIncome&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;type&quot;: &quot;object&quot;
+              }
+            },
+            &quot;rentalIncome&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;type&quot;: &quot;object&quot;
+              }
+            },
+            &quot;ssaBenefits&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;type&quot;: &quot;object&quot;
+              }
+            },
+            &quot;otherIncome&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;type&quot;: &quot;object&quot;
+              }
+            },
+            &quot;deductions&quot;: {
+              &quot;type&quot;: &quot;object&quot;
+            },
+            &quot;credits&quot;: {
+              &quot;type&quot;: &quot;object&quot;
+            },
+            &quot;stateReturns&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/$defs/StateReturn&quot;
+              }
+            },
+            &quot;otherTaxSituations&quot;: {
+              &quot;type&quot;: &quot;object&quot;
+            },
+            &quot;paymentInfo&quot;: {
+              &quot;type&quot;: &quot;object&quot;
+            },
+            &quot;filingProgress&quot;: {
+              &quot;$ref&quot;: &quot;#/$defs/FilingProgress&quot;
+            },
+            &quot;filingSummary&quot;: {
+              &quot;$ref&quot;: &quot;#/$defs/FilingSummary&quot;
+            },
+            &quot;errorCheck&quot;: {
+              &quot;type&quot;: &quot;object&quot;
+            },
+            &quot;managedClients&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/$defs/ManagedClient&quot;
+              }
+            },
+            &quot;expertReview&quot;: {
+              &quot;type&quot;: &quot;object&quot;
+            },
+            &quot;filing&quot;: {
+              &quot;type&quot;: &quot;object&quot;
+            }
+          }
+        },
+        &quot;version&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        }
+      },
+      &quot;additionalProperties&quot;: false
+    },
+    &quot;OnboardingInfo&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;hasSeenWelcome&quot;,
+        &quot;welcomeCompletedAt&quot;,
+        &quot;hasAcknowledgedWelcome&quot;,
+        &quot;hasCompletedSituations&quot;,
+        &quot;hasCompletedVerification&quot;,
+        &quot;hasCompletedMoreInfo&quot;,
+        &quot;situations&quot;,
+        &quot;verification&quot;,
+        &quot;moreInfo&quot;,
+        &quot;priorYearFiling&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;hasSeenWelcome&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;welcomeCompletedAt&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;hasAcknowledgedWelcome&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;hasCompletedSituations&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;hasCompletedVerification&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;hasCompletedMoreInfo&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;situations&quot;: {
+          &quot;type&quot;: &quot;object&quot;
+        },
+        &quot;verification&quot;: {
+          &quot;type&quot;: &quot;object&quot;
+        },
+        &quot;moreInfo&quot;: {
+          &quot;type&quot;: &quot;object&quot;
+        },
+        &quot;priorYearFiling&quot;: {
+          &quot;type&quot;: &quot;object&quot;
+        }
+      }
+    },
+    &quot;PersonalInfo&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;firstName&quot;,
+        &quot;lastName&quot;,
+        &quot;ssn&quot;,
+        &quot;dateOfBirth&quot;,
+        &quot;address&quot;,
+        &quot;email&quot;,
+        &quot;stateOfResidence&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;firstName&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;middleInitial&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;lastName&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;suffix&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;ssn&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;dateOfBirth&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;mailingAddressType&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;address&quot;: {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;required&quot;: [
+            &quot;street&quot;,
+            &quot;city&quot;,
+            &quot;state&quot;,
+            &quot;zip&quot;
+          ],
+          &quot;properties&quot;: {
+            &quot;street&quot;: {
+              &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;apt&quot;: {
+              &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;city&quot;: {
+              &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;state&quot;: {
+              &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;zip&quot;: {
+              &quot;type&quot;: &quot;string&quot;
+            }
+          }
+        },
+        &quot;phone&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;phoneExt&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;email&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;stateOfResidence&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;madeMoneyAnotherState&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;livedAnotherState&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;occupation&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;isArmedForces&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;militaryStatus&quot;: {
+          &quot;type&quot;: [
+            &quot;string&quot;,
+            &quot;null&quot;
+          ]
+        },
+        &quot;militaryDetails&quot;: {
+          &quot;type&quot;: &quot;object&quot;
+        },
+        &quot;maritalStatus&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;marriedFilingPlan&quot;: {
+          &quot;type&quot;: [
+            &quot;string&quot;,
+            &quot;null&quot;
+          ]
+        },
+        &quot;spousePassedYear&quot;: {
+          &quot;type&quot;: [
+            &quot;number&quot;,
+            &quot;null&quot;
+          ]
+        },
+        &quot;hasDependents&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;numberOfDependents&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;uncommonSituations&quot;: {
+          &quot;type&quot;: &quot;object&quot;
+        },
+        &quot;textNotifications&quot;: {
+          &quot;type&quot;: &quot;object&quot;
+        }
+      }
+    },
+    &quot;Dependent&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;id&quot;,
+        &quot;relationType&quot;,
+        &quot;firstName&quot;,
+        &quot;lastName&quot;,
+        &quot;ssn&quot;,
+        &quot;dateOfBirth&quot;,
+        &quot;relationship&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;relationType&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;firstName&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;middleInitial&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;lastName&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;suffix&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;ssn&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;ssnNotValidForEmployment&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;dateOfBirth&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;citizenship&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;relationship&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;monthsLived&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;isStudent&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;isDisabled&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        }
+      },
+      &quot;additionalProperties&quot;: true
+    },
+    &quot;W2Form&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;id&quot;,
+        &quot;employerEIN&quot;,
+        &quot;employerName&quot;,
+        &quot;wages&quot;,
+        &quot;federalTaxWithheld&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;employerEIN&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;employerName&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;employerAddress&quot;: {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;properties&quot;: {
+            &quot;street&quot;: {
+              &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;apt&quot;: {
+              &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;city&quot;: {
+              &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;state&quot;: {
+              &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;zip&quot;: {
+              &quot;type&quot;: &quot;string&quot;
+            }
+          }
+        },
+        &quot;wages&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;federalTaxWithheld&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;socialSecurityWages&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;socialSecurityTax&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;medicareWages&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;medicareTax&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;socialSecurityTips&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;allocatedTips&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;dependentCareBenefits&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;nonqualifiedPlans&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;box12&quot;: {
+          &quot;type&quot;: &quot;array&quot;,
+          &quot;items&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;required&quot;: [
+              &quot;code&quot;,
+              &quot;amount&quot;
+            ],
+            &quot;properties&quot;: {
+              &quot;code&quot;: {
+                &quot;type&quot;: &quot;string&quot;
+              },
+              &quot;amount&quot;: {
+                &quot;type&quot;: &quot;number&quot;
+              }
+            }
+          }
+        },
+        &quot;statutoryEmployee&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;retirementPlan&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;thirdPartySickPay&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;stateLocal&quot;: {
+          &quot;type&quot;: &quot;array&quot;,
+          &quot;items&quot;: {
+            &quot;type&quot;: &quot;object&quot;
+          }
+        },
+        &quot;box14&quot;: {
+          &quot;type&quot;: &quot;array&quot;,
+          &quot;items&quot;: {
+            &quot;type&quot;: &quot;object&quot;,
+            &quot;required&quot;: [
+              &quot;label&quot;,
+              &quot;amount&quot;
+            ],
+            &quot;properties&quot;: {
+              &quot;label&quot;: {
+                &quot;type&quot;: &quot;string&quot;
+              },
+              &quot;amount&quot;: {
+                &quot;type&quot;: &quot;number&quot;
+              }
+            }
+          }
+        }
+      },
+      &quot;additionalProperties&quot;: true
+    },
+    &quot;Form1099INT&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;id&quot;,
+        &quot;payerName&quot;,
+        &quot;payerTIN&quot;,
+        &quot;interestIncome&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;payerName&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;payerTIN&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;interestIncome&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;earlyWithdrawalPenalty&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;usSavingsBondInterest&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;federalTaxWithheld&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;investmentExpenses&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;foreignTaxPaid&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;foreignCountry&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;taxExemptInterest&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;privateActivityBondInterest&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;marketDiscount&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;bondPremium&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;bondPremiumTreasury&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;bondPremiumTaxExempt&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;stateTaxWithheld&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;stateId&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;stateIncome&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        }
+      },
+      &quot;additionalProperties&quot;: true
+    },
+    &quot;Form1099B&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;id&quot;,
+        &quot;brokerName&quot;,
+        &quot;brokerTIN&quot;,
+        &quot;proceeds&quot;,
+        &quot;costBasis&quot;,
+        &quot;gainLossType&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;brokerName&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;brokerTIN&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;description&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;assetType&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;receivedHow&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;dateAcquired&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;dateSold&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;proceeds&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;costBasis&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;accruedMarketDiscount&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;washSaleLossDisallowed&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;gainLossType&quot;: {
+          &quot;enum&quot;: [
+            &quot;short_term&quot;,
+            &quot;long_term&quot;
+          ]
+        },
+        &quot;basisReportedToIRS&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;federalTaxWithheld&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        }
+      },
+      &quot;additionalProperties&quot;: true
+    },
+    &quot;CryptoTransaction&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;id&quot;,
+        &quot;exchange&quot;,
+        &quot;coinToken&quot;,
+        &quot;proceeds&quot;,
+        &quot;costBasis&quot;,
+        &quot;gainLoss&quot;,
+        &quot;gainLossType&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;exchange&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;coinToken&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;assetType&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;receivedHow&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;dateAcquired&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;dateSold&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;proceeds&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;costBasis&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;gainLoss&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;gainLossType&quot;: {
+          &quot;enum&quot;: [
+            &quot;short_term&quot;,
+            &quot;long_term&quot;
+          ]
+        }
+      },
+      &quot;additionalProperties&quot;: true
+    },
+    &quot;StateReturn&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;id&quot;,
+        &quot;stateCode&quot;,
+        &quot;status&quot;,
+        &quot;returnType&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;stateCode&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;status&quot;: {
+          &quot;enum&quot;: [
+            &quot;not_started&quot;,
+            &quot;in_progress&quot;,
+            &quot;completed&quot;
+          ]
+        },
+        &quot;returnType&quot;: {
+          &quot;enum&quot;: [
+            &quot;resident&quot;,
+            &quot;non_resident&quot;,
+            &quot;part_year&quot;
+          ]
+        },
+        &quot;stateIncome&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;stateAdjustments&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;stateDeductions&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;stateCredits&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;stateTaxWithheld&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;stateRefundOrOwed&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;adjustmentsDetail&quot;: {
+          &quot;type&quot;: &quot;object&quot;
+        },
+        &quot;deductionsCreditsDetail&quot;: {
+          &quot;type&quot;: &quot;object&quot;
+        },
+        &quot;localReturn&quot;: {
+          &quot;oneOf&quot;: [
+            {
+              &quot;type&quot;: &quot;object&quot;
+            },
+            {
+              &quot;type&quot;: &quot;null&quot;
+            }
+          ]
+        }
+      },
+      &quot;additionalProperties&quot;: true
+    },
+    &quot;FilingProgress&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;personal_info&quot;,
+        &quot;filing_status&quot;,
+        &quot;spouse&quot;,
+        &quot;dependents&quot;,
+        &quot;income&quot;,
+        &quot;deductions&quot;,
+        &quot;credits&quot;,
+        &quot;other_tax&quot;,
+        &quot;state_returns&quot;,
+        &quot;payment&quot;,
+        &quot;review&quot;,
+        &quot;file&quot;,
+        &quot;documents&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;personal_info&quot;: {
+          &quot;$ref&quot;: &quot;#/$defs/ProgressStatus&quot;
+        },
+        &quot;filing_status&quot;: {
+          &quot;$ref&quot;: &quot;#/$defs/ProgressStatus&quot;
+        },
+        &quot;spouse&quot;: {
+          &quot;$ref&quot;: &quot;#/$defs/ProgressStatus&quot;
+        },
+        &quot;dependents&quot;: {
+          &quot;$ref&quot;: &quot;#/$defs/ProgressStatus&quot;
+        },
+        &quot;income&quot;: {
+          &quot;$ref&quot;: &quot;#/$defs/ProgressStatus&quot;
+        },
+        &quot;deductions&quot;: {
+          &quot;$ref&quot;: &quot;#/$defs/ProgressStatus&quot;
+        },
+        &quot;credits&quot;: {
+          &quot;$ref&quot;: &quot;#/$defs/ProgressStatus&quot;
+        },
+        &quot;other_tax&quot;: {
+          &quot;$ref&quot;: &quot;#/$defs/ProgressStatus&quot;
+        },
+        &quot;state_returns&quot;: {
+          &quot;$ref&quot;: &quot;#/$defs/ProgressStatus&quot;
+        },
+        &quot;payment&quot;: {
+          &quot;$ref&quot;: &quot;#/$defs/ProgressStatus&quot;
+        },
+        &quot;review&quot;: {
+          &quot;$ref&quot;: &quot;#/$defs/ProgressStatus&quot;
+        },
+        &quot;file&quot;: {
+          &quot;$ref&quot;: &quot;#/$defs/ProgressStatus&quot;
+        },
+        &quot;documents&quot;: {
+          &quot;$ref&quot;: &quot;#/$defs/ProgressStatus&quot;
+        }
+      },
+      &quot;additionalProperties&quot;: false
+    },
+    &quot;ProgressStatus&quot;: {
+      &quot;enum&quot;: [
+        &quot;not_started&quot;,
+        &quot;in_progress&quot;,
+        &quot;completed&quot;
+      ]
+    },
+    &quot;FilingSummary&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;totalIncome&quot;,
+        &quot;adjustedGrossIncome&quot;,
+        &quot;taxableIncome&quot;,
+        &quot;totalTax&quot;,
+        &quot;totalPayments&quot;,
+        &quot;totalCredits&quot;,
+        &quot;federalRefundOrOwed&quot;,
+        &quot;effectiveTaxRate&quot;,
+        &quot;marginalTaxBracket&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;totalIncome&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;adjustedGrossIncome&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;taxableIncome&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;totalTax&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;totalPayments&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;totalCredits&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;federalRefundOrOwed&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;effectiveTaxRate&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;marginalTaxBracket&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        }
+      },
+      &quot;additionalProperties&quot;: false
+    },
+    &quot;ManagedClient&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;id&quot;,
+        &quot;esignContactId&quot;,
+        &quot;firstName&quot;,
+        &quot;lastName&quot;,
+        &quot;email&quot;,
+        &quot;taxYear&quot;,
+        &quot;returnStage&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;firstName&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;lastName&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;email&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;taxYear&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;returnStage&quot;: {
+          &quot;enum&quot;: [
+            &quot;new&quot;,
+            &quot;engagement_sent&quot;,
+            &quot;engagement_delivered&quot;,
+            &quot;engagement_declined&quot;,
+            &quot;engagement_voided&quot;,
+            &quot;engagement_signed&quot;,
+            &quot;organizer_sent&quot;,
+            &quot;organizer_delivered&quot;,
+            &quot;organizer_signed&quot;,
+            &quot;in_progress&quot;,
+            &quot;review&quot;,
+            &quot;return_review_sent&quot;,
+            &quot;return_review_delivered&quot;,
+            &quot;return_review_signed&quot;,
+            &quot;8879_sent&quot;,
+            &quot;8879_delivered&quot;,
+            &quot;8879_declined&quot;,
+            &quot;8879_signed&quot;,
+            &quot;filed&quot;
+          ]
+        },
+        &quot;engagementLetter&quot;: {
+          &quot;oneOf&quot;: [
+            {
+              &quot;$ref&quot;: &quot;#/$defs/ESignEnvelope&quot;
+            },
+            {
+              &quot;type&quot;: &quot;null&quot;
+            }
+          ]
+        },
+        &quot;taxOrganizer&quot;: {
+          &quot;oneOf&quot;: [
+            {
+              &quot;$ref&quot;: &quot;#/$defs/ESignEnvelope&quot;
+            },
+            {
+              &quot;type&quot;: &quot;null&quot;
+            }
+          ]
+        },
+        &quot;form8879&quot;: {
+          &quot;oneOf&quot;: [
+            {
+              &quot;$ref&quot;: &quot;#/$defs/ESignEnvelope&quot;
+            },
+            {
+              &quot;type&quot;: &quot;null&quot;
+            }
+          ]
+        },
+        &quot;esignContactId&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;returnReviewPacket&quot;: {
+          &quot;oneOf&quot;: [
+            {
+              &quot;$ref&quot;: &quot;#/$defs/ESignEnvelope&quot;
+            },
+            {
+              &quot;type&quot;: &quot;null&quot;
+            }
+          ]
+        }
+      },
+      &quot;additionalProperties&quot;: false
+    },
+    &quot;TaxUIStorage&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;state&quot;,
+        &quot;version&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;state&quot;: {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;required&quot;: [
+            &quot;currentSection&quot;,
+            &quot;currentPage&quot;,
+            &quot;sidebarState&quot;,
+            &quot;progressBySection&quot;,
+            &quot;bookmarkedPages&quot;,
+            &quot;expertHelpOpen&quot;,
+            &quot;documentUploadOpen&quot;,
+            &quot;helpPanelOpen&quot;,
+            &quot;incomeQuestionsCompleted&quot;,
+            &quot;printCenterDownloadedDocs&quot;
+          ],
+          &quot;properties&quot;: {
+            &quot;currentSection&quot;: {
+              &quot;enum&quot;: [
+                &quot;my_info&quot;,
+                &quot;income&quot;,
+                &quot;deductions&quot;,
+                &quot;credits&quot;,
+                &quot;other_tax&quot;,
+                &quot;state&quot;,
+                &quot;payment&quot;,
+                &quot;review&quot;,
+                &quot;file&quot;,
+                &quot;tools&quot;
+              ]
+            },
+            &quot;currentPage&quot;: {
+              &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;activeDependentId&quot;: {
+              &quot;type&quot;: [
+                &quot;string&quot;,
+                &quot;null&quot;
+              ]
+            },
+            &quot;sidebarState&quot;: {
+              &quot;enum&quot;: [
+                &quot;full&quot;,
+                &quot;mini&quot;,
+                &quot;hidden&quot;
+              ]
+            },
+            &quot;progressBySection&quot;: {
+              &quot;type&quot;: &quot;object&quot;,
+              &quot;properties&quot;: {
+                &quot;my_info&quot;: {
+                  &quot;type&quot;: &quot;number&quot;
+                },
+                &quot;income&quot;: {
+                  &quot;type&quot;: &quot;number&quot;
+                },
+                &quot;deductions&quot;: {
+                  &quot;type&quot;: &quot;number&quot;
+                },
+                &quot;credits&quot;: {
+                  &quot;type&quot;: &quot;number&quot;
+                },
+                &quot;other_tax&quot;: {
+                  &quot;type&quot;: &quot;number&quot;
+                },
+                &quot;state&quot;: {
+                  &quot;type&quot;: &quot;number&quot;
+                },
+                &quot;payment&quot;: {
+                  &quot;type&quot;: &quot;number&quot;
+                },
+                &quot;review&quot;: {
+                  &quot;type&quot;: &quot;number&quot;
+                },
+                &quot;file&quot;: {
+                  &quot;type&quot;: &quot;number&quot;
+                },
+                &quot;tools&quot;: {
+                  &quot;type&quot;: &quot;number&quot;
+                }
+              },
+              &quot;additionalProperties&quot;: false
+            },
+            &quot;bookmarkedPages&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;type&quot;: &quot;string&quot;
+              }
+            },
+            &quot;expertHelpOpen&quot;: {
+              &quot;type&quot;: &quot;boolean&quot;
+            },
+            &quot;expertHelpQuestion&quot;: {
+              &quot;type&quot;: [
+                &quot;string&quot;,
+                &quot;null&quot;
+              ]
+            },
+            &quot;documentUploadOpen&quot;: {
+              &quot;type&quot;: &quot;boolean&quot;
+            },
+            &quot;helpPanelOpen&quot;: {
+              &quot;type&quot;: &quot;boolean&quot;
+            },
+            &quot;helpPanelArticleId&quot;: {
+              &quot;type&quot;: [
+                &quot;string&quot;,
+                &quot;null&quot;
+              ]
+            },
+            &quot;incomeQuestionsCompleted&quot;: {
+              &quot;type&quot;: &quot;boolean&quot;
+            },
+            &quot;printCenterDownloadedDocs&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;type&quot;: &quot;string&quot;
+              }
+            }
+          },
+          &quot;additionalProperties&quot;: false
+        },
+        &quot;version&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        }
+      },
+      &quot;additionalProperties&quot;: false
+    },
+    &quot;SettingsStorage&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;state&quot;,
+        &quot;version&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;state&quot;: {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;required&quot;: [
+            &quot;showProgressBar&quot;
+          ],
+          &quot;properties&quot;: {
+            &quot;showProgressBar&quot;: {
+              &quot;type&quot;: &quot;boolean&quot;
+            }
+          },
+          &quot;additionalProperties&quot;: false
+        },
+        &quot;version&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        }
+      },
+      &quot;additionalProperties&quot;: false
+    },
+    &quot;TaxFormTag&quot;: {
+      &quot;enum&quot;: [
+        &quot;1040&quot;,
+        &quot;W-2&quot;,
+        &quot;1098&quot;,
+        &quot;1098-E&quot;,
+        &quot;1098-T&quot;,
+        &quot;1099-INT&quot;,
+        &quot;1099-DIV&quot;,
+        &quot;1099-B&quot;,
+        &quot;1099-R&quot;,
+        &quot;1099-G&quot;,
+        &quot;1099-MISC&quot;,
+        &quot;1099-NEC&quot;,
+        &quot;1099-OID&quot;,
+        &quot;SSA-1099&quot;,
+        &quot;1095-A&quot;,
+        &quot;Digital Asset Gain/Loss&quot;,
+        &quot;1099-DA&quot;,
+        &quot;Crypto Transactions&quot;,
+        &quot;Schedule C&quot;,
+        &quot;Invoice&quot;,
+        &quot;Receipts&quot;,
+        &quot;Property tax bill&quot;,
+        &quot;Tax Return Review Doc&quot;,
+        &quot;Engagement Letter&quot;,
+        &quot;Tax Organizer&quot;,
+        &quot;Form 8879&quot;,
+        &quot;Other&quot;
+      ]
+    },
+    &quot;UploadedDoc&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;id&quot;,
+        &quot;year&quot;,
+        &quot;filename&quot;,
+        &quot;sizeBytes&quot;,
+        &quot;mime&quot;,
+        &quot;uploadedAt&quot;,
+        &quot;tag&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;year&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;filename&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;sizeBytes&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;mime&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;uploadedAt&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;tag&quot;: {
+          &quot;oneOf&quot;: [
+            {
+              &quot;$ref&quot;: &quot;#/$defs/TaxFormTag&quot;
+            },
+            {
+              &quot;type&quot;: &quot;null&quot;
+            }
+          ]
+        }
+      },
+      &quot;additionalProperties&quot;: false
+    },
+    &quot;DocumentsStorage&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;state&quot;,
+        &quot;version&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;state&quot;: {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;required&quot;: [
+            &quot;byYear&quot;,
+            &quot;selectedYear&quot;
+          ],
+          &quot;properties&quot;: {
+            &quot;byYear&quot;: {
+              &quot;type&quot;: &quot;object&quot;,
+              &quot;additionalProperties&quot;: {
+                &quot;type&quot;: &quot;array&quot;,
+                &quot;items&quot;: {
+                  &quot;$ref&quot;: &quot;#/$defs/UploadedDoc&quot;
+                }
+              }
+            },
+            &quot;selectedYear&quot;: {
+              &quot;type&quot;: &quot;number&quot;
+            }
+          },
+          &quot;additionalProperties&quot;: false
+        },
+        &quot;version&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        }
+      },
+      &quot;additionalProperties&quot;: false
+    },
+    &quot;LinkedAccount&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;id&quot;,
+        &quot;providerId&quot;,
+        &quot;providerName&quot;,
+        &quot;logoUrl&quot;,
+        &quot;connectedAt&quot;,
+        &quot;importedFormsCount&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;providerId&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;providerName&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;logoUrl&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;connectedAt&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;importedFormsCount&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        }
+      },
+      &quot;additionalProperties&quot;: false
+    },
+    &quot;LinkedAccountsStorage&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;state&quot;,
+        &quot;version&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;state&quot;: {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;required&quot;: [
+            &quot;accounts&quot;
+          ],
+          &quot;properties&quot;: {
+            &quot;accounts&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/$defs/LinkedAccount&quot;
+              }
+            }
+          },
+          &quot;additionalProperties&quot;: false
+        },
+        &quot;version&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        }
+      },
+      &quot;additionalProperties&quot;: false
+    },
+    &quot;FiledReturn&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;id&quot;,
+        &quot;taxYear&quot;,
+        &quot;filedAt&quot;,
+        &quot;status&quot;,
+        &quot;refundOrBalance&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;taxYear&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;filedAt&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;status&quot;: {
+          &quot;enum&quot;: [
+            &quot;pending&quot;,
+            &quot;accepted&quot;,
+            &quot;rejected&quot;,
+            &quot;printed&quot;
+          ]
+        },
+        &quot;refundOrBalance&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;federalPdfUrl&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;stateAbbr&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;statePdfUrl&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;agi&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;taxableIncome&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;filingStatus&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;taxpayerName&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        }
+      },
+      &quot;additionalProperties&quot;: false
+    },
+    &quot;FiledReturnsStorage&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;state&quot;,
+        &quot;version&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;state&quot;: {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;required&quot;: [
+            &quot;returns&quot;
+          ],
+          &quot;properties&quot;: {
+            &quot;returns&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/$defs/FiledReturn&quot;
+              }
+            }
+          },
+          &quot;additionalProperties&quot;: false
+        },
+        &quot;version&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        }
+      },
+      &quot;additionalProperties&quot;: false
+    },
+    &quot;AppNotification&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;id&quot;,
+        &quot;title&quot;,
+        &quot;body&quot;,
+        &quot;createdAt&quot;,
+        &quot;read&quot;,
+        &quot;type&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;title&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;body&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;createdAt&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;read&quot;: {
+          &quot;type&quot;: &quot;boolean&quot;
+        },
+        &quot;type&quot;: {
+          &quot;enum&quot;: [
+            &quot;info&quot;,
+            &quot;success&quot;,
+            &quot;warning&quot;,
+            &quot;action&quot;
+          ]
+        }
+      },
+      &quot;additionalProperties&quot;: false
+    },
+    &quot;NotificationsStorage&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;state&quot;,
+        &quot;version&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;state&quot;: {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;required&quot;: [
+            &quot;notifications&quot;
+          ],
+          &quot;properties&quot;: {
+            &quot;notifications&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/$defs/AppNotification&quot;
+              }
+            }
+          },
+          &quot;additionalProperties&quot;: false
+        },
+        &quot;version&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        }
+      },
+      &quot;additionalProperties&quot;: false
+    },
+    &quot;OrderLineItem&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;id&quot;,
+        &quot;name&quot;,
+        &quot;amount&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;id&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;name&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;description&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;amount&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        }
+      },
+      &quot;additionalProperties&quot;: false
+    },
+    &quot;OrderReceipt&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;taxYear&quot;,
+        &quot;status&quot;,
+        &quot;lineItems&quot;,
+        &quot;subtotal&quot;,
+        &quot;total&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;taxYear&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;status&quot;: {
+          &quot;enum&quot;: [
+            &quot;empty&quot;,
+            &quot;paid&quot;,
+            &quot;pending&quot;
+          ]
+        },
+        &quot;lineItems&quot;: {
+          &quot;type&quot;: &quot;array&quot;,
+          &quot;items&quot;: {
+            &quot;$ref&quot;: &quot;#/$defs/OrderLineItem&quot;
+          }
+        },
+        &quot;subtotal&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;total&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;paymentMethod&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;paidAt&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        },
+        &quot;pdfUrl&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        }
+      },
+      &quot;additionalProperties&quot;: false
+    },
+    &quot;OrderReceiptStorage&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;state&quot;,
+        &quot;version&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;state&quot;: {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;required&quot;: [
+            &quot;receiptsByYear&quot;
+          ],
+          &quot;properties&quot;: {
+            &quot;receiptsByYear&quot;: {
+              &quot;type&quot;: &quot;object&quot;,
+              &quot;additionalProperties&quot;: {
+                &quot;$ref&quot;: &quot;#/$defs/OrderReceipt&quot;
+              }
+            }
+          },
+          &quot;additionalProperties&quot;: false
+        },
+        &quot;version&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        }
+      },
+      &quot;additionalProperties&quot;: false
+    },
+    &quot;ArticleRuntimeState&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;isHelpful&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;isHelpful&quot;: {
+          &quot;type&quot;: [
+            &quot;boolean&quot;,
+            &quot;null&quot;
+          ]
+        }
+      },
+      &quot;additionalProperties&quot;: false
+    },
+    &quot;ArticlesStorage&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;state&quot;,
+        &quot;version&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;state&quot;: {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;additionalProperties&quot;: {
+            &quot;$ref&quot;: &quot;#/$defs/ArticleRuntimeState&quot;
+          }
+        },
+        &quot;version&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        }
+      },
+      &quot;additionalProperties&quot;: false
+    },
+    &quot;SearchTopic&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;label&quot;,
+        &quot;description&quot;,
+        &quot;category&quot;,
+        &quot;href&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;label&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;description&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;category&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;href&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        }
+      },
+      &quot;additionalProperties&quot;: false
+    },
+    &quot;SearchStorage&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;state&quot;,
+        &quot;version&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;state&quot;: {
+          &quot;type&quot;: &quot;object&quot;,
+          &quot;required&quot;: [
+            &quot;query&quot;,
+            &quot;results&quot;,
+            &quot;recentSearches&quot;
+          ],
+          &quot;properties&quot;: {
+            &quot;query&quot;: {
+              &quot;type&quot;: &quot;string&quot;
+            },
+            &quot;results&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;$ref&quot;: &quot;#/$defs/SearchTopic&quot;
+              }
+            },
+            &quot;recentSearches&quot;: {
+              &quot;type&quot;: &quot;array&quot;,
+              &quot;items&quot;: {
+                &quot;type&quot;: &quot;string&quot;
+              }
+            }
+          },
+          &quot;additionalProperties&quot;: false
+        },
+        &quot;version&quot;: {
+          &quot;type&quot;: &quot;number&quot;
+        }
+      },
+      &quot;additionalProperties&quot;: false
+    },
+    &quot;ESignEnvelope&quot;: {
+      &quot;type&quot;: &quot;object&quot;,
+      &quot;required&quot;: [
+        &quot;envelopeId&quot;,
+        &quot;status&quot;,
+        &quot;sentAt&quot;,
+        &quot;completedAt&quot;
+      ],
+      &quot;properties&quot;: {
+        &quot;envelopeId&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;status&quot;: {
+          &quot;enum&quot;: [
+            &quot;draft&quot;,
+            &quot;sent&quot;,
+            &quot;delivered&quot;,
+            &quot;completed&quot;,
+            &quot;declined&quot;,
+            &quot;voided&quot;
+          ]
+        },
+        &quot;sentAt&quot;: {
+          &quot;type&quot;: &quot;string&quot;
+        },
+        &quot;completedAt&quot;: {
+          &quot;type&quot;: [
+            &quot;string&quot;,
+            &quot;null&quot;
+          ]
+        }
+      },
+      &quot;additionalProperties&quot;: false
+    }
+  }
+}</pre>
+    </section>
+    <section>
+      <h2>Data Used</h2>
+      <pre>{
+  &quot;rm_notifications&quot;: {
+    &quot;state&quot;: {
+      &quot;notifications&quot;: [
+        {
+          &quot;id&quot;: &quot;3b62c9cc-3329-58db-a5b5-9d4061857d6a&quot;,
+          &quot;title&quot;: &quot;Tax documents imported&quot;,
+          &quot;body&quot;: &quot;Fidelity and Coinbase documents are ready for review.&quot;,
+          &quot;createdAt&quot;: 1771323600000,
+          &quot;read&quot;: false,
+          &quot;type&quot;: &quot;success&quot;
+        },
+        {
+          &quot;id&quot;: &quot;4ca44585-a267-5e4e-bf24-1788872ac40f&quot;,
+          &quot;title&quot;: &quot;Review mortgage interest&quot;,
+          &quot;body&quot;: &quot;Confirm the 1098 amount before final review.&quot;,
+          &quot;createdAt&quot;: 1770027900000,
+          &quot;read&quot;: false,
+          &quot;type&quot;: &quot;action&quot;
+        },
+        {
+          &quot;id&quot;: &quot;bd79f823-a2f4-5424-8da6-50d7643438ba&quot;,
+          &quot;title&quot;: &quot;Refund estimate updated&quot;,
+          &quot;body&quot;: &quot;Your estimated federal refund is $10,402.&quot;,
+          &quot;createdAt&quot;: 1771324200000,
+          &quot;read&quot;: true,
+          &quot;type&quot;: &quot;info&quot;
+        }
+      ]
+    },
+    &quot;version&quot;: 1
+  },
+  &quot;rm_documents&quot;: {
+    &quot;state&quot;: {
+      &quot;byYear&quot;: {
+        &quot;2024&quot;: [
+          {
+            &quot;id&quot;: &quot;c5fd836e-8809-5bf7-b678-e8149883ef2b&quot;,
+            &quot;year&quot;: 2024,
+            &quot;filename&quot;: &quot;returnmax-2024-filed-return.pdf&quot;,
+            &quot;sizeBytes&quot;: 512000,
+            &quot;mime&quot;: &quot;application/pdf&quot;,
+            &quot;uploadedAt&quot;: 1742205600000,
+            &quot;tag&quot;: &quot;1040&quot;
+          }
+        ],
+        &quot;2025&quot;: [
+          {
+            &quot;id&quot;: &quot;42632e99-b83f-5d92-909d-d5e5fae4a809&quot;,
+            &quot;year&quot;: 2025,
+            &quot;filename&quot;: &quot;2025-luma-labs-w2.pdf&quot;,
+            &quot;sizeBytes&quot;: 248128,
+            &quot;mime&quot;: &quot;application/pdf&quot;,
+            &quot;uploadedAt&quot;: 1770026400000,
+            &quot;tag&quot;: &quot;W-2&quot;
+          },
+          {
+            &quot;id&quot;: &quot;b4f8a876-7845-5d6b-927b-f02b65c8ab2e&quot;,
+            &quot;year&quot;: 2025,
+            &quot;filename&quot;: &quot;2025-chase-1099-int.pdf&quot;,
+            &quot;sizeBytes&quot;: 114688,
+            &quot;mime&quot;: &quot;application/pdf&quot;,
+            &quot;uploadedAt&quot;: 1770026460000,
+            &quot;tag&quot;: &quot;1099-INT&quot;
+          },
+          {
+            &quot;id&quot;: &quot;9986617f-3875-5193-b079-82dd7a6387e1&quot;,
+            &quot;year&quot;: 2025,
+            &quot;filename&quot;: &quot;2025-fidelity-1099-b.pdf&quot;,
+            &quot;sizeBytes&quot;: 389120,
+            &quot;mime&quot;: &quot;application/pdf&quot;,
+            &quot;uploadedAt&quot;: 1771322520000,
+            &quot;tag&quot;: &quot;1099-B&quot;
+          },
+          {
+            &quot;id&quot;: &quot;2da5de12-e6b4-5529-bb47-d850c3fc407a&quot;,
+            &quot;year&quot;: 2025,
+            &quot;filename&quot;: &quot;2025-coinbase-gain-loss.csv&quot;,
+            &quot;sizeBytes&quot;: 43128,
+            &quot;mime&quot;: &quot;text/csv&quot;,
+            &quot;uploadedAt&quot;: 1768471380000,
+            &quot;tag&quot;: &quot;Crypto Transactions&quot;
+          },
+          {
+            &quot;id&quot;: &quot;14ed36cf-6bf9-5bce-a47e-b534123313c0&quot;,
+            &quot;year&quot;: 2025,
+            &quot;filename&quot;: &quot;2025-rocket-mortgage-1098.pdf&quot;,
+            &quot;sizeBytes&quot;: 203776,
+            &quot;mime&quot;: &quot;application/pdf&quot;,
+            &quot;uploadedAt&quot;: 1770026640000,
+            &quot;tag&quot;: &quot;1098&quot;
+          },
+          {
+            &quot;id&quot;: &quot;c1adc022-2c91-5f80-9858-88cc1349a35d&quot;,
+            &quot;year&quot;: 2025,
+            &quot;filename&quot;: &quot;san-francisco-marin-food-bank-2025-receipt.pdf&quot;,
+            &quot;sizeBytes&quot;: 97792,
+            &quot;mime&quot;: &quot;application/pdf&quot;,
+            &quot;uploadedAt&quot;: 1763373900000,
+            &quot;tag&quot;: &quot;Receipts&quot;
+          }
+        ]
+      },
+      &quot;selectedYear&quot;: 2025
+    },
+    &quot;version&quot;: 2
+  },
+  &quot;rm_tax_return&quot;: {
+    &quot;state&quot;: {
+      &quot;taxYear&quot;: 2025,
+      &quot;onboardingInfo&quot;: {
+        &quot;hasSeenWelcome&quot;: true,
+        &quot;welcomeCompletedAt&quot;: &quot;2025-11-17T10:00:00.000Z&quot;,
+        &quot;hasAcknowledgedWelcome&quot;: true,
+        &quot;hasCompletedSituations&quot;: true,
+        &quot;hasCompletedVerification&quot;: true,
+        &quot;hasCompletedMoreInfo&quot;: true,
+        &quot;situations&quot;: {
+          &quot;maximizeDeductionsCredits&quot;: true,
+          &quot;donatedToCharity&quot;: true,
+          &quot;hasW2Job&quot;: true,
+          &quot;isFreelancerGigWorker&quot;: false,
+          &quot;isSelfEmployed&quot;: false,
+          &quot;ownsSCorpPartnershipLlc&quot;: false,
+          &quot;hasUnemploymentIncome&quot;: false,
+          &quot;hasChildrenDependents&quot;: true,
+          &quot;ownsHome&quot;: true,
+          &quot;paidRent&quot;: false,
+          &quot;ownsRentalProperty&quot;: false,
+          &quot;soldStockOrCrypto&quot;: true
+        },
+        &quot;verification&quot;: {
+          &quot;dateOfBirth&quot;: &quot;1988-03-14&quot;,
+          &quot;ssnLastFour&quot;: &quot;9876&quot;,
+          &quot;method&quot;: &quot;ssn&quot;
+        },
+        &quot;moreInfo&quot;: {
+          &quot;country&quot;: &quot;United States&quot;,
+          &quot;addressQuery&quot;: &quot;2148 Valencia Street, San Francisco, CA 94110&quot;
+        },
+        &quot;priorYearFiling&quot;: {
+          &quot;method&quot;: &quot;returnmax&quot;
+        }
+      },
+      &quot;filingStatus&quot;: &quot;head_of_household&quot;,
+      &quot;personalInfo&quot;: {
+        &quot;firstName&quot;: &quot;Maya&quot;,
+        &quot;middleInitial&quot;: &quot;&quot;,
+        &quot;lastName&quot;: &quot;Srinivasan&quot;,
+        &quot;suffix&quot;: &quot;&quot;,
+        &quot;ssn&quot;: &quot;321-54-9876&quot;,
+        &quot;dateOfBirth&quot;: &quot;1988-03-14&quot;,
+        &quot;mailingAddressType&quot;: &quot;us&quot;,
+        &quot;address&quot;: {
+          &quot;street&quot;: &quot;2148 Valencia Street&quot;,
+          &quot;apt&quot;: &quot;Apt 3&quot;,
+          &quot;city&quot;: &quot;San Francisco&quot;,
+          &quot;state&quot;: &quot;CA&quot;,
+          &quot;zip&quot;: &quot;94110&quot;
+        },
+        &quot;phone&quot;: &quot;415-210-4837&quot;,
+        &quot;phoneExt&quot;: &quot;&quot;,
+        &quot;email&quot;: &quot;hello@bluecedarstudio.co&quot;,
+        &quot;stateOfResidence&quot;: &quot;CA&quot;,
+        &quot;madeMoneyAnotherState&quot;: false,
+        &quot;livedAnotherState&quot;: false,
+        &quot;occupation&quot;: &quot;Tax Consultant&quot;,
+        &quot;isArmedForces&quot;: false,
+        &quot;militaryStatus&quot;: null,
+        &quot;militaryDetails&quot;: {
+          &quot;enteredMilitary&quot;: false,
+          &quot;leftMilitary&quot;: false,
+          &quot;allYear&quot;: false,
+          &quot;payGrade&quot;: &quot;&quot;,
+          &quot;combatZone&quot;: &quot;None&quot;,
+          &quot;stations&quot;: [
+            {
+              &quot;state&quot;: &quot;&quot;,
+              &quot;assignment&quot;: &quot;&quot;
+            }
+          ]
+        },
+        &quot;maritalStatus&quot;: &quot;single&quot;,
+        &quot;marriedFilingPlan&quot;: null,
+        &quot;spousePassedYear&quot;: null,
+        &quot;hasDependents&quot;: true,
+        &quot;numberOfDependents&quot;: 1,
+        &quot;uncommonSituations&quot;: {
+          &quot;fullTimeStudent&quot;: false,
+          &quot;canBeClaimedAsDependent&quot;: false,
+          &quot;legallyBlind&quot;: false,
+          &quot;preparingReturnForDeceased&quot;: false,
+          &quot;nonresidentAlienSpouse&quot;: false,
+          &quot;currentlyIncarcerated&quot;: false,
+          &quot;changeIRSLanguage&quot;: false,
+          &quot;noneApply&quot;: true
+        },
+        &quot;textNotifications&quot;: {
+          &quot;criticalAlerts&quot;: true,
+          &quot;importantDates&quot;: true,
+          &quot;offersAndTips&quot;: false
+        }
+      },
+      &quot;spouse&quot;: null,
+      &quot;dependents&quot;: [
+        {
+          &quot;id&quot;: &quot;b65b7cd2-42ae-5415-9da1-1f36d295a468&quot;,
+          &quot;relationType&quot;: &quot;my_child&quot;,
+          &quot;firstName&quot;: &quot;Ella&quot;,
+          &quot;middleInitial&quot;: &quot;&quot;,
+          &quot;lastName&quot;: &quot;Rivera&quot;,
+          &quot;suffix&quot;: &quot;&quot;,
+          &quot;ssn&quot;: &quot;234-56-7890&quot;,
+          &quot;ssnNotValidForEmployment&quot;: false,
+          &quot;dateOfBirth&quot;: &quot;2017-09-12&quot;,
+          &quot;citizenship&quot;: &quot;US citizen&quot;,
+          &quot;relationship&quot;: &quot;daughter&quot;,
+          &quot;monthsLived&quot;: 12,
+          &quot;isStudent&quot;: true,
+          &quot;isDisabled&quot;: false,
+          &quot;personRelationship&quot;: &quot;&quot;,
+          &quot;livedWithRelative&quot;: null,
+          &quot;grossIncomeOver5200&quot;: false,
+          &quot;paidHalfLivingExpenses&quot;: false,
+          &quot;othersHelpedSupport&quot;: false,
+          &quot;provided10PercentSupport&quot;: true,
+          &quot;allAgreeYouClaim&quot;: true,
+          &quot;paidHalfHomeCost&quot;: true,
+          &quot;fosterPlacement&quot;: null,
+          &quot;fosterRelationship&quot;: &quot;&quot;,
+          &quot;fullTimeStudent&quot;: true,
+          &quot;disabled&quot;: false,
+          &quot;passedAway&quot;: false,
+          &quot;passedAwayDate&quot;: &quot;&quot;,
+          &quot;passedAwayHasSSN&quot;: null,
+          &quot;isMarried&quot;: false,
+          &quot;marriedJointReturn&quot;: null,
+          &quot;marriedRefundOnly&quot;: null,
+          &quot;marriedSeparatelyTaxable&quot;: null,
+          &quot;paidOwnExpenses&quot;: false,
+          &quot;supportedByRelative&quot;: false,
+          &quot;relativeIncome&quot;: null,
+          &quot;relativeClaim&quot;: null,
+          &quot;relativeIsParent&quot;: null,
+          &quot;relativeParentClaim&quot;: null,
+          &quot;childIs&quot;: &quot;daughter&quot;,
+          &quot;livedWholeYear&quot;: true,
+          &quot;livedWithMeFor&quot;: &quot;all_year&quot;,
+          &quot;allTimeUS&quot;: true,
+          &quot;monthsInUS&quot;: &quot;12&quot;,
+          &quot;parentAgreement&quot;: true,
+          &quot;otherParentClaiming&quot;: false,
+          &quot;mostNights&quot;: &quot;my_home&quot;,
+          &quot;planningToClaim&quot;: &quot;me&quot;,
+          &quot;otherParentWaived&quot;: true,
+          &quot;higherIncome&quot;: &quot;me&quot;,
+          &quot;adoption&quot;: false,
+          &quot;fosterChild&quot;: false,
+          &quot;noneOfThese&quot;: false
+        }
+      ],
+      &quot;w2s&quot;: [
+        {
+          &quot;id&quot;: &quot;42632e99-b83f-5d92-909d-d5e5fae4a809&quot;,
+          &quot;employerEIN&quot;: &quot;74-1234567&quot;,
+          &quot;employerName&quot;: &quot;Luma Labs LLC&quot;,
+          &quot;employerAddress&quot;: {
+            &quot;street&quot;: &quot;600 Market Street&quot;,
+            &quot;apt&quot;: &quot;&quot;,
+            &quot;city&quot;: &quot;San Francisco&quot;,
+            &quot;state&quot;: &quot;CA&quot;,
+            &quot;zip&quot;: &quot;94104&quot;
+          },
+          &quot;wages&quot;: 92500.75,
+          &quot;federalTaxWithheld&quot;: 13450.25,
+          &quot;socialSecurityWages&quot;: 92500.75,
+          &quot;socialSecurityTax&quot;: 5735.05,
+          &quot;medicareWages&quot;: 92500.75,
+          &quot;medicareTax&quot;: 1341.26,
+          &quot;socialSecurityTips&quot;: 0,
+          &quot;allocatedTips&quot;: 0,
+          &quot;dependentCareBenefits&quot;: 2500,
+          &quot;nonqualifiedPlans&quot;: 0,
+          &quot;box12&quot;: [
+            {
+              &quot;code&quot;: &quot;D&quot;,
+              &quot;amount&quot;: 4200
+            }
+          ],
+          &quot;statutoryEmployee&quot;: false,
+          &quot;retirementPlan&quot;: true,
+          &quot;thirdPartySickPay&quot;: false,
+          &quot;stateLocal&quot;: [
+            {
+              &quot;state&quot;: &quot;CA&quot;,
+              &quot;employerStateId&quot;: &quot;CA-998877&quot;,
+              &quot;stateWages&quot;: 92500.75,
+              &quot;stateTaxWithheld&quot;: 6125.4,
+              &quot;localWages&quot;: 0,
+              &quot;localTaxWithheld&quot;: 0,
+              &quot;localityName&quot;: &quot;&quot;
+            }
+          ],
+          &quot;box14&quot;: [
+            {
+              &quot;label&quot;: &quot;CASDI&quot;,
+              &quot;amount&quot;: 720
+            }
+          ]
+        }
+      ],
+      &quot;interest1099s&quot;: [
+        {
+          &quot;id&quot;: &quot;b4f8a876-7845-5d6b-927b-f02b65c8ab2e&quot;,
+          &quot;payerName&quot;: &quot;Chase Bank&quot;,
+          &quot;payerTIN&quot;: &quot;13-4994650&quot;,
+          &quot;interestIncome&quot;: 148.36,
+          &quot;earlyWithdrawalPenalty&quot;: 0,
+          &quot;usSavingsBondInterest&quot;: 0,
+          &quot;federalTaxWithheld&quot;: 0,
+          &quot;investmentExpenses&quot;: 0,
+          &quot;foreignTaxPaid&quot;: 0,
+          &quot;foreignCountry&quot;: &quot;&quot;,
+          &quot;taxExemptInterest&quot;: 0,
+          &quot;privateActivityBondInterest&quot;: 0,
+          &quot;marketDiscount&quot;: 0,
+          &quot;bondPremium&quot;: 0,
+          &quot;bondPremiumTreasury&quot;: 0,
+          &quot;bondPremiumTaxExempt&quot;: 0,
+          &quot;stateTaxWithheld&quot;: 0,
+          &quot;stateId&quot;: &quot;CA&quot;,
+          &quot;stateIncome&quot;: 148.36
+        }
+      ],
+      &quot;dividend1099s&quot;: [],
+      &quot;misc1099s&quot;: [],
+      &quot;nec1099s&quot;: [],
+      &quot;retirement1099Rs&quot;: [],
+      &quot;government1099Gs&quot;: [],
+      &quot;payment1099Ks&quot;: [],
+      &quot;brokerage1099Bs&quot;: [
+        {
+          &quot;id&quot;: &quot;9986617f-3875-5193-b079-82dd7a6387e1&quot;,
+          &quot;brokerName&quot;: &quot;Fidelity Investments&quot;,
+          &quot;brokerTIN&quot;: &quot;04-3523567&quot;,
+          &quot;description&quot;: &quot;VTI ETF shares&quot;,
+          &quot;dateAcquired&quot;: &quot;2023-05-10&quot;,
+          &quot;dateSold&quot;: &quot;2025-08-20&quot;,
+          &quot;proceeds&quot;: 8450.64,
+          &quot;costBasis&quot;: 7900.1,
+          &quot;accruedMarketDiscount&quot;: 0,
+          &quot;washSaleLossDisallowed&quot;: 0,
+          &quot;gainLossType&quot;: &quot;long_term&quot;,
+          &quot;basisReportedToIRS&quot;: true,
+          &quot;federalTaxWithheld&quot;: 0,
+          &quot;assetType&quot;: &quot;Stock (non-employee)&quot;,
+          &quot;receivedHow&quot;: &quot;I purchased it&quot;
+        }
+      ],
+      &quot;k1Forms&quot;: [],
+      &quot;cryptoTransactions&quot;: [
+        {
+          &quot;id&quot;: &quot;2da5de12-e6b4-5529-bb47-d850c3fc407a&quot;,
+          &quot;exchange&quot;: &quot;Coinbase&quot;,
+          &quot;coinToken&quot;: &quot;BTC&quot;,
+          &quot;assetType&quot;: &quot;Regular digital asset&quot;,
+          &quot;receivedHow&quot;: &quot;I purchased it&quot;,
+          &quot;dateAcquired&quot;: &quot;2024-02-10&quot;,
+          &quot;dateSold&quot;: &quot;2025-06-14&quot;,
+          &quot;proceeds&quot;: 3120,
+          &quot;costBasis&quot;: 2440,
+          &quot;gainLoss&quot;: 680,
+          &quot;gainLossType&quot;: &quot;long_term&quot;
+        }
+      ],
+      &quot;selfEmploymentIncome&quot;: [],
+      &quot;rentalIncome&quot;: [],
+      &quot;ssaBenefits&quot;: [],
+      &quot;otherIncome&quot;: [],
+      &quot;deductions&quot;: {
+        &quot;deductionMethod&quot;: &quot;itemized&quot;,
+        &quot;mortgages&quot;: [
+          {
+            &quot;id&quot;: &quot;2cbd8aa9-3007-5136-962d-86c7a08e973b&quot;,
+            &quot;lenderName&quot;: &quot;Rocket Mortgage&quot;,
+            &quot;loanAmount&quot;: 388000,
+            &quot;interestPaid&quot;: 11840.29,
+            &quot;pointsPaid&quot;: 0,
+            &quot;pmiPaid&quot;: 0,
+            &quot;propertyTax&quot;: 6240.18
+          }
+        ],
+        &quot;salt&quot;: {
+          &quot;stateIncomeTax&quot;: 6125.4,
+          &quot;localIncomeTax&quot;: 0,
+          &quot;salesTax&quot;: 1620.34,
+          &quot;realEstateTax&quot;: 6240.18,
+          &quot;personalPropertyTax&quot;: 420,
+          &quot;taxType&quot;: &quot;income&quot;,
+          &quot;salesTaxMethod&quot;: &quot;estimate&quot;
+        },
+        &quot;salesTax&quot;: null,
+        &quot;foreignTaxCredit&quot;: null,
+        &quot;propertyTaxes&quot;: {
+          &quot;mainHomeTax&quot;: 6240.18,
+          &quot;additionalHomesLandTax&quot;: 0,
+          &quot;foreignRealEstateTax&quot;: 0
+        },
+        &quot;charitableContributions&quot;: [
+          {
+            &quot;id&quot;: &quot;17d49cf3-85d1-505b-b384-ff08c738cc78&quot;,
+            &quot;organizationName&quot;: &quot;San Francisco Marin Food Bank&quot;,
+            &quot;type&quot;: &quot;cash&quot;,
+            &quot;description&quot;: &quot;Monthly donations&quot;,
+            &quot;amount&quot;: 1250,
+            &quot;fairMarketValue&quot;: 0,
+            &quot;dateContributed&quot;: &quot;2025-11-10&quot;
+          }
+        ],
+        &quot;medicalExpenses&quot;: {
+          &quot;totalExpenses&quot;: 0,
+          &quot;prescriptions&quot;: 0,
+          &quot;doctorsAndDental&quot;: 0,
+          &quot;facilityFees&quot;: 0,
+          &quot;labAndXrayFees&quot;: 0,
+          &quot;longTermCare&quot;: 0,
+          &quot;vision&quot;: 0,
+          &quot;suppliesAndEquipment&quot;: 0,
+          &quot;travelLodging&quot;: 0,
+          &quot;travelOther&quot;: 0,
+          &quot;travelMiles&quot;: 0,
+          &quot;insurancePremiums&quot;: 0,
+          &quot;insuranceLongTermCareGross&quot;: 0,
+          &quot;insuranceDependentLongTermCareGross&quot;: 0,
+          &quot;insuranceDependentLongTermCareAllowable&quot;: 0,
+          &quot;otherExpenses&quot;: [],
+          &quot;reimbursements&quot;: 0,
+          &quot;medicalTravel&quot;: 0,
+          &quot;otherMedical&quot;: 0
+        },
+        &quot;studentLoans&quot;: [
+          {
+            &quot;id&quot;: &quot;ef43efbe-a2da-54d8-902f-29cd8e0a911a&quot;,
+            &quot;lenderName&quot;: &quot;Nelnet&quot;,
+            &quot;interestPaid&quot;: 640.42
+          }
+        ],
+        &quot;esa529Distributions&quot;: null,
+        &quot;coverdellEsaExcessContributions&quot;: null,
+        &quot;educatorExpenses&quot;: null,
+        &quot;ira&quot;: null,
+        &quot;healthAccounts&quot;: [
+          {
+            &quot;id&quot;: &quot;5869d504-0bea-580f-a1c0-28e01bf5a30d&quot;,
+            &quot;type&quot;: &quot;hsa&quot;,
+            &quot;coverageType&quot;: &quot;family&quot;,
+            &quot;selfContributions&quot;: 3000,
+            &quot;employerContributions&quot;: 1200,
+            &quot;distributions&quot;: 850.25,
+            &quot;qualifiedExpenses&quot;: 850.25,
+            &quot;usedAccountInTaxYear&quot;: true,
+            &quot;forms1099SA&quot;: []
+          }
+        ],
+        &quot;carLoanInterest&quot;: [],
+        &quot;taxPreparationFees&quot;: 0,
+        &quot;legalFees&quot;: 0,
+        &quot;movingExpenses&quot;: [],
+        &quot;casualtyTheftEvents&quot;: [],
+        &quot;alimonyPaid&quot;: [],
+        &quot;nonbusinessBadDebts&quot;: [],
+        &quot;otherDeductibleExpenses&quot;: {
+          &quot;generationSkippingTaxes&quot;: [],
+          &quot;lessCommonExpenses&quot;: [],
+          &quot;unrecoveredInvestmentInPension&quot;: 0,
+          &quot;claimOfRightRepaymentOver3000&quot;: 0,
+          &quot;estateTaxDeductionNotReported&quot;: 0,
+          &quot;ordinaryLossDebtInstruments&quot;: 0,
+          &quot;amortizableBondPremiums&quot;: 0
+        },
+        &quot;carRegistrationFees&quot;: [],
+        &quot;vehiclesPersonalPropertyTax&quot;: null,
+        &quot;selfEmploymentDeductions&quot;: null,
+        &quot;estimatedTaxPayments&quot;: {
+          &quot;federal2025&quot;: {
+            &quot;didPay&quot;: true,
+            &quot;q1&quot;: {
+              &quot;datePaid&quot;: &quot;2025-04-15&quot;,
+              &quot;amount&quot;: 450
+            },
+            &quot;q2&quot;: {
+              &quot;datePaid&quot;: &quot;2025-06-16&quot;,
+              &quot;amount&quot;: 450
+            },
+            &quot;q3&quot;: {
+              &quot;datePaid&quot;: &quot;2025-09-15&quot;,
+              &quot;amount&quot;: 450
+            },
+            &quot;q4&quot;: {
+              &quot;datePaid&quot;: &quot;2026-01-15&quot;,
+              &quot;amount&quot;: 450
+            },
+            &quot;additionalPayments&quot;: [],
+            &quot;formerSpousePayment&quot;: false
+          },
+          &quot;state2025&quot;: null,
+          &quot;local2025&quot;: null,
+          &quot;priorYearStateEstimated2024&quot;: null,
+          &quot;priorYearLocalEstimated2024&quot;: null,
+          &quot;extensionFederal2025&quot;: 0,
+          &quot;extensionState2025&quot;: null,
+          &quot;extensionLocal2025&quot;: null,
+          &quot;extensionState2024&quot;: null,
+          &quot;extensionLocal2024&quot;: null,
+          &quot;refundAppliedFederal&quot;: 0,
+          &quot;refundAppliedState&quot;: null,
+          &quot;refundAppliedLocal&quot;: null,
+          &quot;withholdingNotOnW2&quot;: null,
+          &quot;balanceDueState2024&quot;: null,
+          &quot;balanceDueLocal2024&quot;: null,
+          &quot;priorYearStateLocalPayments&quot;: null
+        },
+        &quot;selectedTaxBreakIds&quot;: [
+          &quot;mortgage_interest&quot;,
+          &quot;charitable_cash&quot;,
+          &quot;student_loan_interest&quot;,
+          &quot;hsa&quot;
+        ],
+        &quot;onboardingComplete&quot;: true,
+        &quot;addMoreTaxBreaksUsed&quot;: true
+      },
+      &quot;credits&quot;: {
+        &quot;childTaxCredit&quot;: {
+          &quot;qualifyingChildIds&quot;: [
+            &quot;b65b7cd2-42ae-5415-9da1-1f36d295a468&quot;
+          ]
+        },
+        &quot;childDependentCare&quot;: {
+          &quot;providers&quot;: [
+            {
+              &quot;id&quot;: &quot;care_austin_after_school&quot;,
+              &quot;providerName&quot;: &quot;Mission Kids After School Club&quot;,
+              &quot;providerTIN&quot;: &quot;81-2345678&quot;,
+              &quot;providerAddress&quot;: {
+                &quot;street&quot;: &quot;501 Learning Lane&quot;,
+                &quot;apt&quot;: &quot;&quot;,
+                &quot;city&quot;: &quot;San Francisco&quot;,
+                &quot;state&quot;: &quot;CA&quot;,
+                &quot;zip&quot;: &quot;94110&quot;
+              },
+              &quot;amountPaid&quot;: 3600
+            }
+          ],
+          &quot;qualifyingPersonIds&quot;: [
+            &quot;b65b7cd2-42ae-5415-9da1-1f36d295a468&quot;
+          ],
+          &quot;carryoverCredits&quot;: []
+        },
+        &quot;educationCredits&quot;: [],
+        &quot;earnedIncomeCredit&quot;: null,
+        &quot;evCredits&quot;: [],
+        &quot;cleanVehicleCredits&quot;: [],
+        &quot;energyCredits&quot;: [
+          {
+            &quot;id&quot;: &quot;c96d4ec3-4bd4-569c-9139-fb4e74849d28&quot;,
+            &quot;improvementType&quot;: &quot;hvac&quot;,
+            &quot;cost&quot;: 5200,
+            &quot;dateInstalled&quot;: &quot;2025-09-15&quot;,
+            &quot;creditAmount&quot;: 1200
+          }
+        ],
+        &quot;energyImprovementAnswers&quot;: {
+          &quot;sharedHome&quot;: null,
+          &quot;sharedCosts&quot;: null,
+          &quot;homeInUS&quot;: null,
+          &quot;hasCleanEnergy&quot;: null,
+          &quot;addressConfirmed&quot;: null,
+          &quot;hasEfficiencyImprovements&quot;: null,
+          &quot;improvementsOnMainHome&quot;: null,
+          &quot;improvementsNewConstruction&quot;: null,
+          &quot;hasResidentialProperty&quot;: null,
+          &quot;residentialPropertyInstalledInUS&quot;: null,
+          &quot;paidHomeEnergyAudit&quot;: null,
+          &quot;propertyPlacedInServiceByYou&quot;: null
+        },
+        &quot;homeEnergyCreditCarryforward&quot;: 0,
+        &quot;condoCoopEnergyShare&quot;: 0,
+        &quot;adoptionCredits&quot;: [],
+        &quot;mortgageInterestCredits&quot;: [],
+        &quot;dcFirstTimeHomebuyerCredit&quot;: null,
+        &quot;charitableCarryover&quot;: null,
+        &quot;retirementSavingsCreditAmount&quot;: 0,
+        &quot;foreignTaxCreditAmount&quot;: 0,
+        &quot;priorYearAmtCredit&quot;: null,
+        &quot;elderlyDisabledCredit&quot;: null,
+        &quot;otherCredits&quot;: {
+          &quot;hasLessCommonCredits&quot;: null,
+          &quot;form8689Amount&quot;: 0,
+          &quot;form8912Amount&quot;: 0
+        }
+      },
+      &quot;stateReturns&quot;: [
+        {
+          &quot;id&quot;: &quot;02b3ccc5-0e0c-519b-aace-81206b878874&quot;,
+          &quot;stateCode&quot;: &quot;CA&quot;,
+          &quot;status&quot;: &quot;completed&quot;,
+          &quot;returnType&quot;: &quot;resident&quot;,
+          &quot;stateIncome&quot;: 93879.65,
+          &quot;stateAdjustments&quot;: 0,
+          &quot;stateDeductions&quot;: 5202,
+          &quot;stateCredits&quot;: 120,
+          &quot;stateTaxWithheld&quot;: 6125.4,
+          &quot;stateRefundOrOwed&quot;: 815.5,
+          &quot;adjustmentsDetail&quot;: {
+            &quot;outOfStateBondInterest&quot;: &quot;&quot;,
+            &quot;stateTaxDeductionAddBack&quot;: &quot;&quot;,
+            &quot;otherAdditions&quot;: &quot;&quot;,
+            &quot;govBondInterest&quot;: &quot;&quot;,
+            &quot;socialSecurityExempt&quot;: &quot;&quot;,
+            &quot;militaryPayExclusion&quot;: &quot;&quot;,
+            &quot;statePensionExclusion&quot;: &quot;&quot;,
+            &quot;otherSubtractions&quot;: &quot;&quot;
+          },
+          &quot;deductionsCreditsDetail&quot;: {
+            &quot;rentersCredit&quot;: &quot;120&quot;,
+            &quot;stateDisabilityInsurance&quot;: &quot;720&quot;,
+            &quot;otherDeductions&quot;: &quot;&quot;,
+            &quot;stateChildTaxCredit&quot;: &quot;&quot;,
+            &quot;stateEarnedIncomeCredit&quot;: &quot;&quot;,
+            &quot;propertyTaxCredit&quot;: &quot;&quot;,
+            &quot;stateEducationCredit&quot;: &quot;&quot;,
+            &quot;otherCredits&quot;: &quot;&quot;
+          },
+          &quot;localReturn&quot;: null
+        }
+      ],
+      &quot;otherTaxSituations&quot;: {
+        &quot;aca&quot;: null,
+        &quot;visitedOtherTaxTopics&quot;: [
+          &quot;Form W-4 and Estimated Taxes&quot;,
+          &quot;Identity Protection PIN&quot;
+        ],
+        &quot;amt&quot;: {
+          &quot;records&quot;: []
+        },
+        &quot;ipPin&quot;: {
+          &quot;records&quot;: []
+        },
+        &quot;additionalTaxesInfo&quot;: {
+          &quot;records&quot;: []
+        },
+        &quot;underpayment&quot;: {
+          &quot;records&quot;: []
+        },
+        &quot;applyRefund&quot;: {
+          &quot;records&quot;: []
+        },
+        &quot;selfEmployment&quot;: {
+          &quot;records&quot;: []
+        },
+        &quot;presidentialCampaign&quot;: {
+          &quot;records&quot;: []
+        },
+        &quot;identityTheft&quot;: {
+          &quot;records&quot;: []
+        },
+        &quot;w4AndEstimatedTaxes&quot;: {
+          &quot;records&quot;: []
+        },
+        &quot;changeOfAddress&quot;: {
+          &quot;records&quot;: []
+        },
+        &quot;reportSharedSupport&quot;: {
+          &quot;records&quot;: []
+        },
+        &quot;releaseClaim&quot;: {
+          &quot;records&quot;: []
+        },
+        &quot;requestTaxForm&quot;: {
+          &quot;records&quot;: []
+        },
+        &quot;injuredInnocentSpouse&quot;: {
+          &quot;records&quot;: []
+        },
+        &quot;ein&quot;: {
+          &quot;records&quot;: []
+        },
+        &quot;farmIncomeAveraging&quot;: {
+          &quot;records&quot;: []
+        },
+        &quot;reforestationDeduction&quot;: {
+          &quot;records&quot;: []
+        },
+        &quot;investmentCreditRecapture&quot;: {
+          &quot;records&quot;: []
+        }
+      },
+      &quot;paymentInfo&quot;: {
+        &quot;paymentMethod&quot;: &quot;direct_deposit&quot;,
+        &quot;bankAccount&quot;: {
+          &quot;routingNumber&quot;: &quot;111000025&quot;,
+          &quot;accountNumber&quot;: &quot;000123456789&quot;,
+          &quot;accountType&quot;: &quot;checking&quot;
+        },
+        &quot;refundSplit&quot;: false,
+        &quot;refundSplitAccounts&quot;: [],
+        &quot;eFile&quot;: {
+          &quot;consentToEFile&quot;: false,
+          &quot;priorYearAGI&quot;: &quot;96720.52&quot;
+        },
+        &quot;amendment&quot;: {
+          &quot;reasons&quot;: [],
+          &quot;explanation&quot;: &quot;&quot;
+        },
+        &quot;extension&quot;: {
+          &quot;estimatedTaxLiability&quot;: &quot;&quot;,
+          &quot;totalPaymentsMade&quot;: &quot;&quot;,
+          &quot;paymentWithExtension&quot;: &quot;&quot;
+        },
+        &quot;multiStateEntries&quot;: [
+          {
+            &quot;state&quot;: &quot;California&quot;,
+            &quot;residency&quot;: &quot;full&quot;,
+            &quot;income&quot;: &quot;93879.65&quot;
+          }
+        ]
+      },
+      &quot;filingProgress&quot;: {
+        &quot;personal_info&quot;: &quot;completed&quot;,
+        &quot;filing_status&quot;: &quot;completed&quot;,
+        &quot;spouse&quot;: &quot;completed&quot;,
+        &quot;dependents&quot;: &quot;completed&quot;,
+        &quot;income&quot;: &quot;completed&quot;,
+        &quot;deductions&quot;: &quot;completed&quot;,
+        &quot;credits&quot;: &quot;in_progress&quot;,
+        &quot;other_tax&quot;: &quot;in_progress&quot;,
+        &quot;state_returns&quot;: &quot;completed&quot;,
+        &quot;payment&quot;: &quot;completed&quot;,
+        &quot;review&quot;: &quot;in_progress&quot;,
+        &quot;file&quot;: &quot;not_started&quot;,
+        &quot;documents&quot;: &quot;completed&quot;
+      },
+      &quot;filingSummary&quot;: {
+        &quot;totalIncome&quot;: 93880,
+        &quot;adjustedGrossIncome&quot;: 90240,
+        &quot;taxableIncome&quot;: 64364,
+        &quot;totalTax&quot;: 4184,
+        &quot;totalPayments&quot;: 15150,
+        &quot;totalCredits&quot;: 4900,
+        &quot;federalRefundOrOwed&quot;: 10966,
+        &quot;effectiveTaxRate&quot;: 4.5,
+        &quot;marginalTaxBracket&quot;: 12
+      },
+      &quot;errorCheck&quot;: {
+        &quot;stage&quot;: &quot;results_ready&quot;,
+        &quot;reviewItems&quot;: [
+          {
+            &quot;id&quot;: &quot;43e27bc5-932b-595f-bb2e-f89c13f534f1&quot;,
+            &quot;category&quot;: &quot;digital_assets&quot;,
+            &quot;label&quot;: &quot;Digital Assets&quot;,
+            &quot;status&quot;: &quot;needs_fix&quot;
+          }
+        ],
+        &quot;totalIssuesFound&quot;: 1
+      },
+      &quot;managedClients&quot;: [],
+      &quot;expertReview&quot;: {
+        &quot;completeCheck&quot;: {
+          &quot;status&quot;: &quot;not_run&quot;,
+          &quot;issues&quot;: [],
+          &quot;bypassedAtISO&quot;: &quot;&quot;
+        },
+        &quot;expertConnect&quot;: {
+          &quot;decision&quot;: null,
+          &quot;scheduledForISO&quot;: &quot;&quot;,
+          &quot;officeHoursMockOnline&quot;: false
+        },
+        &quot;multiUseConsent&quot;: {
+          &quot;fullName&quot;: &quot;&quot;,
+          &quot;spouseFullName&quot;: &quot;&quot;,
+          &quot;filingJointly&quot;: false,
+          &quot;signedDateISO&quot;: &quot;&quot;,
+          &quot;status&quot;: &quot;pending&quot;
+        },
+        &quot;dataSharingConsent&quot;: {
+          &quot;fullName&quot;: &quot;&quot;,
+          &quot;spouseFullName&quot;: &quot;&quot;,
+          &quot;filingJointly&quot;: false,
+          &quot;signedDateISO&quot;: &quot;&quot;,
+          &quot;status&quot;: &quot;pending&quot;
+        },
+        &quot;maxAddOn&quot;: {
+          &quot;status&quot;: &quot;undecided&quot;,
+          &quot;decidedDateISO&quot;: &quot;&quot;,
+          &quot;priceUsd&quot;: 79,
+          &quot;valueUsd&quot;: 87
+        }
+      },
+      &quot;filing&quot;: {
+        &quot;order&quot;: {
+          &quot;items&quot;: [
+            {
+              &quot;id&quot;: &quot;expert-assist-sole-prop-2025&quot;,
+              &quot;title&quot;: &quot;ReturnMax Online Expert Assist Business Sole Proprietor 2025&quot;,
+              &quot;priceUsd&quot;: 229,
+              &quot;subItems&quot;: [
+                {
+                  &quot;label&quot;: &quot;2025 federal filing&quot;,
+                  &quot;status&quot;: &quot;Included&quot;
+                },
+                {
+                  &quot;label&quot;: &quot;State return&quot;,
+                  &quot;status&quot;: &quot;Not added yet&quot;
+                }
+              ]
+            }
+          ],
+          &quot;maxAddOn&quot;: {
+            &quot;added&quot;: false,
+            &quot;priceUsd&quot;: 79
+          },
+          &quot;auditDefense&quot;: {
+            &quot;added&quot;: false,
+            &quot;status&quot;: &quot;undecided&quot;,
+            &quot;priceUsd&quot;: 49.99,
+            &quot;decidedDateISO&quot;: &quot;&quot;
+          },
+          &quot;serviceCode&quot;: &quot;&quot;,
+          &quot;serviceCodeCreditUsd&quot;: 0,
+          &quot;subtotalUsd&quot;: 229
+        },
+        &quot;cardPayment&quot;: {
+          &quot;cardLast4&quot;: &quot;&quot;,
+          &quot;cardBrand&quot;: &quot;unknown&quot;,
+          &quot;expirationMonth&quot;: &quot;&quot;,
+          &quot;expirationYear&quot;: &quot;&quot;,
+          &quot;nameOnCard&quot;: &quot;&quot;,
+          &quot;useTaxReturnBillingAddress&quot;: true,
+          &quot;billingAddress&quot;: {
+            &quot;street&quot;: &quot;&quot;,
+            &quot;apt&quot;: &quot;&quot;,
+            &quot;city&quot;: &quot;&quot;,
+            &quot;state&quot;: &quot;&quot;,
+            &quot;zip&quot;: &quot;&quot;
+          },
+          &quot;storePaymentMethod&quot;: true,
+          &quot;status&quot;: &quot;unpaid&quot;,
+          &quot;paidDateISO&quot;: &quot;&quot;
+        },
+        &quot;federalTaxPayment&quot;: {
+          &quot;method&quot;: null,
+          &quot;bankRoutingNumber&quot;: &quot;&quot;,
+          &quot;bankAccountNumber&quot;: &quot;&quot;,
+          &quot;bankAccountType&quot;: null,
+          &quot;scheduledDebitDateISO&quot;: &quot;&quot;
+        },
+        &quot;stateTaxPayment&quot;: {
+          &quot;method&quot;: null,
+          &quot;bankRoutingNumber&quot;: &quot;&quot;,
+          &quot;bankAccountNumber&quot;: &quot;&quot;,
+          &quot;bankAccountType&quot;: null,
+          &quot;scheduledDebitDateISO&quot;: &quot;&quot;
+        },
+        &quot;efile&quot;: {
+          &quot;selectedReturns&quot;: [
+            &quot;federal&quot;,
+            &quot;state&quot;
+          ],
+          &quot;lastYearAGIUsd&quot;: null,
+          &quot;lastYearSelfSelectPIN&quot;: &quot;&quot;,
+          &quot;thisYearSigningPIN&quot;: &quot;&quot;,
+          &quot;status&quot;: &quot;draft&quot;,
+          &quot;federalSubmissionId&quot;: &quot;&quot;,
+          &quot;stateSubmissionId&quot;: &quot;&quot;,
+          &quot;submittedAtISO&quot;: &quot;&quot;
+        }
+      }
+    },
+    &quot;version&quot;: 42
+  },
+  &quot;auth&quot;: {
+    &quot;state&quot;: {
+      &quot;currentUser&quot;: {
+        &quot;id&quot;: &quot;aecd2ba0-019b-51f8-a8c6-5c44f83dc7e1&quot;,
+        &quot;password&quot;: &quot;Password123!&quot;,
+        &quot;firstName&quot;: &quot;Maya&quot;,
+        &quot;lastName&quot;: &quot;Srinivasan&quot;,
+        &quot;email&quot;: &quot;hello@bluecedarstudio.co&quot;,
+        &quot;dateOfBirth&quot;: &quot;1988-03-14&quot;,
+        &quot;hasOnboarded&quot;: true,
+        &quot;createdAt&quot;: &quot;2025-01-01T00:00:00.000Z&quot;,
+        &quot;updatedAt&quot;: &quot;2025-11-17T10:00:00.000Z&quot;
+      }
+    },
+    &quot;version&quot;: 8
+  },
+  &quot;users&quot;: {
+    &quot;state&quot;: {
+      &quot;users&quot;: [
+        {
+          &quot;id&quot;: &quot;aecd2ba0-019b-51f8-a8c6-5c44f83dc7e1&quot;,
+          &quot;password&quot;: &quot;Password123!&quot;,
+          &quot;firstName&quot;: &quot;Maya&quot;,
+          &quot;lastName&quot;: &quot;Srinivasan&quot;,
+          &quot;email&quot;: &quot;hello@bluecedarstudio.co&quot;,
+          &quot;dateOfBirth&quot;: &quot;1988-03-14&quot;,
+          &quot;hasOnboarded&quot;: true,
+          &quot;createdAt&quot;: &quot;2025-01-01T00:00:00.000Z&quot;,
+          &quot;updatedAt&quot;: &quot;2025-11-17T10:00:00.000Z&quot;
+        },
+        {
+          &quot;id&quot;: &quot;01e42041-8b2b-5289-922e-f1fd254e2768&quot;,
+          &quot;password&quot;: &quot;Password123!&quot;,
+          &quot;firstName&quot;: &quot;Marcus&quot;,
+          &quot;lastName&quot;: &quot;Reed&quot;,
+          &quot;email&quot;: &quot;marcus.reed@gmail.com&quot;,
+          &quot;dateOfBirth&quot;: &quot;1986-04-17&quot;,
+          &quot;hasOnboarded&quot;: false,
+          &quot;createdAt&quot;: &quot;2026-01-08T11:00:00.000Z&quot;,
+          &quot;updatedAt&quot;: &quot;2026-02-09T16:10:00.000Z&quot;
+        },
+        {
+          &quot;id&quot;: &quot;d3cbe06a-d386-5108-b5b7-02e7eff5d1d1&quot;,
+          &quot;password&quot;: &quot;Password123!&quot;,
+          &quot;firstName&quot;: &quot;Elena&quot;,
+          &quot;lastName&quot;: &quot;Petrova&quot;,
+          &quot;email&quot;: &quot;elena.petrova@outlook.com&quot;,
+          &quot;dateOfBirth&quot;: &quot;1991-09-03&quot;,
+          &quot;hasOnboarded&quot;: false,
+          &quot;createdAt&quot;: &quot;2026-01-10T11:00:00.000Z&quot;,
+          &quot;updatedAt&quot;: &quot;2026-02-11T17:10:00.000Z&quot;
+        },
+        {
+          &quot;id&quot;: &quot;88cbedd8-0ff0-5694-ab55-977b8597a6cb&quot;,
+          &quot;password&quot;: &quot;Password123!&quot;,
+          &quot;firstName&quot;: &quot;Sophia&quot;,
+          &quot;lastName&quot;: &quot;Nguyen&quot;,
+          &quot;email&quot;: &quot;sophia@nguyencollective.com&quot;,
+          &quot;dateOfBirth&quot;: &quot;1994-12-19&quot;,
+          &quot;hasOnboarded&quot;: false,
+          &quot;createdAt&quot;: &quot;2026-01-12T11:00:00.000Z&quot;,
+          &quot;updatedAt&quot;: &quot;2026-01-26T18:10:00.000Z&quot;
+        }
+      ]
+    },
+    &quot;version&quot;: 6
+  },
+  &quot;rm_tax_ui&quot;: {
+    &quot;state&quot;: {
+      &quot;currentSection&quot;: &quot;review&quot;,
+      &quot;currentPage&quot;: &quot;/index/tto/review&quot;,
+      &quot;activeDependentId&quot;: &quot;b65b7cd2-42ae-5415-9da1-1f36d295a468&quot;,
+      &quot;sidebarState&quot;: &quot;full&quot;,
+      &quot;progressBySection&quot;: {
+        &quot;my_info&quot;: 100,
+        &quot;income&quot;: 100,
+        &quot;deductions&quot;: 100,
+        &quot;credits&quot;: 80,
+        &quot;other_tax&quot;: 60,
+        &quot;state&quot;: 100,
+        &quot;payment&quot;: 100,
+        &quot;review&quot;: 40,
+        &quot;file&quot;: 0,
+        &quot;tools&quot;: 0
+      },
+      &quot;bookmarkedPages&quot;: [
+        &quot;/index/tto/deductions/mortgage-interest&quot;,
+        &quot;/index/tto/review&quot;
+      ],
+      &quot;expertHelpOpen&quot;: false,
+      &quot;expertHelpQuestion&quot;: null,
+      &quot;documentUploadOpen&quot;: false,
+      &quot;helpPanelOpen&quot;: false,
+      &quot;helpPanelArticleId&quot;: null,
+      &quot;incomeQuestionsCompleted&quot;: true,
+      &quot;printCenterDownloadedDocs&quot;: [],
+      &quot;downloadedReturnYears&quot;: []
+    },
+    &quot;version&quot;: 2
+  },
+  &quot;uiModal&quot;: {
+    &quot;state&quot;: {
+      &quot;title&quot;: &quot;&quot;,
+      &quot;isOpen&quot;: false
+    },
+    &quot;version&quot;: 2
+  },
+  &quot;rm_articles&quot;: {
+    &quot;state&quot;: {
+      &quot;refund_explanation_panel&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;marital_status&quot;: {
+        &quot;isHelpful&quot;: true
+      },
+      &quot;dependents&quot;: {
+        &quot;isHelpful&quot;: true
+      },
+      &quot;child_qualifying_vs_relative&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;child_refund_withheld_tax&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;child_what_counts_income&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;child_relative_claim_effect&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;child_full_time_student&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;child_disabled&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;child_own_support&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;child_dont_know&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;child_form_8332&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;child_count_months&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;child_only_options&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;child_temporary_absence&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;child_both_parents&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;child_parent_agreement&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;dependent_my_child&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;dependent_other&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;ssn_required&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;ssn_not_valid_employment&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;nontraditional&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;occupation&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;full_time_student&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;can_be_claimed&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;legally_blind&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;nonresident_alien_spouse&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;incarcerated&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;preferred_language&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;apt_ste_unit&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;state_of_residency&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;nonresident_state_return&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;combat_zone&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;dependent_relationship_help&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;other_count_months&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;other_gross_income&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;other_living_expenses&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;other_form_2120&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;child_tax_credit_ssn&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;home_cost_what_counts&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;tax_breaks_dependent&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;dependent_not_qualified&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;privacy_security&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;no_child_ssn&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;onboarding_maximize_deductions&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;onboarding_self_employed&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;onboarding_s_corp_business&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;w2_income&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;w2_missing&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;w2_multiple&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;w2_other_income&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;w2_ein&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;self_employment_income&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;unemployment_income&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;state_refund_income&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;other_1099g_income&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;1099_nec_income&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;1099_misc_income&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;1099_k_income&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;1099_int_income&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;1099_div_income&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;1099_b_income&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;capital_loss_carryover&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;1099_oid_income&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;seller_financed_interest&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;undistributed_capital_gains&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;contracts_straddles&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;iso_exercise_hold&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;1099_r_income&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;social_security_income&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;canadian_pension_income&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;rental_royalty_income&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;farm_income&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;se_health_insurance&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;se_retirement_plans&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;nol_qbi_carryforward&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;sale_business_property&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;business_credits&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;schedule_k1&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;schedule_q&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;1099_sa_hsa_income&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;gambling_winnings&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;alimony_received&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;jury_duty_income&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;foreign_earned_income&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;child_income_under24&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;sale_of_home&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;installment_sales&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;misc_income_1099ac&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;tax_law_changes&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;find_tax_breaks_college&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;find_tax_breaks_car_registration&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;find_tax_breaks_student_loan&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;find_tax_breaks_medical&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;find_tax_breaks_uncommon&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;find_tax_breaks_property_loss&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;find_tax_breaks_1095a&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;find_tax_breaks_1095a_guide&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;find_tax_breaks_1095bc&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;charitable_donation_carryover&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;charitable_donation_limits&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;charitable_noncash_donation_limits&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;charitable_carryover_where_to_find&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;charitable_additional_carryovers&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;mortgage_no_1098&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;mortgage_interest_deduction&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;mortgage_expenses_not_covered&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;adoption_expenses_paid&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;adoption_special_needs_foreign&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;adoption_credit_carryover&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;adoption_employer_benefits&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;adoption_credit_overview&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;adoption_credit_refundable&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;adoption_child_tax_id&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;adoption_eligible_child&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;adoption_other_expenses&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;dependent_care_credit_savings&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;dependent_care_provider&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;dependent_care_not_qualified&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;ira_traditional&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;ira_roth&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;ira_employer_plans&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;ira_disaster_extension&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;ira_self_employment_retirement&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;ira_traditional_contributed&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;ira_traditional_repayment&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;ira_traditional_military&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;ira_traditional_amounts&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;ira_traditional_recharacterization&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;ira_roth_contributed&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;ira_roth_repayment&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;ira_roth_military&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;energy_efficient_improvements&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;energy_improvements_carryforward&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;energy_shared_home&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;energy_shared_costs&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;energy_us_location&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;energy_solar_electric&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;energy_solar_water&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;energy_wind&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;energy_geothermal&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;energy_battery&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;energy_fuel_cell&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;energy_fuel_cell_kw&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;energy_condo_coop_share&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;energy_credit_carryforward&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;ev_census_tract_geoid&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;educator_expenses_deduction&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;tax_preparation_fees_deduction&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;tax_preparation_fees_not_entered&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;tax_preparation_expenses&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;moving_expenses&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;moving_expenses_military&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;moving_expenses_deductible&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;moving_expenses_household_goods&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;moving_expenses_travel_lodging&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;moving_expenses_parking_tolls&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;moving_expenses_gas_oil&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;moving_expenses_reimbursement&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;moving_expenses_qualifies&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;casualty_theft_deduction&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;casualty_theft_ponzi&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;casualty_theft_disaster_extensions&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;casualty_theft_property_type&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;casualty_theft_federal_disaster&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;casualty_theft_fema_code&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;casualty_theft_cost_basis&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;casualty_theft_fair_market_value&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;elderly_disabled_credit_overview&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;elderly_disabled_permanent_total&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;elderly_disabled_disability_income&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;elderly_disabled_nontaxable_income&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;alimony_paid_deduction&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;alimony_paid_overview&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;alimony_paid_deductible&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;nonbusiness_bad_debt_overview&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;legal_fees_deduction&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;legal_fees_not_entered&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;legal_fees_expenses&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;education_1098_t&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;amt_what_is&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;amt_iso_adjustment&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;amt_reduce&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;amt_loss_limitations&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;amt_circulation_costs&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;amt_long_term_contracts&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;amt_mining_costs&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;amt_research_costs&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;amt_installment_sales&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;se_tax_overview&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;se_optional_method&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;reforestation_deduction&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;additional_taxes_credit_repayments&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;underpayment_prior_year&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;ip_pin_overview&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;ip_pin_how_to_get&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;identity_theft_overview&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;early_retirement_5329&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;mortgage_interest_credit_overview&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;mortgage_interest_credit_carryover&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;how_credits_work&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;property_taxes_rental_business&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;property_taxes_tax_breaks&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;property_taxes_salt_cap&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;property_taxes_foreign&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;property_taxes_deductible&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;earned_income_credit_not_qualified&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;find_tax_breaks_car_loan_interest&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;find_tax_breaks_personal_property_taxes&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;find_tax_breaks_clean_vehicle_credit&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;other_nanny_tax&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;other_apply_refund&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;other_additional_taxes&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;other_presidential_fund&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;other_amend_return&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;other_file_extension&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;other_w4_estimated&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;other_shared_support&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;other_release_claim&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;other_change_address&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;other_request_form&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;other_foreign_assets&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;other_injured_spouse&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;other_ein&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;federal_estimated_taxes_withholding&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;estimated_tax_payments_overview&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;state_estimated_taxes_withholding&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;local_estimated_taxes_withholding&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;generation_skipping_taxes&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;less_common_expenses&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;other_less_common_expenses&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;amortizable_bond_premiums&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;how_deductions_work&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;form_8689&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;form_8912&quot;: {
+        &quot;isHelpful&quot;: null
+      },
+      &quot;other_less_common_credits&quot;: {
+        &quot;isHelpful&quot;: null
+      }
+    },
+    &quot;version&quot;: 2
+  },
+  &quot;rm_search&quot;: {
+    &quot;state&quot;: {
+      &quot;query&quot;: &quot;&quot;,
+      &quot;results&quot;: [],
+      &quot;recentSearches&quot;: []
+    },
+    &quot;version&quot;: 1
+  },
+  &quot;rm_filed_returns&quot;: {
+    &quot;state&quot;: {
+      &quot;returns&quot;: [
+        {
+          &quot;id&quot;: &quot;eeff9127-82cf-5d4e-a1f0-96be4408b2e6&quot;,
+          &quot;taxYear&quot;: 2024,
+          &quot;filedAt&quot;: 1742205600000,
+          &quot;status&quot;: &quot;accepted&quot;,
+          &quot;refundOrBalance&quot;: 3536.17,
+          &quot;federalPdfUrl&quot;: &quot;/returnmax/sample-2024-return.pdf&quot;,
+          &quot;stateAbbr&quot;: &quot;CA&quot;,
+          &quot;agi&quot;: 96720.52,
+          &quot;taxableIncome&quot;: 74280.1,
+          &quot;filingStatus&quot;: &quot;head_of_household&quot;,
+          &quot;taxpayerName&quot;: &quot;Maya Srinivasan&quot;
+        }
+      ]
+    },
+    &quot;version&quot;: 1
+  },
+  &quot;rm_linked_accounts&quot;: {
+    &quot;state&quot;: {
+      &quot;accounts&quot;: [
+        {
+          &quot;id&quot;: &quot;610a833c-88b7-54e3-ba91-6947104274d9&quot;,
+          &quot;providerId&quot;: &quot;fidelity&quot;,
+          &quot;providerName&quot;: &quot;Fidelity Investments&quot;,
+          &quot;logoUrl&quot;: &quot;/logos/linked-accounts/fidelity.png&quot;,
+          &quot;connectedAt&quot;: 1761998400000,
+          &quot;importedFormsCount&quot;: 1
+        },
+        {
+          &quot;id&quot;: &quot;52499a3a-5ba3-58b6-b53a-80bd9f86e2a4&quot;,
+          &quot;providerId&quot;: &quot;coinbase&quot;,
+          &quot;providerName&quot;: &quot;Coinbase&quot;,
+          &quot;logoUrl&quot;: &quot;/logos/linked-accounts/coinbase.png&quot;,
+          &quot;connectedAt&quot;: 1762084800000,
+          &quot;importedFormsCount&quot;: 1
+        }
+      ]
+    },
+    &quot;version&quot;: 1
+  },
+  &quot;rm_order_receipt&quot;: {
+    &quot;state&quot;: {
+      &quot;receiptsByYear&quot;: {
+        &quot;2024&quot;: {
+          &quot;taxYear&quot;: 2024,
+          &quot;status&quot;: &quot;paid&quot;,
+          &quot;lineItems&quot;: [
+            {
+              &quot;id&quot;: &quot;ee4996ff-aafc-50ea-9959-aad5411742b0&quot;,
+              &quot;name&quot;: &quot;Federal return preparation&quot;,
+              &quot;description&quot;: &quot;ReturnMax Deluxe federal filing&quot;,
+              &quot;amount&quot;: 89
+            },
+            {
+              &quot;id&quot;: &quot;be6ab85d-391a-5efc-996d-981135fb8033&quot;,
+              &quot;name&quot;: &quot;California state return preparation&quot;,
+              &quot;description&quot;: &quot;California resident return review&quot;,
+              &quot;amount&quot;: 59
+            },
+            {
+              &quot;id&quot;: &quot;5381b7b7-2471-5f8e-90dc-e18157fc2e9c&quot;,
+              &quot;name&quot;: &quot;Audit support&quot;,
+              &quot;description&quot;: &quot;One year of document support&quot;,
+              &quot;amount&quot;: 39
+            }
+          ],
+          &quot;subtotal&quot;: 187,
+          &quot;total&quot;: 187,
+          &quot;paymentMethod&quot;: &quot;Visa **** 4242&quot;,
+          &quot;paidAt&quot;: 1742205600000,
+          &quot;pdfUrl&quot;: &quot;/returnmax/receipts/2024-order-receipt.pdf&quot;
+        }
+      }
+    },
+    &quot;version&quot;: 1
+  },
+  &quot;rm_settings&quot;: {
+    &quot;state&quot;: {
+      &quot;showProgressBar&quot;: true
+    },
+    &quot;version&quot;: 2
+  }
+}</pre>
+    </section>
+  </main>
+</body>
+</html>
