@@ -68,35 +68,21 @@
             }
           },
           {
-            "id": "ad09d1620034c177",
+            "id": "99dcae1cde84c7d4",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "returnmax-test-batch/2026-06-14_1939_returnmax-medium-004.md",
+                "file": "returnmax-test-batch/2026-06-14_1939_returnmax-medium-014.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-06-14_1939_returnmax-medium-004"
-            }
-          },
-          {
-            "id": "4ae291c3809ee997",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "returnmax-test-batch/2026-06-14_1939_returnmax-medium-011.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2026-06-14_1939_returnmax-medium-011"
+              "title": "2026-06-14_1939_returnmax-medium-014"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -261,10 +247,13 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "01700afe9efd4a73",
+  "active": "99dcae1cde84c7d4",
   "lastOpenFiles": [
-    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-011.md",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-013.md",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-014.md",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-013.md.tmp.3641725.91fa36e5e55f",
     "returnmax-test-batch/returnmax-test-batch.base",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-011.md",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-004.md",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-010.md",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-010.md.tmp.3469938.e9cbd5b18d0e",
@@ -289,7 +278,6 @@
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-042.md",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-041.md",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-040.md",
-    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-038.md",
     "returnmax-test-batch",
     "assets/tricia-q1.pdf",
     "assets/medium-010-ctc.png",
@@ -307,7 +295,6 @@
     "2026-05-29_1715_review-data-abhishek-qa-fixes.md.tmp.1105698.a4d80994e054",
     "2026-05-29_1634_ledgerpilot-full-app-review.md.tmp.1105698.10176d520305",
     "2026-05-29_0106_1099-filter-manual-testing.md.tmp.1105698.9f0f831a582b",
-    "2026-05-28_2313_fix-customer-creation-review.md.tmp.347300.508600f07f51",
-    "2026-05-28_2207_ledgerpilot-manual-review.md.tmp.347300.334d595f5c0c"
+    "2026-05-28_2313_fix-customer-creation-review.md.tmp.347300.508600f07f51"
   ]
 }
