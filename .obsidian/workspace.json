@@ -23,119 +23,77 @@
             }
           },
           {
-            "id": "99dcae1cde84c7d4",
+            "id": "c7abf8f7fef0318b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "returnmax-test-batch/2026-06-14_1939_returnmax-medium-014.md",
+                "file": "returnmax-test-batch/2026-06-14_1939_returnmax-medium-035.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-06-14_1939_returnmax-medium-014"
+              "title": "2026-06-14_1939_returnmax-medium-035"
             }
           },
           {
-            "id": "fab0651eb52d1b6a",
+            "id": "e81b3becab209e10",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "returnmax-test-batch/2026-06-14_1939_returnmax-medium-017.md",
+                "file": "returnmax-test-batch/2026-06-14_1939_returnmax-medium-045.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-06-14_1939_returnmax-medium-017"
+              "title": "2026-06-14_1939_returnmax-medium-045"
             }
           },
           {
-            "id": "6276bafa52a192e4",
+            "id": "ef0784f8dca35bfc",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "returnmax-test-batch/2026-06-14_1939_returnmax-medium-026.md",
+                "file": "2026-06-16_1046.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-06-14_1939_returnmax-medium-026"
+              "title": "2026-06-16_1046"
             }
           },
           {
-            "id": "9a9bfb66553360f8",
+            "id": "f5c4241f99be48d4",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "returnmax-test-batch/2026-06-14_1939_returnmax-medium-024.md",
+                "file": "2026-06-16_1800.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-06-14_1939_returnmax-medium-024"
+              "title": "2026-06-16_1800"
             }
           },
           {
-            "id": "c05711382750d6e2",
+            "id": "c4358f0d3ee1f061",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "returnmax-test-batch/2026-06-14_1939_returnmax-medium-024.md",
+                "file": "2026-06-17_0654_new-project-form.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-06-14_1939_returnmax-medium-024"
-            }
-          },
-          {
-            "id": "5f4447241645f43a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "returnmax-test-batch/2026-06-14_1939_returnmax-medium-025.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2026-06-14_1939_returnmax-medium-025"
-            }
-          },
-          {
-            "id": "3555fbdc6471a7e3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "returnmax-test-batch/2026-06-14_1939_returnmax-medium-023.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2026-06-14_1939_returnmax-medium-023"
-            }
-          },
-          {
-            "id": "d6442227af65d0e5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "returnmax-test-batch/2026-06-14_1939_returnmax-medium-004.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2026-06-14_1939_returnmax-medium-004"
+              "title": "2026-06-17_0654_new-project-form"
             }
           }
         ],
-        "currentTab": 8
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -300,30 +258,46 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "d6442227af65d0e5",
+  "active": "c4358f0d3ee1f061",
   "lastOpenFiles": [
-    "2026-06-16_0038.md",
+    "2026-06-16_1800.md",
+    "2026-06-17_0654_new-project-form.md",
+    "assets/Pasted image 20260616180618.png",
+    "assets/Pasted image 20260616180534.png",
+    "assets/Pasted image 20260616180501.png",
+    "assets/Pasted image 20260616180305.png",
+    "assets/Pasted image 20260616180242.png",
+    "assets/Pasted image 20260616180003.png",
+    "2026-06-16_1046.md",
+    "assets/Pasted image 20260616104627.png",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-045.md",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-044.md",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-043.md",
+    "returnmax-test-batch/returnmax-test-batch.base",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-035.md",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-039.md",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-034.md",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-029.md",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-024.md",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-023.md",
+    "2026-06-16_0147.md",
+    "2026-06-16_0143.md",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-004.md",
+    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-025.md",
+    "2026-06-15_0028_returnmax-medium-016.md",
+    "2026-06-16_0808.md",
+    "assets/Pasted image 20260616082329.png",
+    "assets/Pasted image 20260616082242.png",
+    "assets/Pasted image 20260616082149.png",
+    "schema-test-report-6-16-2026-12-38-11-AM.html",
+    "schema-test-report-6-16-2026-12-38-11-AM 1.html",
     "misc/schema-test-report-6-16-2026-12-38-11-AM.html",
     "misc",
-    "schema-test-report-6-16-2026-12-38-11-AM 1.html",
-    "schema-test-report-6-16-2026-12-38-11-AM.html",
+    "2026-06-16_0038.md",
     "2026-06-16_0008_deduction-totals.md",
     "2026-06-16_0000_add-edit-behavior.md",
-    "assets/Pasted image 20260616001248.png",
-    "assets/Pasted image 20260616001204.png",
-    "assets/Pasted image 20260616001037.png",
     "2026-06-15_2248.md",
-    "assets/Pasted image 20260615224902.png",
-    "assets/Pasted image 20260615224849.png",
-    "assets/Pasted image 20260615224835.png",
     "2026-06-15_1629.md",
-    "assets/Pasted image 20260615162937.png",
-    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-004.md",
-    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-029.md",
-    "returnmax-test-batch/returnmax-test-batch.base",
-    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-023.md",
-    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-025.md",
-    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-024.md",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-017.md.tmp.3872086.392feb613377",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-024.md.tmp.3469938.f0d0665bac6e",
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-024.md.tmp.3469938.c9186e0fc2cc",
@@ -332,21 +306,6 @@
     "returnmax-test-batch/2026-06-14_1939_returnmax-medium-014.md",
     "Boards/ServiceNow Tasks.md",
     "pinned/TASK LIST.md",
-    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-026.md",
-    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-017.md",
-    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-013.md",
-    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-011.md",
-    "returnmax-test-batch/2026-06-14_1939_returnmax-medium-010.md",
-    "2026-06-14_1103_returnmax-medium-002.md",
-    "2026-06-14_1106_returnmax-medium-017.md",
-    "2026-06-14_1106_returnmax-medium-011.md",
-    "2026-06-14_1105_returnmax-medium-010.md",
-    "2026-06-14_1105_returnmax-medium-008.md",
-    "2026-06-14_1104_returnmax-medium-003.md",
-    "standup/youtube/2026-05-13_1654.md",
-    "assets/medium-010-ctc.png",
-    "assets/medium-009-tax-home.png",
-    "assets/medium-008-results.png",
     "2026-06-04_expert-review.canvas"
   ]
 }
