@@ -114,4 +114,4 @@ Docker multi-stage build → standalone Next.js output → Node 20-slim runtime.
 - [[2026-02-12-service-category]] — Service categories
 - [[2026-02-12-radix-migration]] — Radix UI migration
 - [[2026-02-12-current-state]] — Project state snapshot
-- [[About]] — About page content
+- [[2026-01-31_1012_About]] — About page content

@@ -15,7 +15,7 @@ kanban-plugin: board
 - [ ] [[2026-02-27_standup]]
 - [ ] [[2026-02-27_knowledge-article-settings]]
 - [ ] [[2026-02-28_table-views]]
-- [ ] [[Autonomous-coding-agent]]
+- [ ] [[2026-04-29_1604_Autonomous-coding-agent]]
 - [ ] [[2026-03-02_013_open-entry]]
 - [ ] [[2026-03-02_015_cleanup]]
 

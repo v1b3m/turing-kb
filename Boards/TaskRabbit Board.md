@@ -52,7 +52,7 @@ kanban-plugin: board
 - [ ] [[2026-02-12-feature-summarised]]
 - [ ] [[2026-02-12-branch-analysis]]
 - [ ] [[2026-02-12-init]]
-- [ ] [[About]]
+- [ ] [[2026-01-31_1012_About]]
 - [ ] [[2026-02-12-tasker-profiles]]
 - [ ] [[2026-02-12-current-state]]
 - [ ] [[2026-02-12-fb-cleaning]]
