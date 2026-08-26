@@ -177,6 +177,14 @@ zip -qr gen-<task>-vN.zip gen-<task> \
   - FIXED_AND_VERIFIED for the Layer-2 Difficulty redesign.
 - g710's final statuses: 9 PASS / 1 FIXED_AND_VERIFIED / 4 N/A.
 - Keep a local draft as CSV first (`pg/packaging/review_rows_draft.csv`) for transcription.
+### The tool and the aid files
+
+- **The tool**: the review form is a Google Apps Script web app (per-task URL — g710's exec URL in the links index). It is the only generator of review.csv; the file it outputs is the one that goes to Drive. **All 4 fields of all 14 sections are required: 56 values, no empty cells** (empty strings fail; use "None." or "None - <reason>" instead of leaving a gap). Accepted statuses are exactly `PASS` / `FIXED_AND_VERIFIED` / `N/A`.
+- **The aid files** (build per task in `pg/packaging/`, never zipped):
+  - `review_form_document.md` — the complete 14-section answer document (g710's, verbatim, is the Stage D block below).
+  - `review_rows_draft.csv` — 5-column CSV shaped exactly like the form output (`review_check,status,review_notes,change_made,what_to_record`), one row per section, filled, then transcribed row-by-row. Blank template here: [`review_form_draft_template.csv`](review_form_draft_template.csv).
+  - Transcribe against the form section list, then round-trip-check the draft parses as CSV (BOM included in the real export — normal).
+
 - The complete filled document lives at `pg/packaging/review_form_document.md` — below is the whole thing, field by field.
 
 ### The 14 sections, field by field (g710's actual filled values)
