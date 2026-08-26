@@ -1,6 +1,6 @@
 {
   "cssTheme": "Obsidian Nord",
-  "interfaceFontFamily": "Space Mono",
-  "textFontFamily": "Space Mono",
-  "monospaceFontFamily": "Space Mono"
+  "interfaceFontFamily": "Lucida Console,Space Mono",
+  "textFontFamily": "Lucida Console,Space Mono",
+  "monospaceFontFamily": "Lucida Console,Space Mono"
 }
