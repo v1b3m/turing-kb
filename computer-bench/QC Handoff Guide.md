@@ -7,6 +7,22 @@ Written 2026-08-27 after the full `gen-g710-dev-retainer-billing-audit` journey 
 This is the **day-to-day working doc**: the exact steps, files, links and traps.
 The Re-cut doc is the spec; this is the loop you actually walk.
 
+**Contents**
+
+1. [The pipeline map](#0-the-pipeline-map)
+2. [Stage A — design & hardening](#1-stage-a--design--hardening-the-part-that-takes-weeks-or-minutes)
+3. [Stage B — verifier suite & Quality Guide audit](#2-stage-b--verifier-suite--quality-guide-audit)
+4. [Local verification](#3-local-verification)
+5. [Stage C — packaging the bundle](#4-stage-c--packaging-the-bundle)
+6. [Stage D — QC review form](#5-stage-d--qc-review-form)
+7. [Stage E — the Delivery Gate](#6-stage-e--the-delivery-gate-the-traps-lived-here)
+8. [Drive folder & manual artifacts](#7-drive-folder--manual-artifacts)
+9. [Stage F — labelling tool](#8-stage-f--labelling-tool-the-final-step)
+10. [Discipline checklist](#9-discipline-checklist-never-break-these)
+11. [Gotchas](#10-gotchas--one-liners-the-pain-list)
+12. [Links index](#11-links-index)
+13. [g710 one-page after-action](#12-g710-one-page-after-action-for-scale)
+
 ---
 
 ## 0. The pipeline map
@@ -66,16 +82,17 @@ Also used: Google Drive task folder (the record store: review.csv + qc_report.ht
 ### Verifier quality guide = the audit baseline
 
 The guide (in this folder) defines 7 failure modes (e.g. one-literal anti-pattern, wording-roulette regexes over free text, self-report grading, golden exposure) and the **three-question acceptance test** for every check:
+
 - **A — what requirement?** (which instruction sentence mandates this check)
 - **B — why sufficient?** (does it get the full requirement)
 - **C — why permissive?** (what legitimate variance it must tolerate — wording, casing, date formats, code variants)
 
 Then run a **forward pass** (instruction items → implied checks, tick each in the manifest) and a **backward pass** (every manifest check → instruction sentence; if it doesn't map, it's an Extra — delete, unless the spec deliberately floors something like stub-memo length).
 
-### Engine mechanics (tests/rl_world_verifiers) — read this before judging a check
+### Engine mechanics (`tests/rl_world_verifiers`) — read this before judging a check
 
 - Checks: `check_path_exists`, `extract_text` (memo), `read_rows` (CSV, JSONPath `&` filters per row), `read_file` (results.json).
-- Comparisons: `equals` (bool/type-aware: JSON number `"3865.49"` == `3865.49`), `contains` (**case-sensitive** substring), `regex_match` (Python `re`, inline flags `(?i)`, `(?mi)`).
+- Comparisons: `equals` (bool/type-aware: JSON number `"3865.49"` equals `3865.49`), `contains` (**case-sensitive** substring), `regex_match` (Python `re`, inline flags `(?i)`, `(?mi)`).
 - Expected values live at the **assertion level** (inside each check), NOT in a `.deterministic` dict — don't scan the wrong level when auditing.
 - Reward = weighted pass fraction (g710: 96 checks, equal weights ≈ 1/96; Mode 5 partial credit).
 - Additive rules: widen acceptance (regex for month variants `(?i)\b(?:june|2026-06|jun)\b`) but never make checks assert more than the instruction mandates (that's the wording-roulette trap — g710 deleted two "explain the trap" memo regexes for it).
@@ -139,14 +156,14 @@ gen-<task>/                    ← folder root = zip root; zip name gen-<task>-v
 └── review.csv                 ← from the QC form (Turing account)
 ```
 
-### Assembling `evaluations/` from harbor job dirs (pg/packaging/assemble_evaluations.py)
+### Assembling `evaluations/` from harbor job dirs (`pg/packaging/assemble_evaluations.py`)
 
 Trial dir = the subdir containing both `agent/` and `verifier/`. Mapping:
 
 - `agent/trajectory.json` — copy.
 - `config.json` — copy (difficulty only; solvability has none).
 - **`result.json` must be REBUILT** — harbor's has none of the required fields:
-  `model: "GLM-5.2"`, `overall_pass` (reward==1.0), `final_answer` (extract from ATIF `steps[].message` — the field is `message` (string or dict w/ content list), **NOT** `output`), `reward`, judge provenance (deterministic/rl_world/manifest).
+  `model: "GLM-5.2"`, `overall_pass` (reward 1.0), `final_answer` (extract from ATIF `steps[].message` — the field is `message` (string or dict with content list), **NOT** `output`), `reward`, judge provenance (deterministic/rl_world/manifest).
 - `verifier/reward.json` ← reward.txt, shape `{"reward": 1.0}`.
 - `verifier/verifier_summary.json` ← parsed from `test-stdout.txt` (`PASSED|FAILED …test_deliverable[checkname]` lines) → `{items:[{name,passed}], summary:{total,passed,failed,pass_rate}}`.
   **ctrf.json collapses all 96 checks into ONE node — useless. Use test-stdout.txt.**
@@ -168,84 +185,108 @@ zip -qr gen-<task>-vN.zip gen-<task> \
 
 ## 5. Stage D — QC review form
 
-- Single form URL per task (the Apps Script endpoint; kept in the vault).
-- **14 sections** (Layer 1×3, Layer 2×4, Layer 3, Layer 4×3, Layer 5×3, Cross-trial).
-- Fields per section — **all required**: `Status` (PASS / FIXED_AND_VERIFIED / N/A), `Review Notes`, `Changes Made`, `What to Record`.
-- Conventions that worked:
-  - `"None."` as change_made where nothing changed; `"None - <reason>"` for what_to_record on N/A rows.
-  - N/A is for genuinely-not-applicable: Connectors (native non-connector task), LLM judge consistency (deterministic only), Stability + Cross-trial Calibration (**"Turing runs this."** one-liner note — these are Turing-side; *do not* write more).
-  - FIXED_AND_VERIFIED for the Layer-2 Difficulty redesign.
-- g710's final statuses: 9 PASS / 1 FIXED_AND_VERIFIED / 4 N/A.
-- Keep a local draft as CSV first (`pg/packaging/review_rows_draft.csv`) for transcription.
 ### The tool and the aid files
 
 - **The tool**: the review form is a Google Apps Script web app (per-task URL — g710's exec URL in the links index). It is the only generator of review.csv; the file it outputs is the one that goes to Drive. **All 4 fields of all 14 sections are required: 56 values, no empty cells** (empty strings fail; use "None." or "None - <reason>" instead of leaving a gap). Accepted statuses are exactly `PASS` / `FIXED_AND_VERIFIED` / `N/A`.
 - **The aid files** (build per task in `pg/packaging/`, never zipped):
-  - `review_form_document.md` — the complete 14-section answer document (g710's, verbatim, is the Stage D block below).
-  - `review_rows_draft.csv` — 5-column CSV shaped exactly like the form output (`review_check,status,review_notes,change_made,what_to_record`), one row per section, filled, then transcribed row-by-row. Blank template here: [`review_form_draft_template.csv`](review_form_draft_template.csv).
+  - `review_form_document.md` — the complete 14-section answer document (g710's, verbatim, is the field-by-field block below).
+  - `review_rows_draft.csv` — 5-column CSV shaped exactly like the form output (`review_check,status,review_notes,change_made,what_to_record`), one row per section, filled, then transcribed row-by-row. Blank template: [review_form_draft_template.csv](review_form_draft_template.csv).
   - Transcribe against the form section list, then round-trip-check the draft parses as CSV (BOM included in the real export — normal).
+- **The Apps Script pitfall**: the form's "Submit and upload to Google" errors with `You do not have permission to call UrlFetchApp.fetch… script.external_request`. Workaround: write the form anyway, then **download review.csv manually** and **add it to the Drive task folder manually**.
+- The exported review.csv carries a UTF-8 BOM — it's normal, don't "fix" it.
 
-- The complete filled document lives at `pg/packaging/review_form_document.md` — below is the whole thing, field by field.
+### Conventions that worked
+
+- `"None."` as change_made where nothing changed; `"None - <reason>"` for what_to_record on N/A rows.
+- N/A is for genuinely-not-applicable: Connectors (native non-connector task), LLM judge consistency (deterministic only), Stability + Cross-trial Calibration (**"Turing runs this."** one-liner note — these are Turing-side; *do not* write more).
+- FIXED_AND_VERIFIED for the Layer-2 Difficulty redesign.
+- g710's final statuses: 9 PASS / 1 FIXED_AND_VERIFIED / 4 N/A.
 
 ### The 14 sections, field by field (g710's actual filled values)
 
-**1 · Layer 1 Package consistency** — PASS.
-Notes: task.toml, instruction.md, tests/manifest.json and the deliverables block name the same three outputs (retainer_billing_audit.csv, retainer_memo.md, results.json); columns/codes match RB-1 v2; solution/golden_trajectory.json (ATIF-v1.7, promoted from a reward-1.0 run) present; evaluations/difficulty/r1..r4 + solvability/r1 assembled per spec; no loose files under evaluations/, no job-level config/lock/log/result.json.
-Changes: None. Record: Read task.toml, instruction.md, manifest.json, README.md side by side; checked deliverable names, manifest check names vs instruction items, and the full bundle tree.
+**1 · Layer 1 Package consistency** — PASS
 
-**2 · Layer 1 Clarity and scope** — PASS.
-Notes: Cold read: one paragraph of context, the asks (recompute per contract terms against RB-1; CSV + memo + results.json), and the variance/credit semantics defined up front. The standard supplies B0-B6 and the finding codes; no step-by-step recipe, no dumped column list.
-Changes: None. Record: Cold-read instruction.md + standard; listed every guess; each guess answered by B0/B5/B6 or stated in the instruction; every manifest check traces to a sentence.
+- **Review notes:** task.toml, instruction.md, tests/manifest.json and the deliverables block name the same three outputs (retainer_billing_audit.csv, retainer_memo.md, results.json); columns/codes match RB-1 v2; solution/golden_trajectory.json (ATIF-v1.7, promoted from a reward-1.0 run) present; evaluations/difficulty/r1..r4 + solvability/r1 assembled per spec; no loose files under evaluations/, no job-level config/lock/log/result.json.
+- **Changes made:** None.
+- **What to record:** Read task.toml, instruction.md, manifest.json, README.md side by side; checked deliverable names, manifest check names vs instruction items, and the full bundle tree.
 
-**3 · Layer 1 Realism and leakage** — PASS.
-Notes: The brief reads as a real finance-committee audit request and the standard is a plausible internal policy. No leakage: no totals or counts stated anywhere, no hint-side columns, no spelled-out result; the finding-code list is the policy's own error taxonomy. The billing months must be read from the register's month headers, not from the prompt.
-Changes: None. Record: Swept all inputs and the instruction for stated totals/hint names/methods; confirmed the gold figures appear nowhere outside solution/; verified the agent must derive the month set from the register blocks.
+**2 · Layer 1 Clarity and scope** — PASS
 
-**4 · Layer 2 Difficulty** — **FIXED_AND_VERIFIED**.
-Notes: The mined single-month register task was too easy: after its two task-owned round-1 defects were fixed it passed ~100% for GLM-5.2 and DeepSeek through rounds 2-4 (register exhaustivity and proration both solved clean first-shot; every 0.0 run was a verifier representation artifact or infra, never domain reasoning). Redesigned as a coupled two-month audit: terms in contracts.csv, rules in RB-1 v2, credits in the register — no single source suffices; B6 credits make July's variance depend on June's audited shortfall; near-dup client names; one blank overage rate; five renewal varieties plus one no-change guard; proration with 30/31-day denominators. 48 → 32 client-months after evidence the 48-row ledger made GLM-5.2's single-reasoning-block plan hit its token ceiling before writing; all rule interactions preserved (16 clients × 2 months).
-Changes: Rewrote environment/input/retainer_billing_standard.md as RB-1 v2 (B0-B6 + finding codes); added environment/input/retainer_contracts.csv (per-client term rows, renewals); re-issued the register as two month-blocked sections with a credit_note_usd column, narrowed to the 16 active clients; rewrote instruction.md (variance definition, results.json structure, recompute-in-a-script guidance); rebuilt tests/verifier.json and wrote tests/manifest.json (96 checks); regenerated solution/files gold.
-Record: Oracle re-run on the packaged state: 1.0, 96/96 (17s). Fresh 4-run GLM-5.2 battery: rewards 0.0, 0.0, 1.0, 0.0 — 1/4, inside the accepted 1-3/4 band (evaluations/difficulty/r1..r4/verifier/reward.json). Solvability: independent reward-1.0 rollout (evaluations/solvability/r1).
+- **Review notes:** Cold read: one paragraph of context, the asks (recompute per contract terms against RB-1; CSV + memo + results.json), and the variance/credit semantics defined up front. The standard supplies B0-B6 and the finding codes; no step-by-step recipe, no dumped column list.
+- **Changes made:** None.
+- **What to record:** Cold-read instruction.md + standard; listed every guess; each guess answered by B0/B5/B6 or stated in the instruction; every manifest check traces to a sentence.
 
-**5 · Layer 2 Solvability** — PASS.
-Notes: The task is solvable: two independent GLM-5.2 rollouts solved it 96/96; the oracle solves it deterministically; 1x (reward 1.0, non-oracle) is promoted as solvability/r1.
-Changes: None. Record: Ran the audit via the generator and matched the gold against the 96 checks; verified both reward-1.0 rollouts; solvability/r1/result.json carries model GLM-5.2, overall_pass true, reward 1.0.
+**3 · Layer 1 Realism and leakage** — PASS
 
-**6 · Layer 2 Stability** — **N/A**.
-Notes: Turing runs this. Changes: None. Record: None — Turing re-runs the verifier against the frozen rollout.
+- **Review notes:** The brief reads as a real finance-committee audit request and the standard is a plausible internal policy. No leakage: no totals or counts stated anywhere, no hint-side columns, no spelled-out result; the finding-code list is the policy's own error taxonomy. The billing months must be read from the register's month headers, not from the prompt.
+- **Changes made:** None.
+- **What to record:** Swept all inputs and the instruction for stated totals/hint names/methods; confirmed the gold figures appear nowhere outside solution/; verified the agent must derive the month set from the register blocks.
 
-**7 · Layer 3 Oracle Mode** — PASS.
-Notes: Own oracle at 1.0 verified twice on the packaged task. Cross-mode replay is Turing's to run (single-mode deliverable task family).
-Changes: None. Record: harbor oracle runs on the final design: 1.0, 96 passed; re-run after the manifest rewrite: 1.0, 96/96, 17s; re-run after the guide fairness pass: 1.0, 96/96, 17s. No reward below 1.0 observed on repeated runs.
+**4 · Layer 2 Difficulty** — **FIXED_AND_VERIFIED**
 
-**8 · Layer 4 Environment and files** — PASS.
-Notes: python:3.12-slim image; inputs baked at /app/input via COPY; the verifier stack and tests are mounted fresh per run (always the packaged manifest/verifier, never stale); pinned local image verified with baked inputs after every input rebuild; agent rollouts complete in 6-8 min; deliverables land in /app.
-Changes: None. Record: Rebuilt the image with the final inputs and inspected it; ran oracle + 5 GLM rollouts plus one excluded config crash; no setup timeouts (setup-timeout multiplier 3).
+- **Review notes:** The mined single-month register task was too easy: after its two task-owned round-1 defects were fixed it passed ~100% for GLM-5.2 and DeepSeek through rounds 2-4 (register exhaustivity and proration both solved clean first-shot; every 0.0 run was a verifier representation artifact or infra, never domain reasoning). Redesigned as a coupled two-month audit: terms in contracts.csv, rules in RB-1 v2, credits in the register — no single source suffices; B6 credits make July's variance depend on June's audited shortfall; near-dup client names; one blank overage rate; five renewal varieties plus one no-change guard; proration with 30/31-day denominators. 48 → 32 client-months after evidence the 48-row ledger made GLM-5.2's single-reasoning-block plan hit its token ceiling before writing; all rule interactions preserved (16 clients × 2 months).
+- **Changes made:** Rewrote environment/input/retainer_billing_standard.md as RB-1 v2 (B0-B6 + finding codes); added environment/input/retainer_contracts.csv (per-client term rows, renewals); re-issued the register as two month-blocked sections with a credit_note_usd column, narrowed to the 16 active clients; rewrote instruction.md (variance definition, results.json structure, recompute-in-a-script guidance); rebuilt tests/verifier.json and wrote tests/manifest.json (96 checks); regenerated solution/files gold.
+- **What to record:** Oracle re-run on the packaged state: 1.0, 96/96 (17s). Fresh 4-run GLM-5.2 battery: rewards 0.0, 0.0, 1.0, 0.0 — 1/4, inside the accepted 1-3/4 band (evaluations/difficulty/r1..r4/verifier/reward.json). Solvability: independent reward-1.0 rollout (evaluations/solvability/r1).
 
-**9 · Layer 4 Connectors, MCPs, and CLIs** — **N/A**.
-Notes: Native non-connector task: no connector manifest, no environment/mcp/ folder, no external API/DB — all data is in environment/input/ and grading is an in-container deterministic verifier suite.
-Changes: None. Record: None — the check is N/A for native non-connector tasks.
+**5 · Layer 2 Solvability** — PASS
 
-**10 · Layer 4 Deliverables and artifact quality** — PASS.
-Notes: retainer_billing_audit.csv: exactly the 8 declared columns, one row per client-month in the register (32 = 16 × 2), findings in the declared code order, paused clients carry only BILLED_WHILE_PAUSED. retainer_memo.md names each finding by client and month and is substantive (>900 chars, uses the computed figures). results.json: months 2026-06/2026-07, six declared keys each, totals recompute from the CSV.
-Changes: None. Record: Checked the gold by hand: documented credits (CL-02 200.00, CL-04 650.00) relieve their July shortfalls, unsubstantiated credit (CL-12 July 300.00) does not; zero-usage CL-06 correct-not-flagged; partial-month maths CL-13 350.00 / CL-15 74.19 / CL-22 235.48 / CL-24 43.55; then against all 96 checks via the oracle (1.0).
+- **Review notes:** The task is solvable: two independent GLM-5.2 rollouts solved it 96/96; the oracle solves it deterministically; 1x (reward 1.0, non-oracle) is promoted as solvability/r1.
+- **Changes made:** None.
+- **What to record:** Ran the audit via the generator and matched the gold against the 96 checks; verified both reward-1.0 rollouts; solvability/r1/result.json carries model GLM-5.2, overall_pass true, reward 1.0.
 
-**11 · Layer 5 Verifier coverage and fairness** — PASS.
-Notes: Forward and backward mapping done: every one of the 96 checks maps to exactly one instruction item. No category-secondary checks exist to delete. The only regexes are value-based: an anchored header-column match, a 900+ character floor, and two case-insensitive month-equivalence matches (June/2026-06/Jun, July/2026-07/Jul) — no phrasing sensitivity beyond accepting variant month naming. Nothing grades the model's self-report: every figure is recomputed from the artifact by the grader. Only the 3 existence checks always pass (3/96 — no meaningful free-point floor).
-Changes: Audited against the 26-Aug Verifier Quality Guide: widened memo_mentions_june/july to the case-insensitive equivalence regexes above and pinned the finding-code join order in instruction.md; oracle re-run after the change 1.0 (96/96, 17s).
-Record: Forward pass: listed the verifiers instruction.md implies, ticked each against manifest.json. Backward pass for every manifest check. Local replay 96/96; negative test: mutating CL-13 July variance and CL-05 July finding failed exactly those two checks.
+**6 · Layer 2 Stability** — **N/A**
 
-**12 · Layer 5 LLM judge consistency** — **N/A**.
-Notes: Deterministic verifier suite only (check_path_exists, extract_text, read_rows, read_file; equals/regex_match/contains with JSONPath) — no LLM-judged rubric exists, so there is no judge to be inconsistent.
-Changes: None. Record: None — there is no LLM-judged rubric in the suite.
+- **Review notes:** Turing runs this.
+- **Changes made:** None.
+- **What to record:** None — Turing re-runs the verifier against the frozen rollout.
 
-**13 · Layer 5 Reward hacking and exploitability** — PASS.
-Notes: The agent container sees only /app (writable) and /app/input — no solution/ gold, no verifier state, no golden_trajectory. Expected values are recomputed from the artifact the model writes (read_rows on its CSV, read_file on its results.json, extract_text on its memo), so a hardcoded value would have to satisfy 64 per-row plus 12 derived-month checks coherently. No trajectory/self-report grading; no placeholder or transcript surface.
-Changes: None. Record: Ran the reward-hacking audit from the guide: gold unreadable from the container, no writes to verifier state, no spoofable strings (identifiers only for contains), all checks recompute; probed a minimal solution (3 existence checks only = 3/96, no floor rescue).
+**7 · Layer 3 Oracle Mode** — PASS
 
-**14 · Cross-trial Calibration** — **N/A**.
-Notes: Turing runs this. Changes: None. Record: None — Turing runs cross-trial calibration.
-- **The Apps Script pitfall**: the form's "Submit and upload to Google" errors with `You do not have permission to call UrlFetchApp.fetch… script.external_request`. Workaround: write the form anyway, then **download review.csv manually** and **add it to the Drive task folder manually**.
-- The exported review.csv carries a UTF-8 BOM — it's normal, don't "fix" it.
+- **Review notes:** Own oracle at 1.0 verified twice on the packaged task. Cross-mode replay is Turing's to run (single-mode deliverable task family).
+- **Changes made:** None.
+- **What to record:** harbor oracle runs on the final design: 1.0, 96 passed; re-run after the manifest rewrite: 1.0, 96/96, 17s; re-run after the guide fairness pass: 1.0, 96/96, 17s. No reward below 1.0 observed on repeated runs.
+
+**8 · Layer 4 Environment and files** — PASS
+
+- **Review notes:** python:3.12-slim image; inputs baked at /app/input via COPY; the verifier stack and tests are mounted fresh per run (always the packaged manifest/verifier, never stale); pinned local image verified with baked inputs after every input rebuild; agent rollouts complete in 6-8 min; deliverables land in /app.
+- **Changes made:** None.
+- **What to record:** Rebuilt the image with the final inputs and inspected it; ran oracle + 5 GLM rollouts plus one excluded config crash; no setup timeouts (setup-timeout multiplier 3).
+
+**9 · Layer 4 Connectors, MCPs, and CLIs** — **N/A**
+
+- **Review notes:** Native non-connector task: no connector manifest, no environment/mcp/ folder, no external API/DB — all data is in environment/input/ and grading is an in-container deterministic verifier suite.
+- **Changes made:** None.
+- **What to record:** None — the check is N/A for native non-connector tasks.
+
+**10 · Layer 4 Deliverables and artifact quality** — PASS
+
+- **Review notes:** retainer_billing_audit.csv: exactly the 8 declared columns, one row per client-month in the register (32 = 16 × 2), findings in the declared code order, paused clients carry only BILLED_WHILE_PAUSED. retainer_memo.md names each finding by client and month and is substantive (>900 chars, uses the computed figures). results.json: months 2026-06/2026-07, six declared keys each, totals recompute from the CSV.
+- **Changes made:** None.
+- **What to record:** Checked the gold by hand: documented credits (CL-02 200.00, CL-04 650.00) relieve their July shortfalls, unsubstantiated credit (CL-12 July 300.00) does not; zero-usage CL-06 correct-not-flagged; partial-month maths CL-13 350.00 / CL-15 74.19 / CL-22 235.48 / CL-24 43.55; then against all 96 checks via the oracle (1.0).
+
+**11 · Layer 5 Verifier coverage and fairness** — PASS
+
+- **Review notes:** Forward and backward mapping done: every one of the 96 checks maps to exactly one instruction item. No category-secondary checks exist to delete. The only regexes are value-based: an anchored header-column match, a 900+ character floor, and two case-insensitive month-equivalence matches (June/2026-06/Jun, July/2026-07/Jul) — no phrasing sensitivity beyond accepting variant month naming. Nothing grades the model's self-report: every figure is recomputed from the artifact by the grader. Only the 3 existence checks always pass (3/96 — no meaningful free-point floor).
+- **Changes made:** Audited against the 26-Aug Verifier Quality Guide: widened memo_mentions_june/july to the case-insensitive equivalence regexes above and pinned the finding-code join order in instruction.md; oracle re-run after the change 1.0 (96/96, 17s).
+- **What to record:** Forward pass: listed the verifiers instruction.md implies, ticked each against manifest.json. Backward pass for every manifest check. Local replay 96/96; negative test: mutating CL-13 July variance and CL-05 July finding failed exactly those two checks.
+
+**12 · Layer 5 LLM judge consistency** — **N/A**
+
+- **Review notes:** Deterministic verifier suite only (check_path_exists, extract_text, read_rows, read_file; equals/regex_match/contains with JSONPath) — no LLM-judged rubric exists, so there is no judge to be inconsistent.
+- **Changes made:** None.
+- **What to record:** None — there is no LLM-judged rubric in the suite.
+
+**13 · Layer 5 Reward hacking and exploitability** — PASS
+
+- **Review notes:** The agent container sees only /app (writable) and /app/input — no solution/ gold, no verifier state, no golden_trajectory. Expected values are recomputed from the artifact the model writes (read_rows on its CSV, read_file on its results.json, extract_text on its memo), so a hardcoded value would have to satisfy 64 per-row plus 12 derived-month checks coherently. No trajectory/self-report grading; no placeholder or transcript surface.
+- **Changes made:** None.
+- **What to record:** Ran the reward-hacking audit from the guide: gold unreadable from the container, no writes to verifier state, no spoofable strings (identifiers only for contains), all checks recompute; probed a minimal solution (3 existence checks only = 3/96, no floor rescue).
+
+**14 · Cross-trial Calibration** — **N/A**
+
+- **Review notes:** Turing runs this.
+- **Changes made:** None.
+- **What to record:** None — Turing runs cross-trial calibration.
 
 ---
 
@@ -263,6 +304,7 @@ Notes: Turing runs this. Changes: None. Record: None — Turing runs cross-trial
 Finding (l5.reward_hacking): "tests/verifier.json contains all 96 expected answers as literal values, and test_outputs.py is designed for local execution in the agent's container, so an agent can read the spec and copy the expected findings…"
 
 **Empirical refutation** (run the check's own verify steps live):
+
 - `docker inspect <container>` at creation → mounts = exactly the 3 `/logs` binds; **no `/tests`**.
 - Agent phase: `ls /tests` → "no such file"; `find / -name verifier.json` → nothing.
 - After grading starts: `/tests/verifier.json` exists (grade-time injection only).
@@ -272,7 +314,7 @@ Finding (l5.reward_hacking): "tests/verifier.json contains all 96 expected answe
 
 **The dispute note** (what goes in `human_review.json.dispositions[<finding-id>].note` — that IS the delivered record):
 
-```
+```text
 **Dispute — premise verified false.** Ran the check's own verify step in the agent container: agent phase `ls /tests` → no such file; `find / -name "verifier.json"` → nothing. `/tests` appears only when grading starts — grade-time injection only; `docker inspect` shows no `/tests` mount at creation. The passing GLM-5.2 rollout's own log confirms `ls /app` shows only `input/`. `test_outputs.py` is the verifier-phase grader, not an agent-side loop; literal `expected` values are the client-mandated manifest shape. Oracle 1.0 (96/96); negative test fails exactly the two mutated checks. **Caveat:** if the agent platform ever mounts the bundle into the agent workspace, the finding would hold for the whole family — platform-side mounts should exclude grading inputs. **Resolution: disputed.**
 ```
 
@@ -312,7 +354,7 @@ URL: `https://labeling-g.turing.com/conversations/<task-id>/view` (g710: task **
 
 Trainer notes (g710 final, ~1.1k chars) — submitted verbatim:
 
-```
+```text
 Redesigned from a mined single-month register audit into a coupled two-month task: terms in retainer_contracts.csv, rules in RB-1 v2 (B0-B6, incl. B5 proration and B6 compensation credits coupling June's audited shortfall to July's variance), two-month register, 32 client-months. Verifier suite rebuilt to 96 checks; oracle 1.0 (96/96, 17s), verified three times. Measured difficulty: 4-run GLM-5.2 battery 1/4, inside the 1-3/4 band; every completed run scored 96/96; failures are the model's single-reasoning-block plan hitting the per-step token ceiling before writing anything (strategy, not rule errors); independent solvability run 1.0. Audited against the 2026-08-25 Verifier Quality Guide: month-name checks widened to case-insensitive June/2026-06/Jun + July/2026-07/Jul, finding-code join order pinned, README count corrected. Review: 9 PASS / 1 FIXED_AND_VERIFIED / 4 N/A. Delivery gate: reward_hacking finding disputed with container-level evidence (tests/ injected only at grade time; literal expectations are the client-mandated manifest shape), cleared on re-run.
 ```
 
