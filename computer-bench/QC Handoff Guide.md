@@ -40,7 +40,7 @@ Three human-facing surfaces, three artifact stores:
 | Harbor | local (`harbor run` in `~/obi-eval`) | oracle + agent runs, job dirs in `~/obi-eval/jobs` |
 | QC Control | https://qc-api-713053229214.us-central1.run.app/ (IAP — needs your Google auth; **no public/API links**) | upload zip → Delivery Gate → report download → Submit to pipeline. `…/resources#…` anchors are the run instructions |
 | Review form | Google Apps Script (per-task; URL in the guides below) | the 14-section review → `review.csv` |
-| Labelling tool | https://labeling-g.turing.com/conversations/<task-id>/view | final metadata submission: pass rate, links, notes |
+| Labelling tool | `https://labeling-g.turing.com/conversations/<task-id>/view` | final metadata submission: pass rate, links, notes |
 
 Also used: Google Drive task folder (the record store: review.csv + qc_report.html + golden-trajectory zip), git **local-only** on the task repo (no remote — the task link for labelling is the Drive folder, not a git URL).
 
@@ -187,7 +187,7 @@ zip -qr gen-<task>-vN.zip gen-<task> \
 
 ### The tool and the aid files
 
-- **The tool**: the review form is a Google Apps Script web app (per-task URL — g710's exec URL in the links index). It is the only generator of review.csv; the file it outputs is the one that goes to Drive. **All 4 fields of all 14 sections are required: 56 values, no empty cells** (empty strings fail; use "None." or "None - <reason>" instead of leaving a gap). Accepted statuses are exactly `PASS` / `FIXED_AND_VERIFIED` / `N/A`.
+- **The tool**: the review form is a Google Apps Script web app (per-task URL — g710's exec URL in the links index). It is the only generator of review.csv; the file it outputs is the one that goes to Drive. **All 4 fields of all 14 sections are required: 56 values, no empty cells** (empty strings fail; use "None." or `"None - <reason>"` instead of leaving a gap). Accepted statuses are exactly `PASS` / `FIXED_AND_VERIFIED` / `N/A`.
 - **The aid files** (build per task in `pg/packaging/`, never zipped):
   - `review_form_document.md` — the complete 14-section answer document (g710's, verbatim, is the field-by-field block below).
   - `review_rows_draft.csv` — 5-column CSV shaped exactly like the form output (`review_check,status,review_notes,change_made,what_to_record`), one row per section, filled, then transcribed row-by-row. Blank template: [review_form_draft_template.csv](review_form_draft_template.csv).
@@ -416,7 +416,7 @@ The g710 form metadata (from the downloaded `task-1251855-form-data.json`, `conv
 | Link | Use |
 |---|---|
 | https://qc-api-713053229214.us-central1.run.app/ | QC Control (IAP-auth). `…/resources#step-5`, `#new-version`, `#review-csv`, `#free-points`, `#division-of-labour` = run instructions |
-| https://labeling-g.turing.com/conversations/<id>/view | labelling tool (g710: 1251855) |
+| `https://labeling-g.turing.com/conversations/<id>/view` | labelling tool (g710: 1251855) |
 | https://script.google.com/a/macros/turing.com/s/AKfycbzi9BTJ8iVwPCCEGGaiaII9bKUwVl62mxkRpwGDfRYIKphxiDBfO-oF4B3A8Bc9AgYU/exec | the Apps Script review form engine (per-task URL kept in the vault) |
 | https://drive.google.com/drive/folders/1_aL6I7pynqKm_PuFHRvCJ3KC_yv5CdhS?usp=drive_link | g710 Drive record folder (task link) |
 | g710 QC-proof file | `https://drive.google.com/file/d/1ORQxpaestudP_Su2c7OxJPHgLOqTto-B/view?usp=sharing` |
