@@ -86,6 +86,19 @@ Broken attempts are a third thing, handled by **playbook §11.5** (added 2026-08
 - Every completed run scored 96/96 — **no rule error in any completed run**. The three failures are all one-shot token-ceiling deaths.
 - Solvability: independent reward-1.0 GLM-5.2 rollout. Oracle: 1.0 (96/96, 17s), verified repeatedly.
 
+### The g688 pilot lesson — what actually discriminates (2026-08-27)
+
+A diagnosis pilot (gen-g688-loan-file-risk-screen, parent task 000000, nothing submitted — its deliverable was the measurement below). It chased the question the g710 lesson leaves open: if stacking rules buys no difficulty, what does *actually* discriminate solvable from hard?
+
+- **The saturation mechanism is open-book determinism.** When every answer is derivable from the materials by inspection (14-file dossier; one verdict policy; ask "what is the verdict"), capable models saturate at 28/28 — DeepSeek did, on a task shaped to be honest. More rules or bigger stacks don't fix it: each added rule is just one more derivable look-up.
+- **The axes that discriminate are NOT "does the model know the domain"** — judgment quality, hierarchy sense (policy vs statute), and answer-format calibration came easily (DeepSeek 28/28, GLM 27/28). The two axes that actually cut:
+  1. **Noise discipline** — the discriminating work is *sifting*: dossiers full of fields that don't matter (a 31-row payroll, bank statements, marketing decoys) where the ask is prioritization, not expertise. Models that read sources in order and skim the noise pass; models that chase the loud field fail.
+  2. **Definitional margins** — verdict boundaries drawn *in the materials* (FLAG vs ESCALATE vs INSUFFICIENT_INFO; stale vs current guarantor statement cutoff). Where the document itself defines the line, models zigzag across it.
+- **Decoys are the error generator.** The single GLM miss was contamination: a decoy field (marketing brochure + alias in prior notes) pulled the model's verdict on its review point. Contamination risk is concentrated wherever the dossier *invites* reading the wrong source — that's where to spend edge density.
+- **Hardness = many small judgment calls with material-supported boundaries + one contamination field.** Not more rules, not stack scale, not pacing.
+- **Verification by definitions:** the accepted sets come from the answer text the materials define ("a published index" not an appraisal; "not an appraisal" phrasing in the collateral valuation), so honest answers pass and wrong directions still fail. Guard against goalpost-moving by canarying the *wrong* direction (oracle-consistent run 28/28; escalate-everything 28/28; decoy-lured run 21/28; bad-enum run 23/28 — lured and bad-enum must fail).
+- **Enumerability rule of thumb:** if the verifier grades rows by identifier (RP-01…RP-11), the identifier list must be IN the instruction — DS r2 got every verdict right and still scored 12/26 because the rows lacked identifiers the model was expected to invent.
+
 ---
 
 ## 2. Stage B — verifier suite & Quality Guide audit

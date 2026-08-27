@@ -206,7 +206,12 @@ Fixed parameters that matter:
   preceded by the design loop: cold-read `instruction.md` → inputs/policy →
   plain-English understanding → one representative case solved by hand →
   pressure-test questions → expected-verifier checklist → compare with the real
-  verifier → fill gaps (§2, §8 of the playbook; full prompts in §15).
+  verifier → fill gaps (§2, §8 of the playbook; full prompts in §15). For what
+  *actually* moves difficulty, read the QC Handoff Guide §1's **"the g710 lesson"**
+  (coupled reasoning — stacking rules buys nothing; the model's one-shot plan habit
+  is the real lever) and **"the g688 pilot lesson"** (saturation = open-book
+  determinism; the axes that discriminate are noise discipline and definitional
+  margins, with decoys as the error generator, not domain expertise).
 
 ### 6. Liveness checks while it runs
 
