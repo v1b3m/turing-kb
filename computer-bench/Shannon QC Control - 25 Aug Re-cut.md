@@ -18,83 +18,6 @@ tags:
 > - **`review.csv` comes from the review form now**, not a hand-edited template. See [Step 6](https://qc-api-713053229214.us-central1.run.app/resources#review-csv).
 > - **`qc_report.html` ships inside the bundle.** The client requires it at the task root — see [Step 5](https://qc-api-713053229214.us-central1.run.app/resources#step-5).
 
-## What are the client's goals
-
-The client's goals are to generate working (the tasks run fine) and accurate (the prompt is natural, the verifier is fair) tasks within their difficulty target, to train their model on their dataset (which we have mined to produce the base tasks). We have generated tasks to that spec. Your role is to help us ensure that these tasks are correct, accurate, functioning, and fair.
-
-## What is a good task
-
-The best and only way to do this well is to fully and properly learn what a good task is. The best analogy for this work is a teacher writing a test in school. The task is the test, the student is the AI.
-
-Imagine you were in school, the teacher gave you a test (the task) and graded you based on the verifier rubric. Your job is to write a good test and a good rubric for the AI.
-
-Your job is to take the draft tasks that come out of our system and use this framework to improve and correct them — like teachers taking a bad first draft of a test and turning it into a good, useful test that can actually honestly gauge a student's intelligence (the test = the tasks, the students = the AI).
-
-A good task is a test given to a student (the AI) that is:
-
-- functional, not broken, and hence can actually be learned (no software bugs)
-- *appropriately difficult* for the student (the client accepts 1, 2 or 3 of the four GLM runs passing — never 4 of 4)
-- honestly tests something the AI would be reasonably asked to do (prompt realism)
-- fairly and objectively grades the outcome (rubric correctness)
-- meets the formatting requirements required by the client (four GLM runs, one reward-1.0 run from a non-oracle model, the delivery QC report shipped in the bundle, file structure in the standard format)
-
-## How we measure success
-
-Our success is **not** dependent on hitting arbitrary criteria that we define. Our success, and the acceptance of a task, is *solely* dependent on the client. The client pays us per task, and that is why we can only pay on tasks accepted by the client, not by us or any QC system we have.
-
-> [!warning] There is no score any more
->
-> The client removed the score parameter on 25 Aug 2026. Chasing 95 or 85 is over: the bar is that
->
-> **all fourteen review areas come back clean**
->
-> and the client accepts the task. The QC platform still shows a score and still needs a Delivery Gate
->
-> `PASS`
->
-> before it will let you submit — treat that as our local gate, not the client's bar.
-
-The QC system is a *reasonable approximation* of what the client wants — we have gone through a few rounds of changes with it *because* we have gotten further feedback from the client on their requirements. Make your tasks as high quality as you can, because that increases the chances of acceptance.
-
-All of our systems are set up *to help* you get your tasks as good as possible. If they are good and meet the quality bar they will be accepted by the client as a paid task. This is also why we're not enforcing peer reviews at the moment — just the fact of tasks going through peer review doesn't ensure quality. What ensures quality is that everyone learns and works towards making tasks that **actually meet the bar of a "good task"**, not merely "completed".
-
-> There is no alternative to you going through the task itself, checking step by step if the task is sound engineering and logic wise, working, and well designed, just like if you were a teacher designing an appropriate and reasonable test or curriculum for your student. This is also what will maximize the chance of task acceptance the most, NOT any number on a report.
-
-## A lot of this work is debugging
-
-- Is the task functional at all — is the underlying data, connector tools working or buggy? Is the logic in the task correct or broken? Does the task have one right answer that can be graded, or is it very ambiguous?
-  - If it is buggy, wrong, broken, or ambiguous, can you fix it? If so, fix it; if not, drop it and move on. This is a lot of engineering work — a lot of bug fixing.
-- Is the task well designed at all — is it a realistic task that an AI would actually do, or contrived? Are there obvious issues like the prompt is overly prescriptive (too much information), or the answer is leaked in the prompt?
-  - If so, can you fix it? If not, drop it and move on.
-- Are the verifiers accurate / non-buggy, correctly scoped, and fairly grade the task?
-  - Does the verifier rubric actually grade the task accurately, or is it arbitrary, inaccurate, doesn't match up, and generally unfair? If the rubric has problems, can you fix it? If so, fix it; if not, drop it and move on. Are all the major items asked for in the prompt actually graded, and graded correctly? Or are the verifiers grading unfairly or grading items the model is not expected to do by the prompt?
-- Do you have all the formatting and artifacts required by the client? Again: four GLM runs, one reward-1.0 run from a non-oracle model, `review.csv` and `qc_report.html` inside the bundle, file structure in the standard format.
-
-## Do not game the system
-
-Our QC script is just a helper for you to make good tasks. If you make a good task, it will probably pass the QC system. However, if you are just trying to pass the QC system, that doesn't mean the task is good, and we or the client *will* catch those cases. This is called **reward hacking**, and we are very sensitive to rejecting it.
-
-If you game the system to just score high on the QC script — for example by making the verifiers arbitrarily easy or hard, or giving so much guidance in the prompt that it is not realistic — we or the client will find out that the prompt is actually not realistic, the verifier is actually broken, the task is actually unsound, and the task will not be accepted. It doesn't matter if the task got 95% on the delivery gate.
-
-Your job is not to climb a score. Your job is to do everything you can to ensure, debug, and test that this task is actually correct, well-designed, and sound before handing it off. That is the best way to maximize your likelihood of task acceptance.
-
-You *can* use AI to help you understand the task better and figure out what you need to fix. *You* need to make the decisions about what and how to fix those items — not just blindly telling AI to make modifications and blindly accepting them. One way to do this: ask the AI if the task is sound, if there are any correctness issues, structural or logic issues, or any other major issues of correctness that would block us from shipping this task to a client.
-
----
-
-# Resources · Shannon QC Control
-
-> [!info] What changed on 25 Aug 2026
->
-> The trainer flow was re-cut in the all-hands. If you learned this job before that date, these six are the differences:
->
-> - **Four GLM runs, not five.** A finished five-run task does not need re-running — see [the gates](https://qc-api-713053229214.us-central1.run.app/resources#the-job).
-> - **The client accepts 1, 2 or 3 of 4 passing.** 4 of 4 is rejected as too easy. Stop hardening once you are inside the band.
-> - **There is no score.** The bar is fourteen clean review areas, not 95.
-> - **Stability is Turing's to run**, not yours — along with Oracle mode and the 0-of-4 re-run. See [Who checks what](https://qc-api-713053229214.us-central1.run.app/resources#division-of-labour).
-> - **`review.csv` comes from the review form now**, not a hand-edited template. See [Step 6](https://qc-api-713053229214.us-central1.run.app/resources#review-csv).
-> - **`qc_report.html` ships inside the bundle.** The client requires it at the task root — see [Step 5](https://qc-api-713053229214.us-central1.run.app/resources#step-5).
-
 ## What the job actually is
 
 We build benchmark tasks: realistic, self-contained work packages that a frontier model (for us: **GLM-5.2**) tries to complete inside a Docker container. A grader ("verifier") then scores the model's output automatically.
@@ -131,6 +54,17 @@ Most tasks arrive from the mining team already working — and too easy. Expect 
 "Fully pass" means reward exactly **1.0** on that run. A run that passes 8 of 10 verifiers is not a pass. Always report all four individual rewards, not just the average.
 
 Those two gates are about the task. Separately, two files are about *you*: `README.md` and `review.csv`, both at the task root, both written by the reviewer. The QC platform blocks submission on `review.csv` specifically — see [§9](https://qc-api-713053229214.us-central1.run.app/resources#review-csv). Clearing both gates and forgetting the review record still cannot be handed over.
+
+
+## Do not game the system
+
+Our QC script is just a helper for you to make good tasks. If you make a good task, it will probably pass the QC system. However, if you are just trying to pass the QC system, that doesn't mean the task is good, and we or the client *will* catch those cases. This is called **reward hacking**, and we are very sensitive to rejecting it.
+
+If you game the system to just score high on the QC script — for example by making the verifiers arbitrarily easy or hard, or giving so much guidance in the prompt that it is not realistic — we or the client will find out that the prompt is actually not realistic, the verifier is actually broken, the task is actually unsound, and the task will not be accepted. It doesn't matter if the task got 95% on the delivery gate.
+
+Your job is not to climb a score. Your job is to do everything you can to ensure, debug, and test that this task is actually correct, well-designed, and sound before handing it off. That is the best way to maximize your likelihood of task acceptance.
+
+You *can* use AI to help you understand the task better and figure out what you need to fix. *You* need to make the decisions about what and how to fix those items — not just blindly telling AI to make modifications and blindly accepting them. One way to do this: ask the AI if the task is sound, if there are any correctness issues, structural or logic issues, or any other major issues of correctness that would block us from shipping this task to a client.
 
 ## Who checks what — you, and Turing
 
