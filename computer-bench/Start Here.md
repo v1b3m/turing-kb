@@ -8,7 +8,7 @@ tags:
 
 # Computer-bench — Start Here
 
-The end-to-end path for a computer-bench task, from design to pipeline submission. Each step has a one-line summary; the detailed docs are linked. The **working detail doc is [[QC Handoff Guide]]** — it carries every command, file, link and trap from the g710 journey. The **spec is [[Shannon QC Control - 25 Aug Re-cut.md]]**; this note is the map between the two.
+The end-to-end path for a computer-bench task, from design to pipeline submission. Each step has a one-line summary; the detailed docs are linked. The **working detail doc is [[QC Handoff Guide]]** — it carries every command, file, link and trap from the g710 journey. The **spec is [[Shannon QC Control - 25 Aug Re-cut.md]]**; this note is the map between the two. The flow is also wrapped in a ready-made Claude Code skill — [[computer-bench-run-skill.md]] — install it as `~/.claude/skills/computer-bench-run/SKILL.md` on any machine.
 
 ---
 
