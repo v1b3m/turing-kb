@@ -51,10 +51,12 @@ the corrections below.
 - **Never commit `.env`**, and **never include it (or scratch dirs like `pg/`,
   `.DS_Store`, `__pycache__`) in an upload package** — the packaging checklist
   excludes them, and a leaked key is a team incident.
-- **`environment/input/` is an editable lever since 2026-08-26** (lead-confirmed
-  — a register CSV may be rewritten to add difficulty). Never change it silently:
-  surface every input diff to the user. `instruction.md` and `tests/verifier.json`
-  (or the verifier scripts) remain the primary tuning surfaces.
+- **Hardening lever order: prompt → verifiers → input, last.** The first surface
+  is `instruction.md` (prompt), then `tests/verifier.json` (or the verifier
+  scripts), and only then `environment/input/` — which is an editable lever since
+  2026-08-26 (lead-confirmed — a register CSV may be rewritten to add difficulty),
+  but never the first resort. Never change `input/` silently: surface every input
+  diff to the user.
 - **Never run a battery (4 runs, per the 2026-08-25 re-cut) without the user's
   explicit approval.** The team shares a model-run cap; one run first, always.
 - **The run loop: DeepSeek first, then patch, then one GLM run.** A single

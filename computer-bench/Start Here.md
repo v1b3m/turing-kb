@@ -15,7 +15,7 @@ The end-to-end path for a computer-bench task, from design to pipeline submissio
 1. **Set up the environment** — harbor, docker image, model endpoints, QC Control access. `harbor run` lives in `~/obi-eval`, jobs in `~/obi-eval/jobs`.
    ➜ [[Set Up Guide]]
 
-2. **Design the task** — pick the difficulty target (1/5–2/5; re-cut band 1–3/4), keep the instruction human-voiced, remember `input/` is an editable lever since 2026-08-26. If the task is non-connector, follow the non-connector conventions.
+2. **Design the task** — pick the difficulty target (1/5–2/5; re-cut band 1–3/4), keep the instruction human-voiced, remember the hardening lever order: **prompt (`instruction.md`) → verifiers → `input/` last** (input IS an editable lever since 2026-08-26, just never the first resort). If the task is non-connector, follow the non-connector conventions.
    ➜ [[Computer Bench Task Quality Playbook - Daniel Sogbey.md]] · [[Non-Connector Guide]]
 
 3. **Write the verifier suite, then audit it** — deterministic checks (equals / contains / regex_match, JSONPath rows); each check must pass the *what requirement / why sufficient / why permissive* test. Why and how in the two verifier guides; the engine mechanics are in [[QC Handoff Guide]] Stage B.

@@ -1,5 +1,9 @@
 ---
-GLM_API_KEY: sk-DI5-UNWpBS6vNqGSQO6YCQ
+GLM_API_KEY: <your API key here>
+GLM_OPENAI_BASE: http://34.41.10.8:4000/v1
+DEEPSEEK_API_KEY: <your API key here>
+DEEPSEEK_OPENAI_BASE: https://api.deepseek.com
+DEEPSEEK_MODEL: deepseek-v4-flash-vision-exp
 ---
 # Company Bench: Running a Task Locally, From Scratch
 
