@@ -1,3 +1,10 @@
+---
+title: "Verifier Quality Guide"
+tags:
+  - computer-bench
+  - verifier
+  - qc
+---
 # Writing and Assessing Verifiers
 
 **1\. Purpose**
@@ -220,25 +227,25 @@ A verifier check without a clear answer to all three questions should not ship.
 
 When making changes to verifiers, make use of the following prompt that incorporates the feedback ( NOTE : Don’t accept the changes without reviewing them first, LLM can  make mistakes)
 
-\`\`\`
+```text
 
 Rewrite one benchmark task's verifiers to be fair, robust, and faithful to the instruction. Output JSON only — no prose, no code fences, no reasoning.
 
 FIX THESE DEFECTS:
 
-1\. Brittle regex → accept surface-form variants (markdown, case, hyphen/plural, word order, \`3\`==\`three\`). Keep exact values/IDs/counts deterministic; make prose checks rubric.
+1. Brittle regex → accept surface-form variants (markdown, case, hyphen/plural, word order, `3`==`three`). Keep exact values/IDs/counts deterministic; make prose checks rubric.
 
-2\. Target mismatch → grade the deliverable the instruction actually names (file vs final message). Never grade an output location the instruction never mentions.
+2. Target mismatch → grade the deliverable the instruction actually names (file vs final message). Never grade an output location the instruction never mentions.
 
-3\. Undocumented assumptions → remove any check the instruction/README/policy does not state; list it in \`instruction\_gaps\` instead.
+3. Undocumented assumptions → remove any check the instruction/README/policy does not state; list it in `instruction_gaps` instead.
 
-4\. All-or-nothing → split bundled checks; weight critical correctness high, minor formatting low.
+4. All-or-nothing → split bundled checks; weight critical correctness high, minor formatting low.
 
-5\. Infra → every regex compiles; every JSONPath is valid; rubric checks include \`config.models\` (odd count) \+ \`config.temperature\`.
+5. Infra → every regex compiles; every JSONPath is valid; rubric checks include `config.models` (odd count) + `config.temperature`.
 
-DISTRIBUTION: spread checks across the surfaces the task USES (db\_state / final\_answer / trace / deliverable files) — but only surfaces the instruction actually requires. For connector tasks never leave a weighted \`scoring.weights\` bucket empty; populate it or rebalance.
+DISTRIBUTION: spread checks across the surfaces the task USES (db_state / final_answer / trace / deliverable files) — but only surfaces the instruction actually requires. For connector tasks never leave a weighted `scoring.weights` bucket empty; populate it or rebalance.
 
-HARD RULES: never weaken a real correctness check (numbers, IDs, rows); never invent requirements; keep the given solution passing; preserve \`task\_id\`.
+HARD RULES: never weaken a real correctness check (numbers, IDs, rows); never invent requirements; keep the given solution passing; preserve `task_id`.
 
-\`\`\`
+```
 

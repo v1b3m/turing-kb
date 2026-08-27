@@ -1,3 +1,10 @@
+---
+title: "A Guide About Verifier Quality and Transformation"
+tags:
+  - computer-bench
+  - verifier
+  - qc
+---
 # Verifier Quality & Transformation Guide
 
 ## 0\. What this document is

@@ -1,3 +1,9 @@
+---
+title: "Non-Connector Guide: Running an Offline, File-Deliverable Task Locally"
+tags:
+  - computer-bench
+  - non-connector
+---
 # Non-Connector Guide: Running an Offline, File-Deliverable Task Locally
 
 **Audience:** anyone running a Harbor "non-connector" task (no simulated company, no MCP connectors) on their own machine, and anyone reviewing or designing such tasks.

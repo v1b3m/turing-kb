@@ -1,3 +1,10 @@
+---
+title: "Shannon QC Control - 25 Aug Re-cut"
+tags:
+  - computer-bench
+  - qc
+  - spec
+---
 # Resources · Shannon QC Control
 
 > **What changed on 25 Aug 2026.**
@@ -805,6 +812,9 @@ Related trap: don't grade the model's self-report. Recompute from the artifact i
 12. Download `qc_report.html`, add it to the task root, re-zip, upload as a new version, re-run the gate
 13. Submit that version to the pipeline
 
+> [!warning] Corrected 2026-08-27 (the g710 lesson)
+> Once the gate says **Ready for finalization**, skip step 12. There is no re-zip and no new version — the report is the Drive record, not a package requirement, and the gate re-validates the *same upload* in place. Click **Submit to pipeline** on the passing version. Detail: [[QC Handoff Guide]] Stage E.
+
 ## The five things that will save you the most time
 
 1. Cold-read the prompt and write down your guesses before you run anything. Ambiguity found on day one costs minutes; found after three GLM batteries it costs a day.
@@ -815,4 +825,4 @@ Related trap: don't grade the model's self-report. Recompute from the artifact i
 
 ---
 
-Related: [A Guide about `review.csv`.md](A%20Guide%20about%20%60review.csv%60.md), [A Guide About Verifier Quality and Transformation.md](A%20Guide%20About%20Verifier%20Quality%20and%20Transformation.md), [Computer Bench Task Quality Playbook - Daniel Sogbey.md](Computer%20Bench%20Task%20Quality%20Playbook%20-%20Daniel%20Sogbey.md), [Non-Connector Guide.md](Non-Connector%20Guide.md), [Set Up Guide.md](Set%20Up%20Guide.md).
+Related: [[A Guide about `review.csv`.md|review.csv Guide]], [[A Guide About Verifier Quality and Transformation.md]], [[Computer Bench Task Quality Playbook - Daniel Sogbey.md]], [[Non-Connector Guide.md]], [[Set Up Guide.md]].

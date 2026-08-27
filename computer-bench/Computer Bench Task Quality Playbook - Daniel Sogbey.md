@@ -1,3 +1,10 @@
+---
+title: "Computer Bench Task Quality Playbook"
+author: Daniel Sogbey
+tags:
+  - computer-bench
+  - task-design
+---
 # Computer Bench Task Quality Playbook
 
 **By Daniel Sogbey**

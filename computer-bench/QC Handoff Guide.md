@@ -1,8 +1,17 @@
+---
+title: "QC Handoff Guide — computer-bench task, start to pipeline"
+tags:
+  - computer-bench
+  - qc
+  - guide
+  - handoff
+---
+
 # QC Handoff Guide — computer-bench task, start to pipeline
 
-Companion to [Set Up Guide.md](Set%20Up%20Guide.md), [Non-Connector Guide.md](Non-Connector%20Guide.md),
-[Shannon QC Control - 25 Aug Re-cut.md](Shannon%20QC%20Control%20-%2025%20Aug%20Re-cut.md)
-and [Verifier Quality Guide.docx.md](Verifier%20Quality%20Guide.docx.md).
+Companion to [[Set Up Guide.md]], [[Non-Connector Guide.md]],
+[[Shannon QC Control - 25 Aug Re-cut.md]]
+and [[Verifier Quality Guide.docx.md]].
 Written 2026-08-27 after the full `gen-g710-dev-retainer-billing-audit` journey (task #1251855).
 This is the **day-to-day working doc**: the exact steps, files, links and traps.
 The Re-cut doc is the spec; this is the loop you actually walk.
