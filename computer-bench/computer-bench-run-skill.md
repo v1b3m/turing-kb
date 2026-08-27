@@ -57,6 +57,9 @@ the corrections below.
   (or the verifier scripts) remain the primary tuning surfaces.
 - **Never run a battery (4 runs, per the 2026-08-25 re-cut) without the user's
   explicit approval.** The team shares a model-run cap; one run first, always.
+- **Run the user's DeepSeek endpoint first — always.** One DeepSeek run comes
+  before any GLM run on every new task; GLM (shared team quota) only after the
+  DeepSeek result, or when the user asks for GLM explicitly.
 - **Instructions must stay human-voiced** — no phrasing engineered to match
   verifier regexes (prompt hacking; unacceptable). Difficulty must come from
   visible domain reasoning (playbook §1).
@@ -125,8 +128,28 @@ harbor run -p <task-dir> -a oracle -o ~/obi-eval/jobs --job-name oracle-<task> -
 
 ### 5. Single model run (never skip this step)
 
-Exact command shapes. **GLM proxy (team quota, default)** — `.env` holds the GLM
-base URL + key, sourced into the same shell that runs `harbor`:
+Exact command shapes. **DeepSeek (the user's own endpoint) is the default first
+run — always one DeepSeek run before any GLM run on a new task**; GLM comes after
+the DeepSeek result, or when the user explicitly asks for GLM.
+
+**Custom endpoint (DeepSeek, verified)** — the `.env` holds the DeepSeek base URL
++ key; only `-m`, the `--ak` provider/model ids, and the job name change relative
+to the GLM shape:
+
+```sh
+harbor run \
+  -p /path/to/<task-name> \
+  -a opencode \
+  -m deepseek/deepseek-v4-flash-vision-exp \
+  --ak 'opencode_config={"provider":{"deepseek":{"npm":"@ai-sdk/openai-compatible","name":"DeepSeek","options":{"baseURL":"{env:OPENAI_BASE_URL}","apiKey":"{env:OPENAI_API_KEY}"},"models":{"deepseek-v4-flash-vision-exp":{"name":"DeepSeek"}}}}}' \
+  --agent-setup-timeout-multiplier 3 \
+  --ae OPENAI_API_KEY="$OPENAI_API_KEY" --ae OPENAI_BASE_URL="$OPENAI_BASE_URL" \
+  --ve OPENAI_API_KEY="$OPENAI_API_KEY" --ve OPENAI_BASE_URL="$OPENAI_BASE_URL" \
+  -o ~/obi-eval/jobs --job-name "deepseek-1x-opencode-<task>" -y
+```
+
+**GLM proxy (team quota, shared)** — same shape; swap `.env` to the GLM base URL +
+key; only `-m`, the `--ak` provider/model ids, and the job name change:
 
 ```sh
 set -a && . ./.env && set +a
@@ -141,9 +164,6 @@ harbor run \
   --ve OPENAI_API_KEY="$OPENAI_API_KEY" --ve OPENAI_BASE_URL="$OPENAI_BASE_URL" \
   -o ~/obi-eval/jobs --job-name "glm-1x-opencode-<task>" -y
 ```
-
-**Custom endpoint (DeepSeek, verified)** — same shape; `.env` holds that endpoint's
-own key/URL; only `-m`, the `--ak` provider/model ids, and the job name change:
 
 ```sh
 harbor run \
@@ -267,8 +287,8 @@ labelling, and the no-re-upload rule — is **Start Here steps 6–9** (detail:
 
 | Endpoint | `.env` base URL | OpenCode model id | `-m` |
 |---|---|---|---|
-| GLM proxy (team quota, default) | `http://34.41.10.8:4000/v1` | `glm-5.2` | `glmproxy/glm-5.2` |
-| DeepSeek (custom, verified) | `https://api.deepseek.com` (no `/v1` needed) | `deepseek-v4-flash-vision-exp` | `<provider>/deepseek-v4-flash-vision-exp` (matches `--ak` map) |
+| DeepSeek (user's own, default first run) | `https://api.deepseek.com` (no `/v1` needed) | `deepseek-v4-flash-vision-exp` | `deepseek/deepseek-v4-flash-vision-exp` (matches `--ak` map) |
+| GLM proxy (team quota, shared) | `http://34.41.10.8:4000/v1` | `glm-5.2` | `glmproxy/glm-5.2` |
 
 Swapping = edit `.env` + adjust `-m` and the `models:` map inside `--ak`. Everything
 else stays identical.
