@@ -50,5 +50,8 @@ The end-to-end path for a computer-bench task, from design to pipeline submissio
 > [!info] The record
 > Drive task folder and the task repo root carry the same three files: `review.csv` (BOM'd form export), `qc_report.html` (final delivery's), golden-trajectory zip. The git repo is local-only — the Drive folder link IS the task link downstream.
 
+> [!warning] Two outcomes only
+> Every task gets dedicated hardening time. Either it satisfies the requirements (oracle 1.0, inside the 1–3/4 band, findings resolved) — then package it — or it is **abandoned**, with the reason stated clearly in the labelling tool's Trainer Notes (Stage F; the stated reason is the deliverable then). Never package an out-of-band task: the QC gate rejects it outright.
+
 > [!example] g710 (the reference run)
 > Generator batch **shannon-200 / G710**, labelling task **#1251855**; 96-check suite, 1/4 measured, oracle 1.0; one finding disputed (reward hacking) and cleared; submitted 2026-08-27. Full detail: [[QC Handoff Guide]] §12 and the one-page after-action.

@@ -62,6 +62,13 @@ the corrections below.
   fixes) and re-check on DeepSeek if needed; then **one GLM run** to cross-check
   the patched task on the shared team quota. GLM never comes before the DeepSeek
   run; batteries still require explicit approval.
+- **Never package a task that does not satisfy the requirements** — the upload/QC
+  gate outright rejects it. Only two outcomes exist: the task satisfies the
+  requirements (oracle 1.0, inside the 1–3/4 band, findings resolved, human-voiced
+  instructions), or it is **abandoned**. Give every task dedicated hardening time;
+  if it still cannot be hardened, abandon it and state the reason clearly in the
+  labelling tool's Trainer Notes (Stage F — the stated reason is the deliverable
+  in that case). A partial, out-of-band, or unverified task is not a package.
 - **Instructions must stay human-voiced** — no phrasing engineered to match
   verifier regexes (prompt hacking; unacceptable). Difficulty must come from
   visible domain reasoning (playbook §1).
