@@ -146,7 +146,8 @@ curl -s -m 30 "$OPENAI_BASE_URL/chat/completions" \
 
 We caught an expired key this way (both Z.AI public endpoints returned `401 "token expired or incorrect"`); the team proxy answered with a live `glm-5.2` completion.
 
-> **Where does the key end up?** Harbor normalizes env values that match the ambient process env into `${OPENAI_API_KEY}` references in the job's `config.json` (secret hygiene) and resolves them at runtime from the harness process env. This is by design: source `.env` into the *same shell* that runs `harbor`, and the agent process gets the real key. Confirm with: `docker exec <container> bash -c 'env | grep ^OPENAI'` — the values are there for the agent.
+> [!info] Where does the key end up?
+> Harbor normalizes env values that match the ambient process env into `${OPENAI_API_KEY}` references in the job's `config.json` (secret hygiene) and resolves them at runtime from the harness process env. This is by design: source `.env` into the *same shell* that runs `harbor`, and the agent process gets the real key. Confirm with: `docker exec <container> bash -c 'env | grep ^OPENAI'` — the values are there for the agent.
 
 ## Step 1: Oracle (no model, must be exactly 1.0)
 

@@ -13,7 +13,7 @@ tags:
 
 *Transcribed to Markdown from the original 13-page PDF on 2026-08-26.*
 
-> **Core principle**
+> [!important] Core principle
 >
 > Do not start by trying to make the model fail. Start by understanding the task well enough to know what a fair failure looks like.
 >

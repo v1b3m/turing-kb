@@ -7,7 +7,7 @@ tags:
 ---
 # Resources · Shannon QC Control
 
-> **What changed on 25 Aug 2026.**
+> [!info] What changed on 25 Aug 2026
 >
 > The trainer flow was re-cut in the all-hands. If you learned this job before that date, these six are the differences:
 >
@@ -42,7 +42,7 @@ A good task is a test given to a student (the AI) that is:
 
 Our success is **not** dependent on hitting arbitrary criteria that we define. Our success, and the acceptance of a task, is *solely* dependent on the client. The client pays us per task, and that is why we can only pay on tasks accepted by the client, not by us or any QC system we have.
 
-> **There is no score any more.**
+> [!warning] There is no score any more
 >
 > The client removed the score parameter on 25 Aug 2026. Chasing 95 or 85 is over: the bar is that
 >
@@ -84,7 +84,7 @@ You *can* use AI to help you understand the task better and figure out what you 
 
 # Resources · Shannon QC Control
 
-> **What changed on 25 Aug 2026.**
+> [!info] What changed on 25 Aug 2026
 >
 > The trainer flow was re-cut in the all-hands. If you learned this job before that date, these six are the differences:
 >
@@ -116,7 +116,7 @@ Most tasks arrive from the mining team already working — and too easy. Expect 
 | **Oracle** | Reward exactly **1.0**. Not 0.98, not 0.9167. Anything less is a defect in the task, never partial credit. It has to hold on repeated runs, not once. |
 | **Difficulty** | Across **4** GLM-5.2 runs, the client accepts **1 of 4**, **2 of 4** or **3 of 4** fully passing. **4 of 4 is rejected** — the task is too easy. **0 of 4** can still be submitted, but Turing then has to re-run it on another frontier model to prove it is solvable at all, and only about a third of those are accepted. |
 
-> **Four runs, not five**
+> [!warning] Four runs, not five
 >
 > (25 Aug 2026). If you already finished a task on five runs, you do
 >
@@ -145,7 +145,7 @@ The review has fourteen areas (see [Step 6](https://qc-api-713053229214.us-centr
 
 Everything else in the fourteen is yours, and the client reviews your answers on those.
 
-> **Two of these are rows in `review.csv`, and you may leave them empty.**
+> [!info] Two of these are rows in `review.csv`, and you may leave them empty
 >
 > *Layer 2 Stability*
 >
@@ -200,7 +200,7 @@ task/                          # ← zip THIS folder only
         └── modal/run/         # + sanity_check.md
 ```
 
-> **`evaluations/platform/` is agreed but not yet accepted.**
+> [!warning] `evaluations/platform/` is agreed but not yet accepted
 >
 > It is part of the folder spec settled with the client on 25 Aug 2026, and it will be required. The Delivery Gate does not take it today:
 >
@@ -391,7 +391,7 @@ Then: sync the `_app/` mirror → re-run Oracle (1.0) → re-run 4 GLM → check
 
 You do not always have to re-run the rollouts. A change to the *verifier only* can be re-graded against the existing runs. A major change to `instruction.md` or to what the verifiers ask for invalidates them — re-run the four.
 
-> **The mirror rule**
+> [!warning] The mirror rule
 >
 > (silently invalidates everything)
 >
@@ -474,7 +474,7 @@ task/                          # ← zip THIS folder only
         └── modal/run/         # + sanity_check.md
 ```
 
-> **`evaluations/platform/` is agreed but not yet accepted.**
+> [!warning] `evaluations/platform/` is agreed but not yet accepted
 >
 > It is part of the folder spec settled with the client on 25 Aug 2026, and it will be required. The Delivery Gate does not take it today:
 >
@@ -536,7 +536,7 @@ The client requires the Delivery Gate's report to ship *inside* the task folder,
 
 The report you ship therefore describes the version before it. That is expected and fine — what the client wants is the QC record travelling with the package, not a self-referential file.
 
-> **Know what the platform adds to the staged delivery ZIP.**
+> [!info] Know what the platform adds to the staged delivery ZIP
 >
 > Submitting stages your uploaded archive for the pipeline. The only artifact the platform may add is an attached
 >
@@ -551,7 +551,7 @@ The report you ship therefore describes the version before it. That is expected 
 >
 > `qc_report.html`
 >
-> is only on the platform and not in the archive, re-zip and upload a new version before you submit.
+> is only on the platform and not in the archive, that is not blockable: the report is the Drive record, and once the gate says Ready for finalization you submit the passing version directly — no re-zip, no new version. See [[QC Handoff Guide]] Stage E.
 
 ## 9. Write up the review
 
@@ -565,7 +565,7 @@ Every task needs a `README.md` with a cumulative, humanized summary — what cha
 
 The client asks for the review itself, not just its outcome: **one row per review area**, each row carrying its current result and, if you fixed something, what you found, what you changed, how you rechecked it, and where the evidence lives. It is the difference between "I reviewed it" and a record someone else can audit.
 
-> **The client reviews against this same rubric.**
+> [!info] The client reviews against this same rubric
 >
 > The fourteen areas below are their template, not ours — they accept and reject tasks on it. A task with a missing or thin
 >
