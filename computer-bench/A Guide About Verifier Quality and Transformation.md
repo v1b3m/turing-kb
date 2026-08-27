@@ -296,7 +296,8 @@ DISTRIBUTION: spread checks across the surfaces the task USES (db_state / final_
 HARD RULES: never weaken a real correctness check (numbers, IDs, rows); never invent requirements; keep the given solution passing; preserve `task_id`.
 ```
 
-> ⚠️ **Don't accept the changes without reviewing them first.** The LLM can make mistakes — this prompt produces a draft, not a final answer.
+> [!warning] Don't accept the changes without reviewing them first
+> The LLM can make mistakes — this prompt produces a draft, not a final answer.
 
 ---
 

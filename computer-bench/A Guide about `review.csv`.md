@@ -45,7 +45,8 @@ Separately, exactly **three** checks are run entirely by the Turing team, not by
 | Layer 3 · Oracle Mode | Turing team | **`N/A`** |
 | Everything else (Layer 1, Layer 4, Layer 5, Cross-trial · Calibration) | **You** | `PASS` / `FIXED_AND_VERIFIED`, based on your review |
 
-> ⚠️ **Rule:** for the three Turing-run checks (Layer 2 · Solvability, Layer 2 · Stability, Layer 3 · Oracle Mode), just put **`N/A` in every cell of the row** — `status`, `review_notes`, `change_made`, and `what_to_record`. No explanation needed; do **not** try to produce or restate their evidence yourself.
+> [!warning] Rule: the three Turing-run checks (Layer 2 · Solvability, Layer 2 · Stability, Layer 3 · Oracle Mode)
+> Just put **`N/A` in every cell of the row** — `status`, `review_notes`, `change_made`, and `what_to_record`. No explanation needed; do **not** try to produce or restate their evidence yourself.
 
 ---
 
@@ -79,8 +80,8 @@ review_check,status,review_notes,change_made,what_to_record
 - **`FIXED_AND_VERIFIED`** — a real problem was found, the package was changed, **and** the change was rerun through the relevant Harbor path with the original issue confirmed gone.  
 - **`N/A`** — the check doesn't apply, with a brief explanation (e.g., the connector row on a task with no connectors).
 
->   
-> ⚠️ **Making a change is not enough.** A failure can only be closed once the check that originally exposed it has been repeated and the post-fix evidence confirms the result. There is no `FAIL` status — a row you can't honestly resolve means the task isn't finished yet, not something to record as failing.
+> [!warning] Making a change is not enough
+> A failure can only be closed once the check that originally exposed it has been repeated and the post-fix evidence confirms the result. There is no `FAIL` status — a row you can't honestly resolve means the task isn't finished yet, not something to record as failing.
 
 ---
 
