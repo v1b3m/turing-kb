@@ -59,6 +59,12 @@ the corrections below.
   diff to the user.
 - **Never run a battery (4 runs, per the 2026-08-25 re-cut) without the user's
   explicit approval.** The team shares a model-run cap; one run first, always.
+- **Verify the `.env` endpoint matches the model before every run.** DeepSeek
+  runs need `api.deepseek.com`, GLM runs need `34.41.10.8:4000` — a swapped-in
+  pair crashes the agent with 400 "Invalid model name" mid-run (burns quota and
+  burns minutes). Check with `sed -E 's#https?://([^/]+).*#\1#' <<< $OPENAI_BASE_URL`
+  right after sourcing `.env`. (Bitten 2026-08-27: r5 "DeepSeek" run dialed GLM
+  after the cross-check swap was never reversed.)
 - **The run loop: DeepSeek first, then patch, then one GLM run.** A single
   DeepSeek run on the task; patch any task-owned failures (verifier/instruction
   fixes) and re-check on DeepSeek if needed; then **one GLM run** to cross-check
