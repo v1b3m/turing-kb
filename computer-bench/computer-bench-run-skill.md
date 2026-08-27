@@ -235,6 +235,18 @@ Path: `~/obi-eval/jobs/<job>/<trial>/`.
 - Broken-run triage: `agent/exit-code.txt` present ⇒ crashed; trajectory
   missing ⇒ verifiers failed by default; both absent with real steps and some
   tests passing ⇒ genuine failure.
+- Run-failure taxonomy (playbook §11.5, added 2026-08-27): **agent-broke** is a
+  *verifiable incompletion* — transcript complete, agent worked (read/reasoned),
+  wrote nothing (e.g. step-length death `step_finish reason: "length"`), counted
+  neither pass nor fail, replace. **Network/kill is a different class**: died in
+  setup/preflight → known no-work (replace, uncounted); died mid-agent →
+  **unknown completion** — the agent may have completed; never classify as broken
+  (that would read as model evidence it isn't), never count as pass; inspect the
+  trajectory (deliverables present → recover + grade locally, flagged
+  "trajectory-recovered"; absent → rerun, document as unknown). Only
+  **model-owned** and **task-owned** outcomes are task evidence. Floor: ≥1 content
+  run must pass before any conclusion — 0 passing runs = no difficulty evidence
+  either way.
 - For failing checks, read the exact expected value in `tests/verifier.json`
   (e.g. `"expected": 800.0`, `"comparison": "equals"`; regexes like
   `\bCL-06.*(not an underbilling|is correct|no rollover)`).
@@ -248,6 +260,9 @@ one-line cause summary for any failure. Then classify failures per playbook §11
 behavior — fix the task, never count it as difficulty). For brittle checks, playbook
 §8's table prescribes "make less wording-sensitive". For a battery: pass rate = mean
 of the four binary rewards; hook to the 1–3/4 band (4/4 is rejected as too easy).
+List agent-broken/unknown-completion attempts **separately** from the rewards, as
+exceptions (attempt, reason, recovered-or-not) — they count neither as pass nor
+fail, and never as task evidence (playbook §11.5).
 
 Fairness rule (playbook §8): the verifier is only the marking scheme — assert
 **exactly** what the prompt requires, no less, no more: Missing → add a

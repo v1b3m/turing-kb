@@ -279,6 +279,12 @@ Same rule as the Set Up Guide; in practice for non-connector tasks:
 
 Our first GLM run (14/16): genuine — 12 steps, ~24k tokens, no crash. It flagged all four findings correctly; it failed *only* on (a) `results.json` `total_billing_variance_usd` not exactly `800.0` (`equals`, no tolerance) and (b) the memo regex `\bCL-06.*(not an underbilling|is correct|no rollover)`.
 
+The playbook §11.5 (added 2026-08-27) classifies the exceptions this table does not cover — **the ones that are NOT task evidence at all**:
+
+- **Agent-broke** (verifiable incompletion): the transcript is complete, the agent worked (read/reasoned) and then produced no output — e.g. step-length death (`step_finish reason: "length"`; g688 GLM r1 died at 45.2k tokens after 17 file reads, wrote nothing). Counted neither pass nor fail; replace.
+- **Network / kill is a different class**, classified by where the record ends. Died in setup/preflight (g688 GLM r2 `NetworkConnectionError` in `_setup_agent`) → known no-work: the agent never ran, replace, uncounted. Died mid-agent → **unknown completion**: the record stops before the final state is knowable, and the agent may have completed just fine — never classify it as "couldn't complete", never count it as a pass; inspect the trajectory (deliverables written → recover the writes and grade locally, flagged "trajectory-recovered"; absent → rerun, document as unknown).
+- Only **model-owned** (content exists, wrong) and **task-owned** (fix the task) outcomes are task evidence. Floor: never conclude anything with zero passing content runs — replace broken/unknown runs until ≥1 passes; the solvability gate needs a reward-1.0 non-oracle run.
+
 ### Liveness checks while / after a run
 
 ```sh

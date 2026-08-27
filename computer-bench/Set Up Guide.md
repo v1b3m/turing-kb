@@ -538,6 +538,8 @@ When both appear, read `agent/oracle.txt` (Oracle runs) or `trial.log`. The last
 
 A genuine failure looks different: `trajectory.json` is present and populated, some verifiers pass, and the failures carry real motivation text explaining what was wrong with the answer.
 
+For the exception classes — an **agent-broke** (complete transcript, agent worked, produced nothing — a *verifiable incompletion*, neither pass nor fail, replace) and a **network/kill death** (died in setup → known no-work; died mid-agent → **unknown completion**: never classify as broken, never count as pass, inspect the trajectory and recover the writes if present, else rerun and document) — see the **playbook §11.5**. Only model-owned and task-owned outcomes are task evidence, and never draw a conclusion with zero passing runs.
+
 ## Troubleshooting
 
 **Docker daemon is not running**

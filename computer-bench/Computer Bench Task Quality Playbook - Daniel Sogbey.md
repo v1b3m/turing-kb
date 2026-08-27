@@ -437,6 +437,26 @@ If GLM fails, read the trajectory. If the task caused the failure, fix the task.
 
 ---
 
+## 11.5 Run-Failure Taxonomy — "Agent Breaking" (added 2026-08-27)
+
+A run's outcome is one of three classes; only two of them are evidence about the task.
+
+**Agent-broke** — the agent produced no deliverables, and the transcript proves the failure is an incompletion, not a mystery: the agent worked (read, reasoned) and then failed to produce output, e.g. step-length death with `step_finish reason: "length"` (GLM g688 r1 died at 45.2k tokens / 31.9k reasoning after its 17 file reads and wrote nothing). The evidence is complete: we can see the whole run, confirm no writes, and classify it definitively.
+
+**Network / kill failures are NOT the same class** — classify by where the record ends. Died in setup/preflight (g688 GLM r2 `NetworkConnectionError` in `_setup_agent`) → known no-work: the agent never ran, replace and document, counted as neither. Died mid-agent → **unknown completion**: the transcript may be truncated and the final state is not knowable — the agent might have completed or been a step from it. **Never classify an unknown completion as "genuinely couldn't complete"** (that would read as model evidence it isn't), and never count it as a pass either. Inspect the trajectory: if the written deliverables are present, recover + grade (trajectory-recovered); if not, document as unknown/ungradeable, rerun, and exclude from every conclusion. Not a difficulty signal and not a judgment signal.
+
+**Model-owned** — deliverables exist but the content is wrong: the §11-valuable signal. **Task-owned** — §11: fix the task.
+
+Handling rules:
+
+- (a) salvage partial signal from the reasoning trace (planned verdicts, authority decisions) even from a length-death run;
+- (b) if the agent finished writing before a kill/exit, recover the deliverables from the trajectory (extract the write payloads, rebuild a workspace, run the vendored verifier locally) and count it as a content run flagged "trajectory-recovered" — g688 GLM r3 graded 27/28 this way;
+- (c) retry policy: setup-stage and unknown-completion network/kill failures → one retry, uncounted, excluded from conclusions; length deaths → investigate (budget/tokens in trajectory) + one retry. A repeated pattern is a **harness×model pairing property** (cf. g710 modal one-shot death), never task difficulty — do not harden the task to force a pass and never obscure it;
+- (d) report pass rates **pair-specific** with exceptions listed separately from rewards (attempt, reason, recovered-or-not). A broken/unknown run is never counted as a pass or fail, but **at least one content run must pass before any conclusion** — keep replacing broken runs (and re-running content failures as needed) until ≥1 passing run exists: the solvability gate requires a reward-1.0 non-oracle run, and with 0 passes there is no difficulty evidence either way;
+- (e) preflight before any run: whole-pair `.env` toggle (URL+KEY+MODEL as one block — the g688 401 was a half-toggle), increment job names rather than reusing, and check the trial dir's `exception.txt` before diagnosing.
+
+---
+
 ## 12. QC Is Advisory, Not A Substitute For Judgment
 
 QC is a guide. It is not the whole review.

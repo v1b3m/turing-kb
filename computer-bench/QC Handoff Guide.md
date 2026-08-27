@@ -71,6 +71,8 @@ Also used: Google Drive task folder (the record store: review.csv + qc_report.ht
 3. Failure analysis every run: classify **task-owned** (verifier representation artifact, instruction ambiguity, gold bug) vs **model-owned** (domain error, strategy death). Fix task-owned; record model-owned honestly.
 4. Re-run until inside band → **stop**.
 
+Broken attempts are a third thing, handled by **playbook §11.5** (added 2026-08-27): an **agent-broke** — complete transcript, agent worked, wrote nothing (step-length death) — is a verifiable incompletion: neither pass nor fail, replace. A **network/kill death** is a different evidence state (setup → known no-work; mid-agent → **unknown completion**: never classify as broken, never as pass; recover the writes from the trajectory or rerun and document). They are listed as exceptions, never as task evidence, and never conclude with zero passing runs.
+
 ### The g710 lesson — what actually moves difficulty (2026-08-26)
 
 - **Didn't work** (each bought zero difficulty): register exhaustivity (more rows), proration rules, single-rule checklists. Capable models solved every new rule clean first-shot; every 0.0 was a verifier representation artifact or infra.
