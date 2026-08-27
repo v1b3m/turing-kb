@@ -57,9 +57,11 @@ the corrections below.
   (or the verifier scripts) remain the primary tuning surfaces.
 - **Never run a battery (4 runs, per the 2026-08-25 re-cut) without the user's
   explicit approval.** The team shares a model-run cap; one run first, always.
-- **Run the user's DeepSeek endpoint first — always.** One DeepSeek run comes
-  before any GLM run on every new task; GLM (shared team quota) only after the
-  DeepSeek result, or when the user asks for GLM explicitly.
+- **The run loop: DeepSeek first, then patch, then one GLM run.** A single
+  DeepSeek run on the task; patch any task-owned failures (verifier/instruction
+  fixes) and re-check on DeepSeek if needed; then **one GLM run** to cross-check
+  the patched task on the shared team quota. GLM never comes before the DeepSeek
+  run; batteries still require explicit approval.
 - **Instructions must stay human-voiced** — no phrasing engineered to match
   verifier regexes (prompt hacking; unacceptable). Difficulty must come from
   visible domain reasoning (playbook §1).
@@ -129,8 +131,8 @@ harbor run -p <task-dir> -a oracle -o ~/obi-eval/jobs --job-name oracle-<task> -
 ### 5. Single model run (never skip this step)
 
 Exact command shapes. **DeepSeek (the user's own endpoint) is the default first
-run — always one DeepSeek run before any GLM run on a new task**; GLM comes after
-the DeepSeek result, or when the user explicitly asks for GLM.
+run — always DeepSeek before any GLM run on a new task**; after the DeepSeek run
+and any patches from it, run **one GLM** run to cross-check the patched task.
 
 **Custom endpoint (DeepSeek, verified)** — the `.env` holds the DeepSeek base URL
 + key; only `-m`, the `--ak` provider/model ids, and the job name change relative
