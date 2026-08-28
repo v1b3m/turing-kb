@@ -297,6 +297,9 @@ Real model traffic looks like `step_finish` records with `tokens` (input/output/
 
 ## Step 4: Hardening — iterating to the 1/5–2/5 target
 
+> [!important] Mechanism re-cut (2026-08-28): [[Hardening Guide]]
+> The loop below is the *mechanics* (run → analyze → tune → re-run). Which mechanisms actually move difficulty — and the calibration requirements (remote matrix, n≥5, canary anchors, sandbox parity) — live in [[Hardening Guide]]. The legacy levers (register scale, boundary density, decoy variants) saturate; step-ceiling deaths do not transfer to the remote pipeline.
+
 Hardening is the loop that turns a working task into a *calibrated* task. It is the stage the team meeting rules govern:
 
 1. **Run** (single, then analyze — never jump to a battery).

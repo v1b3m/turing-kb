@@ -42,7 +42,7 @@ design/harden (harbor)  →  verifier guide audit  →  local verify  →  packa
    →  dispositions (1 only!)  →  Submit to pipeline  →  labelling tool (4 fields + links)
 ```
 
-Three human-facing surfaces, three artifact stores:
+Human-facing surfaces and artifact stores:
 
 | Surface | URL | What it is |
 |---|---|---|
@@ -50,8 +50,9 @@ Three human-facing surfaces, three artifact stores:
 | QC Control | https://qc-api-713053229214.us-central1.run.app/ (IAP — needs your Google auth; **no public/API links**) | upload zip → Delivery Gate → report download → Submit to pipeline. `…/resources#…` anchors are the run instructions |
 | Review form | Google Apps Script (per-task; URL in the guides below) | the 14-section review → `review.csv` |
 | Labelling tool | `https://labeling-g.turing.com/conversations/<task-id>/view` | final metadata submission: pass rate, links, notes |
+| Tracker sheet | Google Sheets, gid=3003 tab: `https://docs.google.com/spreadsheets/d/1bbphEa7oIHfRhMPHEt_TmAbHcej1_ArImtsW43QaRyY/edit?gid=3003#gid=3003` | **last step** after QC + labelling: log the task row here |
 
-Also used: Google Drive task folder (the record store: review.csv + qc_report.html + golden-trajectory zip), git **local-only** on the task repo (no remote — the task link for labelling is the Drive folder, not a git URL).
+Also used: Google Drive task folder (the record store: review.csv + qc_report.html; the golden-trajectory zip sits at the **same level as the task folder**, not inside it), git **local-only** on the task repo (no remote — the task link for labelling is the Drive folder, not a git URL).
 
 ---
 
@@ -63,6 +64,9 @@ Also used: Google Drive task folder (the record store: review.csv + qc_report.ht
 - `input/` is **editable** since 2026-08-26 (lead-confirmed) — a legitimate difficulty lever like instructions/verifiers.
 - Instructions must read like a human colleague asking for the work. **Difficulty must come from the domain work**, never from phrasing that mirrors verifier checks. If you find yourself writing the instruction to satisfy checks, you're prompt-hacking — stop.
 - Stop hardening the moment you're inside the band. No gratuitous rounds.
+
+> [!important] Mechanism re-cut (2026-08-28): [[Hardening Guide]]
+> The legacy lever set (boundary cases, coupled findings, noise scale, decoy variants) saturates — the g688 open-book-determinism lesson generalized. Family-wide, exactly one model-owned content error exists; every *completing* run scores full marks, and the only measured difficulty (32k step-ceiling deaths) was erased by the remote pipeline (g709: local 3/4 → remote 4/4 solved clean). Difficulty must now make a **completing** run fail — identification, integration, and acceptance-condition errors. Mechanism catalog, band math, calibration requirements (remote matrix, n≥5, canary anchors), and pilots: [[Hardening Guide]].
 
 ### The loop
 
@@ -129,6 +133,9 @@ Then run a **forward pass** (instruction items → implied checks, tick each in 
 - **F3**: README check-count was wrong (97 vs 96) → fixed.
 
 Only 3 of the checks "always pass" (existence); no meaningful free-point floor.
+
+Same category as the delivery-stage g709 fairness findings (§6) — the skill's "QC finding classes &
+the fairness rule" is the canonical category description.
 
 ---
 
@@ -221,6 +228,8 @@ zip -qr gen-<task>-vN.zip gen-<task> \
 
 ### Conventions that worked
 
+- **Review notes narrate initial commit → delivered form, never the versioned journey.** The 14 sections describe the final state and the delta from the initial commit (what was rebuilt, what measures in the band, what was fixed during hardening). Versions are trainer-local: never cite versioned artifacts ("v4 reference anatomy", v1..vN zips) in review notes, aid files, or the bundle; the only version strings allowed are factual schema labels (ATIF-v1.7) and Drive delivery labels.
+- **review.csv is locally generatable** (verified byte-identical 2026-08-28): `<qc-script-dir>/generate_review_csv.py <draft> [out]` emits the form's exact bytes (BOM + CRLF + standard quoting; the form's section labels quirkily omit the middle dot on four Layer 2/3 rows — the draft must carry those labels). **Canonical copy: `computer-bench/000000/gen-g688-loan-file-risk-screen/pg/packaging/generate_review_csv.py`** (task 000000 is the reference task; machine copies live in each batch's qc-script dir and should be re-synced from the canonical one). The qc-script dir is machine/batch-local and may differ per task — locate it in the task workspace (or copy the generator + unified_qc.py into the task's qc-script dir) before relying on it. Author the draft from review_form_document.md, generate, upload to Drive manually; the Apps Script form is optional.
 - `"None."` as change_made where nothing changed; `"None - <reason>"` for what_to_record on N/A rows.
 - N/A is for genuinely-not-applicable: Connectors (native non-connector task), LLM judge consistency (deterministic only), Stability + Cross-trial Calibration (**"Turing runs this."** one-liner note — these are Turing-side; *do not* write more).
 - FIXED_AND_VERIFIED for the Layer-2 Difficulty redesign.
@@ -318,10 +327,11 @@ zip -qr gen-<task>-vN.zip gen-<task> \
 
 ### The loop (exact steps)
 
+0. The zip **always carries `review.csv` at the bundle root** before any upload (the QC form record ships with every upload).
 1. Upload the zip to QC Control → a delivery run starts. The run folder is downloaded to `~/Dev/computer-bench/gen-<task>-v3-<uploadid>-v1-delivery-<runid>/` — the `uploadid` (e.g. `c40a4a`) is stable; the `-v<idx>` is the **delivery index** (v1 → v2 on gate re-runs of the same upload); `-delivery-<runid>` is the run.
 2. The folder contains: `qc_report.html` (the report), `report.json` (full 2.2 MB raw), `human_review.json` (your dispositions — the proof of what you submitted), `run_owner.json`.
-3. Read the report: header = task + run id + engine sha (`vendored-…`); verdict banner either "Review required — findings await the reviewer's disposition" or **"Ready for finalization"**; 14 category results; a Findings section.
-4. **"Ready for finalization" = the pass.** Only the two Turing-owned findings may remain (l2.stability, l3.oracle_mode) — the spec says Turing runs stability/replays, so they don't block and the platform **ignores your disposition on them** (the QC page accepts dispositions for exactly one finding — the trainer-owned one, e.g. l5.reward_hacking: confirm vs dispute + note).
+3. Read the report: header = task + run id + engine sha (`vendored-…`); verdict banner either "Review required — findings await the reviewer's disposition" or **"Ready for finalization"**; 14 category results; a Findings section. **Not ready → add the downloaded `qc_report.html` to the zip root and re-upload (delivery index increments); repeat until "Ready for finalization", then stop.** After the final run, upload `review.csv` + the final `qc_report.html` to the Drive task folder.
+4. **"Ready for finalization" = the pass.** Only the finalization-owned findings may remain (l2.stability, l3.oracle_mode — and the advisory `l2.difficulty`, which says "trainer may submit as-is") — the spec says Turing runs stability/replays/difficulty, so they don't block and the platform **ignores your disposition on them** (the QC page accepts dispositions for exactly the trainer-owned findings, e.g. l5.reward_hacking or l5.verifier_fairness: confirm vs dispute + note).
 
 ### The reward-hacking finding — what it claimed, what we did
 
@@ -344,6 +354,120 @@ Finding (l5.reward_hacking): "tests/verifier.json contains all 96 expected answe
 
 After the dispute, re-running the gate on the same upload: the finding disappears, category renders **Pass**, stays 2 findings, verdict "Ready for finalization".
 
+### The verifier-fairness findings (g709, 2026-08-28) — all confirmed, all fixed
+
+Delivery v1 returned three trainer-owned `l5.verifier_fairness` majors (plus the
+finalization-owned trio: l2.difficulty / l2.stability / l3.oracle_mode — advisory and
+non-blocking). All three were **real**: each was reproduced with the vendored engine
+(the check's own verify step) before confirming — never confirm or dispute from the
+summary alone.
+
+1. **`memo_explains_traps`** — check demanded one of four fixed phrases *after* the
+   TIX-04/08/12 mention, while instruction.md pins no wording ("naming every ticket
+   whose subject line looks like a cohort match but is not"). "do not belong to any
+   tracked cohort", "carrying finding: none" (the instruction's own vocabulary), and
+   concept-first ordering all failed. Fixed: two independent lookaheads (TIX ref AND
+   trap explanation, any order); phrase set widened to concept coverage.
+2. **`memo_explains_root_cause_rule`** — `\broot\s+cause|subject\s+line` rejected the
+   hyphen compound "root-cause" and the instruction's own "subject wording". Fixed per
+   the finding's remediation: `\broot[\s-]+cause|subject\s+(?:line|wording|text|title)`.
+3. **Six `tix-NN_hours_open`** — quote-intolerant numbers while the sibling finding
+   checks were quote-tolerant: a fully quoted RFC-4180 CSV carrying the exact gold
+   values passed all 40 per-ticket finding checks and failed all 6 hours checks — an
+   inconsistent acceptance surface on identical data. **The QC-suggested fix
+   (`,\x22?72\.0\x22?,`) was itself incomplete** — the `,<code>` tail is
+   quote-intolerant too — so the applied fix wraps both the number and the finding
+   cell. Validate any suggested fix against the finding's full construction first.
+
+Re-verification after the fixes: harbor oracle 1.0 (70 passed), gold 70/70, all five
+QC constructions now pass, wrong-value mutations still fail exactly the intended
+checks (72.01, quoted 172.00, finding flips, TIX-24 precedence flip → exactly 3), and
+the 0.0/1.0/1.0/1.0 battery evidence stands — every new regex is an acceptance-superset
+of the old.
+
+**Round 2 (delivery v2, run d3edf444) — same check, one level deeper.** The gate
+returned `memo_explains_traps` again: the widened phrase set still pinned order and
+phrasings — "not members of any tracked cohort" (member-before-cohort), "does not match
+any tracked cohort" (intervening verb), "don't belong" (contraction), "has no cohort
+membership", even "false positives" (plural). Reproduced all on the shipped v2
+verifier with the engine before confirming. **The fix was *not* additive**: phrase
+lists are whack-a-mole, so the second lookahead is now semantic — either the phrase
+family (kept verbatim) or a negation marker (`not`/`never`/`no` + the contraction
+family) within one sentence clause of a cohort/member word, either order, bounded
+window `[^.!?\n;:]{0,40}` so unrelated clauses and different sentences don't pair.
+Re-verified: engine 20-phrasing matrix all PASS (including every QC construction),
+negative probes still fail (IDs without explanation, negation without a cohort word,
+cross-sentence "not"/"cohort"), gold 70/70, pipeline pytest 70 passed, oracle re-run
+1.0 (70 passed, 2.89s); acceptance-superset of v2 holds, so the rehydrated battery
+verdicts (70/70 on r2/r3/r4) stand.
+
+**Round 3 (delivery v3, finding 462b9816e6474460) — the class, not the check.** The
+gate returned `memo_explains_traps` a third time: the semantic construct still rested
+on a phrase-list core, and this round's probe was task-own vocabulary — "clean traps
+… outside the cohort" fails because `clean`/`no finding`/`false positive` (the
+instruction's own "but is not" negation vocabulary, and what the task's reviews say)
+was in neither the phrase family nor the negation-marker window, and "outside the
+cohort" is the relative-clause variant of the same statement. Reproduced on the
+shipped v3 verifier; more importantly the **same defect class sat open in the sibling
+memo checks** — instruction-own phrasings the gate would have probed next also
+failed: "the SLA policy sets a two-day limit" (`memo_explains_sla_policy`), "the
+code-table change effective 2026-08-24 treats integration-sync timeouts as sync
+failures" (`memo_explains_changelog`), "membership comes from the cause code, never
+the subject" (`memo_explains_root_cause_rule`). **Fix was class-level, across five
+memo checks in one commit**: vocabulary anchored to *instruction-own ∪ task-schema ∪
+gold-synonym* (clean/none/no-finding/false-positive; SLA/threshold/two-business-days/
+breach; code-table/INTEGRATION_SYNC_(TIMEOUT|FAILURE)/integration-sync/effective/
+prior-code; cause-code/logged-cause paired with subject/wording; decides/first-
+applicable-rule), relations as order-free clause-window co-occurrence, every old
+alternative kept verbatim (strict acceptance-superset). Re-verified: 35-case matrix —
+all r1–r3 QC constructions, gold-family and synonym phrasings PASS, topic-absence
+probes still FAIL; gold 70/70, pipeline pytest 70 passed, oracle re-run 1.0
+(`oracle-g709-v5`, 70 passed, 2.86s); battery verdicts stand. Generator validated
+end-to-end: scratch run reproduces the shipped input CSV, `tests/verifier.json`, and
+`solution/files` byte-identically.
+
+**Round 4 (delivery v4, finding 245368d83e0f126d) — flavor 2 (orthographic
+variants), one round deeper.** The gate returned `memo_explains_traps` with a
+hyphenation probe: `false\s+positives?` rejects the standard hyphenated
+"false-positives" (and adjectival "false-positive cases"). Reproduced on shipped
+v4; the same space-only-join defect was independently live in
+`memo_explains_root_cause_rule` ("cause-code"/"subject-line"/"logged-cause"/
+"subject-wording" all failed) and latent (masked behind sibling literals) in
+`business-hours` (sla), `first-applicable-rule`+`prior-code`+`effective-time/from`
+(changelog/precedence). **Fix was one commit across all six memo checks**: every
+space-only join inside a multi-word literal → `[\s-]+`, except where the hyphen
+form is not English (`the cause`, `one finding`). Every old alternative kept
+verbatim (strict acceptance-superset). Re-verified: 35-case matrix — all r1–r4 QC
+constructions + the hyphen class PASS, 14 negative probes still FAIL; gold 70/70
+(engine + pipeline pytest 70 passed); oracle re-run 1.0 (`oracle-g709-v6`, 70
+passed, 2.93s); generator revalidated byte-identical.
+
+**Round 5 = PASS (delivery v5) — READY_FOR_FINALIZATION, 2026-08-28.** The round-4
+class closure ended the cycle: the gate returned no trainer-owned findings —
+only the finalization-owned trio ever appears (l2.difficulty "submit as-is",
+l2.stability, l3.oracle_mode; non-blocking, ignore the dispositions). Per the
+painful-lesson rule below: **no re-zip, no re-upload, click Submit to pipeline.**
+The final report + review.csv are the Drive record / repo task root, not a gate
+requirement (the round-5 report, run af228c52, is recorded at the repo task root
+alongside review.csv — byte-identical to the delivery copy). Four rounds, six findings (r1 ×3, r2 ×1, r3 ×1, r4 ×1 — all
+`l5.verifier_fairness`, all confirmed, all fixed; 6 dispositions), and the gate
+stopped probing: vocabulary family closed in r3, orthographic family closed in r4.
+
+**The lesson (category, not case):** the gate's fairness bar is *"accept everything the
+instruction permits"*. Write checks against the instruction's own vocabulary, not the
+gold text's — and when the vocabulary is open-ended (free-text explanations),
+**enumerate semantics, not surface forms** — anchored to instruction-own ∪
+task-schema ∪ gold-synonym vocabulary, since a phrase list (even a semantic construct
+over one) is probed one level deeper until a form outside it shows up: the gate
+tested round 2's semantic construct with the task-own words "clean"/"none" and the
+relative-clause "outside the cohort" in round 3. A QC-suggested remediation is a floor; implement its forms *and*
+the semantic generalization that dominates them. Keep one acceptance surface per
+source type; when you fix one instance, **sweep for siblings and fix them in the
+same commit** (the earlier `\bcredits\b` widening left two memo + six hours checks
+with the same defect class, and round 3's class was live in four sibling memo checks
+— the gate found them, not us). The category and the prevention habits live in the
+skill's "QC finding classes & the fairness rule".
+
 ### THE PAINFUL LESSON — no re-upload after the pass
 
 **Do NOT re-zip / re-upload after a pass.** The gate runs against the already-uploaded package *in place*; the report and review.csv do **not** need to be inside the package for the platform to accept it (the passing run graded a package without the report inside). Once the run says "Ready for finalization", the QC page shows **Submit to pipeline** — click that, and you're done at QC. (g710 went through v3 → v4 → v5 rebuilds chasing the report inside the bundle; the user correctly refused the v5 upload: wasted cycle. The report + review.csv are the *Drive record* and the repo's task root, not a gate requirement.)
@@ -358,7 +482,17 @@ The Drive task folder holds the **record** (same content as the repo task root):
 |---|---|---|
 | `review.csv` | manual download from the form | BOM'd, 5 columns, 14 rows |
 | `qc_report.html` | download from the final delivery folder | the *Ready for finalization* one |
-| `gen-<task>-golden-trajectory.zip` | build it: `zip golden_trajectory.json` (zip root = the JSON) | for the labelling link |
+
+The golden-trajectory zip is **a sibling of the task folder, not inside it**:
+
+```
+- task-name/
+- task-name-golden-trajectory.zip
+```
+
+| File | Source | Notes |
+|---|---|---|
+| `<task>-golden-trajectory.zip` | build it: `zip golden_trajectory.json` (zip root = the JSON) | for the labelling link |
 
 The form's auto-upload is broken (Apps Script permission); **add all of these manually.**
 
@@ -372,7 +506,7 @@ URL: `https://labeling-g.turing.com/conversations/<task-id>/view` (g710: task **
 |---|---|---|---|
 | Pass Rate | **SINGLE_CHOICE** — only `1/5, 2/5, 3/5, 0/5` | `1/5` | **There is no 1/4.** Measured 1/4 (25%) → closest tier is 1/5. The trainer notes then carry the actual measurement ("4-run battery 1/4") so the two cohere |
 | Modified Task Link | FREE_TEXT | Drive **folder** link (e.g. `https://drive.google.com/drive/folders/<id>?usp=drive_link`) | No git remote exists — the repo is local-only (git added just to track changes). The Drive folder IS the task link |
-| Golden Trajectory Zip File | FREE_TEXT | Drive **file** link to the golden-trajectory zip | The tool only accepts a **link**, not a file — upload the zip to Drive first |
+| Golden Trajectory Zip File | FREE_TEXT | Drive **file** link to the golden-trajectory zip (`<task>-golden-trajectory.zip`, a sibling of the task folder) | The tool only accepts a **link**, not a file — upload the zip to Drive first |
 | QC Proof | FREE_TEXT | Drive **file** link to `qc_report.html` | The QC API is IAP-protected ("Invalid IAP credentials" on anonymous calls) — no public/API link exists; the report file on Drive is the proof. The field description names the QC tool URL |
 | Trainer Notes | FREE_TEXT | concise summary | Rules learned: **no verdict line**, no "Turing will handle stability/calibration" (obvious — the work is being done for Turing), keep the narrative = design change → measurement → guide audit → review form → gate dispute outcome |
 
@@ -392,6 +526,10 @@ The g710 form metadata (from the downloaded `task-1251855-form-data.json`, `conv
 - Other ids: `conversationId: 1251855`, `trainerQuestionVersionId: 1605`
 
 **After submitting, download the task metadata JSON** (`task-<id>-form-data.json` at task root): `conversation_data` holds the **live** values; `csv_data` is a **stale export** — don't panic when they disagree.
+
+**Then close the loop in the tracker sheet** — the very last step: log the task in the team spreadsheet. **The sheet has one tab per DATE — open the tab for the task's submission date, not a fixed gid** (authoritative mapping, from g709 2026-08-28: **gid=3003 → 26 Aug, gid=3004 → 27 Aug, gid=3005 → 28 Aug**). g709, submitted 2026-08-28 → gid=3005:
+`https://docs.google.com/spreadsheets/d/1bbphEa7oIHfRhMPHEt_TmAbHcej1_ArImtsW43QaRyY/edit?gid=3005#gid=3005`).
+Copy the row pattern from the existing entries on that tab; keep it consistent with what was submitted in the labelling tool (the row's link column = the labelling tool link `…/conversations/<task-id>/view`).
 
 **Batch/slot id**: from `task.toml` — keywords `shannon-200`, `source_config = "infra/task-harness/configs/shannon-200/task_gen_G710_…"` → batch **shannon-200**, generator index **G710** (that's where `gen-g710-…` comes from).
 

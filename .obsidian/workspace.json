@@ -45,12 +45,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "returnmax/tasks/2026-06-30_1542_returnmax-hard-056.md",
+                "file": "computer-bench/Set Up Guide.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-06-30_1542_returnmax-hard-056"
+              "title": "Set Up Guide"
             }
           },
           {
@@ -59,16 +59,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "computer-bench/QC Handoff Guide.md",
+                "file": "computer-bench/Start Here.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "QC Handoff Guide"
+              "title": "Start Here"
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -233,27 +233,31 @@
       "bases:Create new base": false
     }
   },
-  "active": "7dab3490ecbc2221",
+  "active": "be1a82bfa2d59964",
   "lastOpenFiles": [
-    "computer-bench/QC Handoff Guide.md.tmp.3928898.d9d0e220eb69",
-    "computer-bench/QC Handoff Guide.md.tmp.3928898.3633d009a4d8",
-    "computer-bench/QC Handoff Guide.md.tmp.3928898.7782cc958091",
-    "computer-bench/QC Handoff Guide.md.tmp.3928898.24575311c912",
-    "computer-bench/Verifier Quality Guide.docx.md",
-    "computer-bench/Shannon QC Control - 25 Aug Re-cut.md",
-    "computer-bench/Set Up Guide.md",
+    "computer-bench/Computer Bench Task Quality Playbook - Daniel Sogbey.md.tmp.1313724.537a939fbeed",
+    "computer-bench/Non-Connector Guide.md.tmp.1313724.a938ecba91de",
+    "computer-bench/QC Handoff Guide.md.tmp.1313724.47e3b32ddd46",
+    "computer-bench/Start Here.md.tmp.1313724.fcbed8bb7dc9",
+    "computer-bench/Hardening Guide.md",
+    "computer-bench/Hardening Guide.md.tmp.1313724.766936e589a9",
+    "computer-bench/QC Handoff Guide.md.tmp.695135.5d5283e34c91",
+    "computer-bench/QC Handoff Guide.md.tmp.695135.3a82bf644185",
+    "computer-bench/QC Handoff Guide.md.tmp.695135.bcb11fbc4acc",
+    "computer-bench/QC Handoff Guide.md.tmp.695135.db58710d9152",
+    "computer-bench/QC Handoff Guide.md.tmp.695135.d87c35cf4f13",
+    "computer-bench/QC Handoff Guide.md.tmp.695135.4a858283e00f",
     "computer-bench/QC Handoff Guide.md",
+    "computer-bench/computer-bench-run-skill.md",
+    "computer-bench/Start Here.md",
+    "computer-bench/Set Up Guide.md",
+    "computer-bench/Shannon QC Control - 25 Aug Re-cut.md",
+    "computer-bench/Verifier Quality Guide.docx.md",
     "computer-bench/Non-Connector Guide.md",
     "computer-bench/Computer Bench Task Quality Playbook - Daniel Sogbey.md",
-    "computer-bench/QC Handoff Guide.md.tmp.3928898.020f716a47c8",
-    "computer-bench/review_form_draft_template.csv",
-    "computer-bench/review_form_draft_template.csv.tmp.3928898.8429c4a5e160",
-    "computer-bench/QC Handoff Guide.md.tmp.3928898.e46631629ab7",
-    "computer-bench/QC Handoff Guide.md.tmp.3928898.ce94d942ce2d",
-    "computer-bench/QC Handoff Guide.md.tmp.3928898.f6514ce3fda7",
-    "computer-bench/A Guide about `review.csv`.md",
-    "computer-bench/Shannon QC Control - 25 Aug Re-cut.md.tmp.2813799.9d4e5ce10153",
     "computer-bench/A Guide About Verifier Quality and Transformation.md",
+    "computer-bench/A Guide about `review.csv`.md",
+    "returnmax/tasks/2026-06-30_1542_returnmax-hard-056.md",
     "lookout-desktop/About.md",
     "lookout-desktop/2026-07-15_1835_git-tags.md",
     "lookout-desktop/2026-07-15_1022_lookout-vs-slackit-server-comparison.md",
@@ -277,10 +281,6 @@
     "2026-06-16_1800.md",
     "2026-06-16_1046.md",
     "2026-06-16_0808.md",
-    "2026-06-16_0147.md",
-    "2026-06-16_0143.md",
-    "2026-06-30_1552_verify-bugs.md",
-    "returnmax/tasks/2026-06-30_1542_returnmax-hard-056.md",
     "2026-06-04_expert-review.canvas"
   ]
 }

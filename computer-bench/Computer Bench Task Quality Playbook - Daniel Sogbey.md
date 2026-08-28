@@ -81,7 +81,7 @@ Computer Bench quality is not mainly about running commands or passing a QC scri
 7. Build your own expected verifier checklist before trusting the real verifier.
 8. Compare your expected verifier with the actual verifier.
 9. Identify real gaps.
-10. Harden the prompt, inputs, solution, and verifier together.
+10. Harden the prompt, inputs, solution, and verifier together. *(Mechanism choice and calibration: [[Hardening Guide]] — 2026-08-28 re-cut; the classic levers saturate.)*
 11. Run Oracle and require 1.000.
 12. Run GLM-5.2 and target 1/5 or 2/5 full passes.
 13. Inspect failures and confirm they are model-owned.

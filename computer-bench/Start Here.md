@@ -22,7 +22,7 @@ The end-to-end path for a computer-bench task, from design to pipeline submissio
    ➜ [[Verifier Quality Guide.docx.md]] · [[A Guide About Verifier Quality and Transformation.md]]
 
 4. **Harden until inside the band** — oracle must be 1.0 on the packaged state; single-model smoke runs, then a battery only with explicit approval; classify every failure task-owned vs model-owned; **stop the moment you're inside the band**.
-   ➜ [[QC Handoff Guide]] Stage A — including the g710 lesson: difficulty comes from coupled reasoning, not register exhaustivity.
+   ➜ [[QC Handoff Guide]] Stage A — including the g710 lesson: difficulty comes from coupled reasoning, not register exhaustivity. **Mechanism re-cut 2026-08-28: [[Hardening Guide]]** (the old lever set saturates, and step-ceiling deaths don't transfer to the remote pipeline — read before designing difficulty).
 
 5. **Package the bundle** — the exact anatomy (manifest.json = byte-copy of verifier.json, solution/ gold + promoted golden trajectory, evaluations/ assembled from harbor job dirs), and the zip with its exclusions.
    ➜ [[QC Handoff Guide]] Stage C · [[Non-Connector Guide]]
@@ -39,6 +39,9 @@ The end-to-end path for a computer-bench task, from design to pipeline submissio
 9. **Labelling tool** — 5 fields: Pass Rate (choices are 1/5, 2/5, 3/5, 0/5 — no 1/4), Modified Task Link (Drive folder — there is no git remote), Golden Trajectory Zip (Drive file link), QC Proof (Drive link to `qc_report.html` — the QC API is IAP-only), Trainer Notes (concise, no verdict line). Batch id comes from `task.toml` (e.g. `shannon-200`, generator `G710`).
    ➜ [[QC Handoff Guide]] Stage F
 
+10. **Log the task in the tracker sheet** — the final step, after QC + labelling: add the task to the team tracker spreadsheet (gid=3003 tab): `https://docs.google.com/spreadsheets/d/1bbphEa7oIHfRhMPHEt_TmAbHcej1_ArImtsW43QaRyY/edit?gid=3003#gid=3003`
+   ➜ [[QC Handoff Guide]] Stage F (tracker log)
+
 ---
 
 > [!warning] The one-upload rule
@@ -48,7 +51,7 @@ The end-to-end path for a computer-bench task, from design to pipeline submissio
 > Always draft `review_form_document.md` + `review_rows_draft.csv` (copy `review_form_draft_template.csv`) before opening the form; every one of the 56 fields is required and the form fails silently on empties.
 
 > [!info] The record
-> Drive task folder and the task repo root carry the same three files: `review.csv` (BOM'd form export), `qc_report.html` (final delivery's), golden-trajectory zip. The git repo is local-only — the Drive folder link IS the task link downstream.
+> Drive task folder and the task repo root carry the same two files: `review.csv` (BOM'd form export), `qc_report.html` (final delivery's) — the golden-trajectory zip (`<task>-golden-trajectory.zip`) sits at the **same level as the task folder**, a sibling, not inside it. The git repo is local-only — the Drive folder link IS the task link downstream.
 
 > [!warning] Two outcomes only
 > Every task gets dedicated hardening time. Either it satisfies the requirements (oracle 1.0, inside the 1–3/4 band, findings resolved) — then package it — or it is **abandoned**, with the reason stated clearly in the labelling tool's Trainer Notes (Stage F; the stated reason is the deliverable then). Never package an out-of-band task: the QC gate rejects it outright.

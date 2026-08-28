@@ -76,15 +76,52 @@ the corrections below.
   fixes) and re-check on DeepSeek if needed; then **one GLM run** to cross-check
   the patched task on the shared team quota. GLM never comes before the DeepSeek
   run; batteries still require explicit approval.
-- **Never package a task that does not satisfy the requirements** — the upload/QC
-  gate outright rejects it. Only two outcomes exist: the task satisfies the
-  requirements (oracle 1.0, inside the 1–3/4 band, findings resolved, human-voiced
-  instructions), or it is **abandoned**. Give every task dedicated hardening time;
-  if it still cannot be hardened, abandon it and state the reason clearly in the
-  labelling tool's Trainer Notes (Stage F — the stated reason is the deliverable
-  in that case), and mirror it as `trainer-notes-abandonment.md` in the task root
-  (same structure, one per task; **TL;DR ≤ 500 chars**). The note's YAML
-  frontmatter `task_link:` is generated, not copied — the labelling-tool URL is
+- **QC is downstream of acceptance, never adjacent — and never recommended
+  unless the task is IN the deliverable band.** The sequence while a task is in
+  hardening: runs → classify → **acceptance verification** (requirements check:
+  oracle 1.0, ≥1 content run passing, §8 audit verdict with no unresolved
+  Missing/Partial/Extra/Brittle checks, findings resolved, human-voiced
+  instructions) → battery on approval → **measured 1–3/4 of four** → QC →
+  package. "In the deliverable band" means a *measured* 1–3/4 — not an
+  inference, not a trend. A task whose content runs all pass (observed 4/4) is
+  **above the ceiling**: report it as "in hardening — difficulty pressure
+  needed", never as "ready for QC" or "band expected easy end". Do not float
+  QC (or packaging, or labelling) in any message while the band is
+  unmeasured, unestablished, or measured outside 1–3/4.
+- **QC is done on a task worth delivering.** Hardening is iterative — keep
+  running pressure passes (levers per g688/g710: boundary cases, coupled
+  findings, noise scale, decoy variants; lever order prompt → verifiers →
+  input, input diffs surfaced) until the band is measured inside 1–3/4 OR the
+  passes are exhausted. **Enough passes** = a documented series of pressure
+  passes (record what was tried in `pg/run-log.md`: lever per pass, resulting
+  run signal, what it moved). Only when the passes are exhausted and the task
+  still measures outside 1–3/4 is it **not worth delivering** — and
+  **abandoning is not delivering**: an exhausted hardening record is
+  abandonment's precondition (trainer-notes-abandonment.md with what was
+  tried), the task is abandoned (not delivered, not packaged, not QC'd), and
+  the abandonment note is a record, not a deliverable. QC never runs on it.
+  QC is a verdict on a task worth delivering — never a step in the no-band
+  path; the no-band path ends in non-delivery, and that end is stated plainly,
+  not dressed up as partial delivery.
+- **Hardening is mandatory; packaging and abandonment are outcomes, not options.**
+  Every task goes through dedicated hardening before either can be considered.
+  The gate sequence is: requirements check (oracle 1.0, inside the 1–3/4 band,
+  findings resolved, human-voiced instructions) → hardening iteration on
+  prompt/verifiers/input as needed → battery on approval → QC → package. A task
+  that has not been hardened — no difficulty-band evidence, e.g. 0/2 or 2/2
+  content runs — is **in hardening**, never "packageable, if you want", and never
+  an abandonment candidate. Never package a task that does not satisfy the
+  requirements: the upload/QC gate outright rejects it.
+- **Abandonment is last-resort only — and abandoning is not delivering.** It is
+  considered solely after dedicated hardening time has been given and the task
+  still cannot satisfy the requirements (record what was tried before
+  abandoning — the attempt, not the outcome, is the precondition). If it cannot
+  be hardened, the task is abandoned: that is a non-delivery — no package, no
+  QC, and the Trainer Notes reason is an abandonment record, not a deliverable.
+  State the reason clearly in the labelling tool's Trainer Notes (Stage F) and
+  mirror it as `trainer-notes-abandonment.md` in the task root (same structure,
+  one per task; **TL;DR ≤ 500 chars**). The note's YAML frontmatter
+  `task_link:` is generated, not copied — the labelling-tool URL is
   predictable:
   `https://labeling-g.turing.com/conversations/<task-id>/view`, where
   `<task-id>` is the numeric directory in the task path
@@ -97,6 +134,15 @@ the corrections below.
 - **Never promise a QC verdict for non-connector tasks.** The QC tool's run
   gate currently refuses this family's evidence (see Known gaps in the guide);
   it fails closed. Report partial reviews as partial.
+- **Hardening mechanisms: follow the Hardening Guide** (vault:
+  `computer-bench/Hardening Guide.md`, 2026-08-28 re-cut). The legacy lever set
+  (boundary cases, coupled findings, noise scale, decoy variants) saturates —
+  family-wide, exactly one model-owned content error exists; every completing
+  run scores full marks. The only measured difficulty so far was local 32k
+  step-ceiling deaths, which the remote pipeline erased (g709 solved all 4 runs
+  remotely). Design difficulty that makes a **completing** run fail
+  (identification / integration / acceptance-condition errors) — never token-budget
+  deaths — and measure with n≥5 before trusting any local number.
 - **Every user-facing web action carries its URL inline.** If a step needs the
   user to act in a web tool (QC Control, labelling tool, review form, Drive,
   tracker), include the exact link in the same message — never "open QC
@@ -295,6 +341,16 @@ List agent-broken/unknown-completion attempts **separately** from the rewards, a
 exceptions (attempt, reason, recovered-or-not) — they count neither as pass nor
 fail, and never as task evidence (playbook §11.5).
 
+**Report the state, not the ambitions.** The report names whether the task
+satisfies the requirements (oracle 1.0, **measured** 1–3/4 band, findings
+resolved, human-voiced instructions). If the band is unestablished (no battery)
+or measured outside 1–3/4 — including observed **4/4** (all content runs pass),
+which is above the ceiling per the 2026-08-25 re-cut — the honest state is
+**"in hardening — difficulty pressure needed"**, and the report says so instead
+of floating QC or packaging as a next step. Never recommend QC unless the band
+is measured inside 1–3/4; never "package if you want" while the requirement gate
+is open; no abandonment phrasing either (hardening comes first — see hard rules).
+
 Fairness rule (playbook §8): the verifier is only the marking scheme — assert
 **exactly** what the prompt requires, no less, no more: Missing → add a
 deterministic check; Partially covered → strengthen; **Extra (checks something
@@ -450,6 +506,35 @@ Fix: when correcting flavor 2, **grep every free-text check for ALL remaining
 English, keep space-only when it isn't ("the cause", "one finding" never
 hyphenate). Never fix one literal of an orthographic family; a
 space-only join is a variant-rejection bug anywhere it appears.
+
+**Round-5 lesson (g684 2026-08-28, the "no less" direction + dead alternates):**
+the gate also graded *under*-assertion on a hardened task — every claim the
+instruction makes needs at least one check that can actually fail:
+
+- Value fields must be asserted, not just vocabulary: a CSV with a recomputed
+  price column was ungraded until per-order deterministic row checks were added
+  (wrong `expected_unit_price` mutated → check failed cleanly).
+- Decoy rows must be asserted clean: the preferred-name decoy was ungraded — a
+  model catching it as `NAME_MISMATCH` (the commonest error) scored 1 until a
+  `none` assertion was added. If a trap can be missed and still pass, the trap
+  is not graded.
+- Dropped rows: add presence assertions; they also catch row-count defects.
+- **Dead OR-alternates are a real structural defect**: a figure alternate
+  appended as `...|\b22\.(?:5|50)\b` to a check whose `\boverbill` alternate
+  already matched every overbilling memo never failed — the mutant
+  (memo: "overbilled $100.00") passed 25/25. After adding any alternate,
+  mutate the claim and confirm the check can fail; assert each required claim
+  in **its own check** instead of OR-ing it under one that already passes.
+- Optional-article pins: `(?:a\s+)?` rejects the instruction's own
+  "an already-approved proof" — use `an?\s+` or drop the article and window the
+  relation (semantic construct, round-2 style).
+- Build new deterministic checks with **one shared quote-tolerant field builder**
+  (`\x22?<value>\x22?`, `\s*` separators, `\s*$` for CRLF tolerance) — g709
+  flavor 3's one-acceptance-surface rule applied at authoring time, not only
+  when widening. Validate in-process via the vendored engine
+  (`SourceRegistry(Path(ws))` + `verify_definition`; deps in a local venv —
+  `pydantic`, `jsonpath-ng`, `tenacity`, no pytest needed) across gold,
+  natural paraphrases, wrong-value mutants, and a fully RFC-4180-quoted gold.
 
 **Prevention habits (cheap, and they catch what the QC tool will):**
 
