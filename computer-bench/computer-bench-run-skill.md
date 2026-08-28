@@ -16,18 +16,24 @@ description: >
 
 # Running a Computer-Bench Task Locally
 
+> **Sync rule: this file is mirrored at `<vault>/computer-bench/computer-bench-run-skill.md`.**
+> After any edit to this skill, immediately `cp` it over the vault copy (and
+> vice versa when the vault copy changes) — the vault copy is the portable
+> source for installing the skill on other machines
+> (Start Here step 1). Verified in sync 2026-08-28.
+
 ## Read this first
 
 The authoritative docs live in the personal knowledge base (Obsidian vault,
 `/home/v1b3m/Dev/Personal/turing-kb/`):
 
 1. `<vault>/computer-bench/Start Here.md` — **the entry point**. A numbered
-   9-step map from design through labelling, with one-line summaries and a link
-   to the detail doc for each stage (set-up, design, verifier audit, hardening,
-   packaging, QC review form, Delivery Gate, pipeline submit, labelling). The
-   working detail doc is `<vault>/computer-bench/QC Handoff Guide.md`. Read the
-   map first — it is the current truth; where a guide below disagrees with it,
-   Start Here wins.
+   10-step map from design through the tracker-sheet log, with one-line
+   summaries and a link to the detail doc for each stage (set-up, design,
+   verifier audit, hardening, packaging, QC review form, Delivery Gate,
+   pipeline submit, labelling, tracker sheet). The working detail doc is
+   `<vault>/computer-bench/QC Handoff Guide.md`. Read the map first — it is
+   the current truth; where a guide below disagrees with it, Start Here wins.
 2. `<vault>/computer-bench/Non-Connector Guide.md` — **preferred** for offline,
    file-deliverable tasks (no gcloud, no W&B, no judge, binary reward). Start
    with its **"The whole lifecycle at a glance"** table + **"Glossary"**; Steps
@@ -76,7 +82,10 @@ the corrections below.
   instructions), or it is **abandoned**. Give every task dedicated hardening time;
   if it still cannot be hardened, abandon it and state the reason clearly in the
   labelling tool's Trainer Notes (Stage F — the stated reason is the deliverable
-  in that case). A partial, out-of-band, or unverified task is not a package.
+  in that case), and mirror it as `trainer-notes-abandonment.md` in the task root
+  (same structure, one per task; **TL;DR ≤ 500 chars**, and the labelling-tool
+  URL as YAML frontmatter `task_link:`). A partial, out-of-band, or unverified
+  task is not a package.
 - **Instructions must stay human-voiced** — no phrasing engineered to match
   verifier regexes (prompt hacking; unacceptable). Difficulty must come from
   visible domain reasoning (playbook §1).
@@ -84,6 +93,19 @@ the corrections below.
 - **Never promise a QC verdict for non-connector tasks.** The QC tool's run
   gate currently refuses this family's evidence (see Known gaps in the guide);
   it fails closed. Report partial reviews as partial.
+- **Every user-facing web action carries its URL inline.** If a step needs the
+  user to act in a web tool (QC Control, labelling tool, review form, Drive,
+  tracker), include the exact link in the same message — never "open QC
+  Control" without the URL. Index below.
+
+## Web tool URLs (always inline when a step needs them)
+
+| Tool | URL |
+|---|---|
+| QC Control (IAP-auth; `#new-version`, `#review-csv`, `#division-of-labour`) | `https://qc-api-713053229214.us-central1.run.app/` |
+| Labelling tool (per task id) | `https://labeling-g.turing.com/conversations/<id>/view` |
+| Tracker sheet (gid=3003) | `https://docs.google.com/spreadsheets/d/1bbphEa7oIHfRhMPHEt_TmAbHcej1_ArImtsW43QaRyY/edit?gid=3003#gid=3003` |
+| Review form engine (per-task exec URL) | `https://script.google.com/a/macros/turing.com/s/AKfycbzi9BTJ8iVwPCCEGGaiaII9bKUwVl62mxkRpwGDfRYIKphxiDBfO-oF4B3A8Bc9AgYU/exec` |
 
 ## Procedure
 
@@ -308,17 +330,173 @@ with the lead before packaging):
 - **Upload_reworked-QC (current per playbook §13):** one self-contained zip
   `<task-id>-upload-reworked-qc.zip` with the task package (task.toml,
   instruction.md, README.md, environment/, tests/, solution/ +
-  `golden_trajectory.json`), `evaluations/glm-5-2/r1..r5` + `evaluations/stability/r1..r5`
-  (each: agent/trajectory.json, result.json, verifier/), `qc/` (Unified QC
-  output), `verifications/`, and a root `REWORKED_QC_README.json` trainer note.
+  `golden_trajectory.json`), `evaluations/difficulty/r1..r4` +
+  `evaluations/solvability/r1` (each: agent/trajectory.json, result.json,
+  verifier/), and **`review.csv` at the bundle root — always** (the QC form
+  record ships in every upload; the accepted g710 bundle anatomy is the
+  reference: no stability dirs — Turing-side, no REWORKED_QC_README.json).
   **Never include `.env` or scratch folders.**
+- **Zip location: inside the task's batch folder** (e.g. `~/Dev/computer-bench/1256598/`
+  for batch 1256598), alongside the task dir — never loose in
+  `~/Dev/computer-bench/`. The task dir is the single bundle root: task files +
+  `evaluations/` + `review.csv` + `README.md` + `.gitignore` merged into it
+  (layout 2026-08-28). Build: `cd <batch-folder> && zip -qr <task>-vN.zip
+  <task-dir> -x '*/pg/*' '*/__pycache__/*' '*/.pytest_cache/*' '*/.git/*' '*/.env'`.
+- **One source of truth: the task directory.** The zip is a build artifact,
+  never a second source — never hand-modify a zip (`zip -u` a file in) and never
+  add a file to the zip only. Any change (adding `qc_report.html`, editing
+  review.csv) goes into the canonical task dir first, then the zip is **rebuilt
+  from it** and round-trip-checked (`unzip` to temp, `diff -r` vs the canonical
+  dir minus the excluded paths).
+
+### The Delivery Gate loop (review.csv in, report rides the next upload)
+
+1. Zip **always contains `review.csv` at root** before any upload.
+2. Upload the zip to QC Control (`#new-version`) → a delivery run starts; its
+   folder (`…-v<idx>-delivery-<runid>/`) contains `qc_report.html`,
+   `report.json`, `human_review.json`, `run_owner.json`.
+3. Read the report: "Ready for finalization" = the pass — **stop uploading.**
+   Anything else (findings awaiting disposition): dispose the trainer-owned
+   finding (confirm/dispute + note into `human_review.json`), then **add the
+   downloaded `qc_report.html` to the zip root** and re-upload (the delivery
+   index `-v<idx>` increments) — repeat until the tool verifies readiness.
+4. After the final run: upload **`review.csv` AND the final `qc_report.html` to
+   the Drive task folder** (the record — repo task root keeps the same two
+   files). No uploads after "Ready for finalization", ever (g710's lesson).
 - **Harbor platform (older):** `harbor auth login` (GitHub OAuth, once per
   machine) then `harbor upload <job-dir>` — directory in, no zip; records the
   locally computed reward, private by default.
 
+### QC finding classes & the fairness rule (what the gate checks)
+
+**Who acts (findings ship in `report.json` / `qc_report.html`, keyed by owner):**
+
+- **trainer-owned** (`l5.verifier_fairness`, `l5.reward_hacking`, …): must be disposed —
+  confirm or dispute with a note in `human_review.json.dispositions[<finding-id>]`.
+  Never judge from the summary: **run the finding's verify step with the vendored
+  engine** before writing the note. Dispute = the g710 recipe (container-level
+  evidence; see guide §6). Confirm = reproduced, fixed, re-verified; the note records
+  all three.
+- **finalization-owned** (`l2.stability`, `l3.oracle_mode`, `l2.difficulty`): no action,
+  never block, and may remain in an accepted delivery. `l2.difficulty` "above ideal
+  band" is advisory (it says "trainer may submit as-is") — the client band (1–3 of 4)
+  is the spec; never reshape rewards to please it.
+
+**The fairness rule — a deterministic check may assert only what the instruction
+actually requires.** A check over free text or a format must accept every output the
+instruction permits. Three flavors (all three shipped tasks got hit in one delivery,
+g709 2026-08-28):
+
+1. **Vocabulary pinning** — memo checks demanding fixed phrases or order ("one of four
+   phrases after the TIX IDs") when the instruction pins no wording. Fix: concept-based,
+   order-independent — two lookaheads (concept A present AND concept B present, any
+   order); phrase set = the instruction's own terms + standard synonyms + what the gold
+   text actually uses.
+2. **Orthographic variant rejection** — `\broot\s+cause` rejects the hyphen compound
+   "root-cause"; `subject\s+line` rejects the instruction's own "subject wording".
+   Fix: accept all standard variants of instruction-family terms
+   (`[\s-]+`, `(?:line|wording|text|title)`).
+3. **Format-surface inconsistency** — sibling checks on one source disagree on
+   acceptance (finding checks tolerate `\x22?` quoting, the `hours_open` checks do
+   not): a fully quoted RFC-4180 CSV with exact gold values passed 40 checks and
+   failed 6. Fix: **one acceptance surface per source type** — if any check tolerates
+   quoting, all do; build row/field patterns once (shared regex builder), never
+   hand-roll one check's tail.
+
+**Round-2 lesson (g709 2026-08-28, same check, one level deeper):** a phrase-set
+fix inside flavor 1 is whack-a-mole — the gate returned on `memo_explains_traps`
+rejecting "not members of any tracked cohort" (member-before-cohort), "does not
+match any tracked cohort" (intervening verb), "doesn't belong" (contraction), "no
+cohort membership", even "false positives" (plural). The QC's remediation lists
+its own forms only. Fixing it right: stop enumerating phrases, adopt a **semantic
+construct** — a negation marker (`not`/`never`/`no`, contraction family) within
+one sentence clause of a cohort/member word, either order, clause-bounded window
+(`[^.!?\n;:]{0,40}` so "not" and "cohort" in unrelated clauses or different
+sentences don't pair). Keep the old phrase family as alternates so the acceptance
+surface only ever grows (acceptance-superset monotonicity is what keeps recorded
+battery rewards valid).
+
+**Round-3 lesson (g709 2026-08-28, the class, not the check):** the round-2
+semantic construct still had a phrase-list core, so the gate moved to the
+same check's remaining holes — "clean traps … outside the cohort": `clean`/`no
+finding`/`false positive` is the instruction-own negation vocabulary (the task
+says "naming every ticket whose subject line *looks like* a cohort match but is
+*not*"), and "outside the cohort" is the relative-clause variant of the same
+statement, matched by no marker in the negation window. The class was live in
+every sibling memo check too: the instruction's own phrasings ("the SLA policy
+sets a two-day limit", "the code-table change effective 2026-08-24",
+"membership comes from the cause code, never the subject") all failed the
+shipped verifier. Fix: **anchor vocabulary to instruction-own ∪ task-schema ∪
+gold-synonym** (never one phrase list), relations as order-free clause-window
+co-occurrence, and **fix the whole class in one commit** — widen every sibling
+check on the same source the same way; re-verify against every prior QC
+construction (r1 through rN) plus newly generated ones, and confirm acceptance
+is a strict superset of the previous delivery.
+
+**Round-4 lesson (g709 2026-08-28, flavor 2 one round deeper):** the round-1
+orthographic fix (`root\s+cause` → `root[\s-]+cause`) closed only *that* literal
+— every other space-only join in the same checks kept the defect: `false\s+positives?`
+rejected the standard hyphenated "false-positives" (and `no\s+finding` → "no-finding",
+`cause\s+code` → "cause-code", `subject\s+line` → "subject-line", `logged\s+cause`,
+`first\s+…rule` → "first-applicable-rule", `business\s+hours`, `prior\s+code`,
+`effective\s+…` — the last three masked behind sibling literals but still classes).
+Fix: when correcting flavor 2, **grep every free-text check for ALL remaining
+`\s+` joins inside multi-word literals and widen them in the same commit**
+(`[\s-]+`), one judgment per join — widen when the hyphenated form is standard
+English, keep space-only when it isn't ("the cause", "one finding" never
+hyphenate). Never fix one literal of an orthographic family; a
+space-only join is a variant-rejection bug anywhere it appears.
+
+**Prevention habits (cheap, and they catch what the QC tool will):**
+
+- Authoring: for every free-text/format check ask *"what would the instruction-permitted
+  paraphrase look like?"* — then run 3–5 mutants of the gold text (paraphrases,
+  hyphen/quote variants, reordered clauses) through the engine before shipping.
+  The mutant matrix must include **order swaps, intervening verbs, contractions,
+  plural/inflection variants** — the gate will probe all four. A mutant that fails
+  and reads like natural instructed English is a check bug, not a lucky catch.
+- Sweep: fixing one instance of a category does not fix the category — after any
+  fairness fix, grep the manifest for siblings **and fix them in the same commit**
+  (the `\bcredits\b` widening left two memo + six hours checks with the same
+  defect class; the gate found them, and the r3 class was found this way).
+- Post-widening re-test, both directions: valid-variant mutants now PASS **and**
+  wrong-value mutants still FAIL exactly the intended checks. Validate even a
+  QC-suggested fix against the finding's full construction (their quoting fix alone
+  still failed the quoted row — the `,<code>` tail was quote-intolerant too).
+- A QC-suggested remediation is a floor, not a spec: implement its forms *and* the
+  semantic generalization that dominates them — otherwise the next delivery comes
+  back with the sibling of the same finding.
+
+### Review-form discipline (initial commit vs delivered form)
+
+Review notes describe the **delivered form** and, where it matters, the contrast
+against the **initial commit** — never the versioned hardening journey
+(v0→v1→v2 narration). Versions are trainer-local: do not reference versioned
+artifacts (zip names, "reference vN anatomy") in review notes, aid files, or the
+bundle. The only acceptable version strings are factual schema labels
+(ATIF-v1.7) and Drive delivery labels. The 14 sections read as the final state:
+what the task is, how it measures, what changed from the initial commit, and
+what was fixed during hardening — without version numbers.
+
+**review.csv can be generated locally** — no web app needed: run
+`<qc-script-dir>/generate_review_csv.py <draft.csv> [out.csv]` (the script emits
+the form's exact byte format: UTF-8 BOM, CRLF, standard quoting) and it is
+byte-identical to the Apps Script export when the draft carries the form's
+section labels (four Layer 2/3 labels omit the middle dot — verified
+2026-08-28). **Canonical copy: `~/Dev/computer-bench/000000/gen-g688-loan-file-risk-screen/pg/packaging/generate_review_csv.py`**
+(task 000000, the reference task); per-machine copies sit in each batch's
+qc-script dir and should be re-synced from the canonical one. The qc-script dir
+is machine/batch-local and may differ per task — locate it in the task
+workspace first (or copy the generator + unified_qc.py into the task's
+qc-script dir) before relying on it. Author the
+draft thoroughly (review_form_document.md is the source of truth), sync labels,
+generate, and upload the file to Drive manually; the form itself can be skipped.
+
 Everything after packaging — QC review form, Delivery Gate, pipeline submit,
-labelling, and the no-re-upload rule — is **Start Here steps 6–9** (detail:
-`<vault>/computer-bench/QC Handoff Guide.md`).
+labelling, and the no-re-upload rule — is **Start Here steps 6–9**, plus the
+final step: log the task in the tracker sheet (gid=3003,
+`https://docs.google.com/spreadsheets/d/1bbphEa7oIHfRhMPHEt_TmAbHcej1_ArImtsW43QaRyY/edit?gid=3003#gid=3003`).
+Detail: `<vault>/computer-bench/QC Handoff Guide.md` §8.
 
 ## Endpoint/model presets
 
