@@ -83,9 +83,13 @@ the corrections below.
   if it still cannot be hardened, abandon it and state the reason clearly in the
   labelling tool's Trainer Notes (Stage F — the stated reason is the deliverable
   in that case), and mirror it as `trainer-notes-abandonment.md` in the task root
-  (same structure, one per task; **TL;DR ≤ 500 chars**, and the labelling-tool
-  URL as YAML frontmatter `task_link:`). A partial, out-of-band, or unverified
-  task is not a package.
+  (same structure, one per task; **TL;DR ≤ 500 chars**). The note's YAML
+  frontmatter `task_link:` is generated, not copied — the labelling-tool URL is
+  predictable:
+  `https://labeling-g.turing.com/conversations/<task-id>/view`, where
+  `<task-id>` is the numeric directory in the task path
+  (`…/computer-bench/<task-id>/gen-…/`), e.g. 1256596 → `…/conversations/1256596/view`.
+  A partial, out-of-band, or unverified task is not a package.
 - **Instructions must stay human-voiced** — no phrasing engineered to match
   verifier regexes (prompt hacking; unacceptable). Difficulty must come from
   visible domain reasoning (playbook §1).
