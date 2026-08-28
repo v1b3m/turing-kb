@@ -129,7 +129,20 @@ the corrections below.
   A partial, out-of-band, or unverified task is not a package.
 - **Instructions must stay human-voiced** — no phrasing engineered to match
   verifier regexes (prompt hacking; unacceptable). Difficulty must come from
-  visible domain reasoning (playbook §1).
+  visible domain reasoning (playbook §1). (Distinct from the voice rule below:
+  "human-voiced" here means naturally worded, not verifier-engineered.)
+- **Form answers are written in the user's voice — `instruction.md` is the one
+  exception.** Every answer text that lands in an online tool — QC review form
+  answers (14 sections), `review_form_document.md`, `review.csv`, QC Control
+  disposition notes (`human_review.json`), labelling-tool Trainer Notes
+  (Stage F), tracker-sheet entries — is drafted in the user's voice: run it
+  through the humanize skill's `--me` mode before it ships (profile bundled at
+  `~/.claude/skills/humanize/voice.md`). Same for other generated prose
+  (README.md, aid files) — user's voice, plain and direct. **`instruction.md`
+  is exempt**: it stays professional, domain-specific, and precise. It is the
+  prompt a model reads and a client reviews; its power is the domain reasoning
+  (§1), not personality. Never "humanize" structured artifacts (verifier JSON,
+  task.toml, schema files) — those stay exact.
 - **Never `docker image prune -a`.**
 - **Never promise a QC verdict for non-connector tasks.** The QC tool's run
   gate currently refuses this family's evidence (see Known gaps in the guide);
@@ -556,6 +569,29 @@ instruction makes needs at least one check that can actually fail:
   semantic generalization that dominates them — otherwise the next delivery comes
   back with the sibling of the same finding.
 
+### Form-answer voice (what's written into web forms)
+
+Any answer text that lands in an online tool is authored **in the user's voice,
+not in task-doc register** — humanize it with the built-in skill's `--me` mode
+(profile: `~/.claude/skills/humanize/voice.md`) on the way out. What that means
+concretely for this workflow:
+
+- **Direct and plain.** "Verifier was reading for a fixed phrase the task never
+  required" beats "The verifier asserted a narrowly-scoped lexical construct
+  that the instruction did not stipulate."
+- **Contractions always** (`don't`, `wasn't`, `they're`), **no em dashes**
+  (the user's pet peeve — use periods or commas), **no preamble**
+  ("The task:", "In summary:"), **sentence fragments fine**. No rule-of-three
+  flourish, no "It's worth noting", no hedge openers.
+- **Facts stay verbatim**: verifier names, check ids, reward numbers, file
+  paths, URLs — never reworded or stylized. This is voice on top of the facts,
+  not a rewrite of them.
+- **Do not lower precision to sound casual.** The register transfers, the
+  accuracy does not. A finding note still names the check and the exact
+  construction; it just says so in plain speech.
+- **The one and only exception: `instruction.md`.** Professional,
+  domain-specific, precise — no personality, no voice treatment, ever.
+
 ### Review-form discipline (initial commit vs delivered form)
 
 Review notes describe the **delivered form** and, where it matters, the contrast
@@ -565,7 +601,9 @@ artifacts (zip names, "reference vN anatomy") in review notes, aid files, or the
 bundle. The only acceptable version strings are factual schema labels
 (ATIF-v1.7) and Drive delivery labels. The 14 sections read as the final state:
 what the task is, how it measures, what changed from the initial commit, and
-what was fixed during hardening — without version numbers.
+what was fixed during hardening — without version numbers. Author the notes in
+the user's voice (the form-answer voice rule above): plain, direct,
+contractions, no em dashes — facts verbatim.
 
 **review.csv can be generated locally** — no web app needed: run
 `<qc-script-dir>/generate_review_csv.py <draft.csv> [out.csv]` (the script emits
